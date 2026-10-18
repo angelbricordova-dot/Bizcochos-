@@ -1681,3 +1681,8 @@ input[type='range']::-moz-range-thumb {
     animation: girar 2s linear infinite !important;
   }
 }
+
+/* Last word on currency colour: wins over any single-class text colour above. */
+.bs.bs {
+  color: var(--turquesa-tinta);
+}
