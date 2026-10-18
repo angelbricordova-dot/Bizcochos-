@@ -1,0 +1,8 @@
+node_modules
+dist
+.vercel
+.env*
+!.env.example
+.impeccable/review
+.impeccable/questions
+.impeccable/config.local.json
