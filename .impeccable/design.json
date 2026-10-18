@@ -1,0 +1,681 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-18T04:38:34+00:00",
+  "title": "Design System: Mis Bizcochos",
+  "extensions": {
+    "colorMeta": {
+      "fucsia": {
+        "role": "primary",
+        "displayName": "Piñata Fuchsia",
+        "canonical": "oklch(49.9% 0.188 1.7)",
+        "tonalRamp": [
+          "#2d0007",
+          "#4f001f",
+          "#830038",
+          "#aa0c56",
+          "#d44178",
+          "#ff699c",
+          "#ff90c2",
+          "#ffc9e8"
+        ]
+      },
+      "fucsia-hondo": {
+        "role": "primary",
+        "displayName": "Deep Fuchsia",
+        "canonical": "oklch(42.1% 0.160 1.1)",
+        "tonalRamp": [
+          "#2d0008",
+          "#4f0020",
+          "#7b003a",
+          "#a02858",
+          "#c94f7a",
+          "#f3759e",
+          "#ff9bc4",
+          "#ffc9e9"
+        ]
+      },
+      "fucsia-suave": {
+        "role": "primary",
+        "displayName": "Fuchsia Blush",
+        "canonical": "oklch(94.2% 0.030 351.5)",
+        "tonalRamp": [
+          "#15060d",
+          "#301e26",
+          "#4d3941",
+          "#6c575f",
+          "#8f7982",
+          "#b49da7",
+          "#dbc3cd",
+          "#ffe7f1"
+        ]
+      },
+      "amarillo": {
+        "role": "secondary",
+        "displayName": "Sun Yellow",
+        "canonical": "oklch(87.9% 0.162 90.9)",
+        "tonalRamp": [
+          "#1e0100",
+          "#3b1c00",
+          "#5f3600",
+          "#805600",
+          "#a47900",
+          "#ca9f00",
+          "#f2c52c",
+          "#ffeb83"
+        ]
+      },
+      "turquesa-tinta": {
+        "role": "secondary",
+        "displayName": "Bolívar Turquoise Ink",
+        "canonical": "oklch(48.1% 0.080 191.4)",
+        "tonalRamp": [
+          "#001313",
+          "#002f2d",
+          "#004c4a",
+          "#0a6c69",
+          "#3d8f8c",
+          "#64b5b1",
+          "#8adcd7",
+          "#aefffc"
+        ],
+        "note": "Text colour for every Bs amount (5.9:1 on fondo)."
+      },
+      "turquesa": {
+        "role": "secondary",
+        "displayName": "Turquoise",
+        "canonical": "oklch(64.8% 0.108 192.4)",
+        "tonalRamp": [
+          "#001517",
+          "#003232",
+          "#00504f",
+          "#00706e",
+          "#009491",
+          "#3bbab6",
+          "#69e1dd",
+          "#8fffff"
+        ]
+      },
+      "oro": {
+        "role": "tertiary",
+        "displayName": "Cake-Board Gold",
+        "canonical": "oklch(71.1% 0.142 86.0)",
+        "tonalRamp": [
+          "#210000",
+          "#3f1900",
+          "#603500",
+          "#815400",
+          "#a67800",
+          "#cc9d19",
+          "#f4c34f",
+          "#ffe883"
+        ]
+      },
+      "oro-claro": {
+        "role": "tertiary",
+        "displayName": "Gold Frosting",
+        "canonical": "oklch(89.7% 0.094 92.4)",
+        "tonalRamp": [
+          "#190600",
+          "#342000",
+          "#513d00",
+          "#705b0b",
+          "#947e37",
+          "#b9a35d",
+          "#e0c982",
+          "#ffeda5"
+        ]
+      },
+      "oro-tinta": {
+        "role": "tertiary",
+        "displayName": "Price Gold Ink",
+        "canonical": "oklch(49.8% 0.102 82.7)",
+        "tonalRamp": [
+          "#1e0100",
+          "#3b1b00",
+          "#5a3800",
+          "#7a5700",
+          "#9e7a2e",
+          "#c49f55",
+          "#ebc57b",
+          "#ffe99e"
+        ]
+      },
+      "tinta": {
+        "role": "neutral",
+        "displayName": "Plum Ink",
+        "canonical": "oklch(22.9% 0.045 338.0)",
+        "tonalRamp": [
+          "#160412",
+          "#321b2b",
+          "#4f3748",
+          "#6f5466",
+          "#93768a",
+          "#b89aae",
+          "#dfc0d5",
+          "#ffe4f9"
+        ]
+      },
+      "tinta-2": {
+        "role": "neutral",
+        "displayName": "Muted Plum",
+        "canonical": "oklch(47.5% 0.038 339.5)",
+        "tonalRamp": [
+          "#150510",
+          "#301d2a",
+          "#4e3846",
+          "#6d5665",
+          "#907888",
+          "#b69cac",
+          "#dcc1d3",
+          "#ffe5f7"
+        ]
+      },
+      "tinta-3": {
+        "role": "neutral",
+        "displayName": "Faded Plum",
+        "canonical": "oklch(51.4% 0.034 338.5)",
+        "tonalRamp": [
+          "#140610",
+          "#2f1d2a",
+          "#4c3946",
+          "#6b5664",
+          "#8f7987",
+          "#b49dac",
+          "#dac2d2",
+          "#ffe6f6"
+        ]
+      },
+      "fondo": {
+        "role": "neutral",
+        "displayName": "Tablecloth",
+        "canonical": "oklch(98.3% 0.009 352.4)",
+        "tonalRamp": [
+          "#0e0a0b",
+          "#282224",
+          "#443e40",
+          "#625b5e",
+          "#857e81",
+          "#aaa2a5",
+          "#d0c8cb",
+          "#f4ecef"
+        ]
+      },
+      "fondo-elevado": {
+        "role": "neutral",
+        "displayName": "White Plate",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "fondo-hundido": {
+        "role": "neutral",
+        "displayName": "Pressed Pink",
+        "canonical": "oklch(96.1% 0.015 352.0)",
+        "tonalRamp": [
+          "#10090c",
+          "#2a2125",
+          "#473c41",
+          "#655a5e",
+          "#887d81",
+          "#ada1a5",
+          "#d3c7cb",
+          "#f7eaef"
+        ]
+      },
+      "linea": {
+        "role": "neutral",
+        "displayName": "Pink Hairline",
+        "canonical": "oklch(91.5% 0.024 347.2)",
+        "tonalRamp": [
+          "#12070d",
+          "#2d1f26",
+          "#4a3b42",
+          "#685860",
+          "#8c7b83",
+          "#b19fa7",
+          "#d7c5cd",
+          "#fce8f1"
+        ]
+      },
+      "linea-fuerte": {
+        "role": "neutral",
+        "displayName": "Pink Rule",
+        "canonical": "oklch(85.4% 0.037 346.2)",
+        "tonalRamp": [
+          "#16050e",
+          "#311d28",
+          "#4e3844",
+          "#6d5662",
+          "#917885",
+          "#b79ca9",
+          "#ddc1cf",
+          "#ffe5f4"
+        ]
+      },
+      "peligro": {
+        "role": "status",
+        "displayName": "Loss Red",
+        "canonical": "oklch(50.8% 0.185 28.9)",
+        "tonalRamp": [
+          "#300000",
+          "#520000",
+          "#880000",
+          "#ae1510",
+          "#d94639",
+          "#ff6e5d",
+          "#ff9582",
+          "#ffcdbc"
+        ]
+      },
+      "peligro-suave": {
+        "role": "status",
+        "displayName": "Loss Blush",
+        "canonical": "oklch(94.7% 0.023 24.1)",
+        "tonalRamp": [
+          "#140707",
+          "#2e201e",
+          "#4b3b3a",
+          "#6a5957",
+          "#8e7b79",
+          "#b39f9d",
+          "#d9c5c3",
+          "#fee9e7"
+        ]
+      },
+      "aviso": {
+        "role": "status",
+        "displayName": "Notice Amber",
+        "canonical": "oklch(50.8% 0.108 73.3)",
+        "tonalRamp": [
+          "#230000",
+          "#411500",
+          "#613300",
+          "#815200",
+          "#a7752b",
+          "#cd9a53",
+          "#f5c079",
+          "#ffe49c"
+        ]
+      },
+      "aviso-suave": {
+        "role": "status",
+        "displayName": "Notice Cream",
+        "canonical": "oklch(96.5% 0.046 90.9)",
+        "tonalRamp": [
+          "#120a00",
+          "#2c2306",
+          "#493f22",
+          "#675d3f",
+          "#8a8061",
+          "#afa484",
+          "#d6caa9",
+          "#faeecc"
+        ]
+      },
+      "serie-1": {
+        "role": "chart",
+        "displayName": "Series 1 · Ingredientes",
+        "canonical": "oklch(57.9% 0.214 2.8)",
+        "tonalRamp": [
+          "#2d0006",
+          "#4f001e",
+          "#8b0035",
+          "#b30052",
+          "#de2e74",
+          "#ff5b98",
+          "#ff84bd",
+          "#ffc9e6"
+        ]
+      },
+      "serie-2": {
+        "role": "chart",
+        "displayName": "Series 2 · Empaque",
+        "canonical": "oklch(64.8% 0.108 192.4)",
+        "tonalRamp": [
+          "#001517",
+          "#003232",
+          "#00504f",
+          "#00706e",
+          "#009491",
+          "#3bbab6",
+          "#69e1dd",
+          "#8fffff"
+        ]
+      },
+      "serie-3": {
+        "role": "chart",
+        "displayName": "Series 3 · Horno",
+        "canonical": "oklch(72.9% 0.162 58.8)",
+        "tonalRamp": [
+          "#2b0000",
+          "#4d0100",
+          "#781800",
+          "#9c3d00",
+          "#c46200",
+          "#ed871f",
+          "#ffae51",
+          "#ffd994"
+        ],
+        "note": "2.4:1 vs surface #FFFAFC; legend table with values is mandatory."
+      },
+      "serie-4": {
+        "role": "chart",
+        "displayName": "Series 4 · Tu trabajo",
+        "canonical": "oklch(54.8% 0.187 293.8)",
+        "tonalRamp": [
+          "#14003b",
+          "#2b085b",
+          "#4b1396",
+          "#673cba",
+          "#8962e3",
+          "#ad88ff",
+          "#d2afff",
+          "#f3deff"
+        ]
+      },
+      "serie-5": {
+        "role": "chart",
+        "displayName": "Series 5 · Merma",
+        "canonical": "oklch(64.6% 0.120 257.6)",
+        "tonalRamp": [
+          "#00003c",
+          "#001e5c",
+          "#0d3d7d",
+          "#2e5da0",
+          "#5081c7",
+          "#74a6ef",
+          "#99cdff",
+          "#bcf1ff"
+        ],
+        "note": "Blue chosen for merma because a grey failed the dataviz validator chroma floor."
+      },
+      "serie-6": {
+        "role": "chart",
+        "displayName": "Series 6 · Ganancia",
+        "canonical": "oklch(71.1% 0.142 86.0)",
+        "tonalRamp": [
+          "#210000",
+          "#3f1900",
+          "#603500",
+          "#815400",
+          "#a67800",
+          "#cc9d19",
+          "#f4c34f",
+          "#ffe883"
+        ],
+        "note": "2.5:1 vs surface #FFFAFC; legend table with values is mandatory."
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Month profit on Inicio; rate figure on Tasa."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Suggested price, converter result, compact torta price."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Screen titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Block legends and headings, month selector."
+      },
+      "row-figure": {
+        "displayName": "Row figure",
+        "purpose": "Amounts in plain label/amount summary rows."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All reading text and inputs."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Field labels, button text."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Helper text, list sub-lines, errors."
+      },
+      "tab": {
+        "displayName": "Tab",
+        "purpose": "Bottom tab labels."
+      }
+    },
+    "shadows": [
+      {
+        "name": "sombra",
+        "value": "0 1px 2px rgb(64 12 40 / 0.06), 0 4px 14px rgb(64 12 40 / 0.07)",
+        "purpose": "Plate: resting lists, converter, compact torta."
+      },
+      {
+        "name": "sombra-alta",
+        "value": "0 2px 4px rgb(64 12 40 / 0.08), 0 10px 28px rgb(64 12 40 / 0.14)",
+        "purpose": "Lifted: floating actions above the tab bar."
+      },
+      {
+        "name": "fuchsia-glow",
+        "value": "0 1px 2px rgb(140 16 72 / 0.3), 0 4px 12px rgb(140 16 72 / 0.18)",
+        "purpose": "Primary buttons."
+      },
+      {
+        "name": "tab-edge",
+        "value": "0 -6px 20px rgb(64 12 40 / 0.06)",
+        "purpose": "Mobile tab bar upward edge."
+      },
+      {
+        "name": "focus-halo",
+        "value": "0 0 0 3px rgb(176 24 91 / 0.16)",
+        "purpose": "Focused inputs, number fields, search."
+      },
+      {
+        "name": "segment-selected",
+        "value": "0 1px 2px rgb(64 12 40 / 0.1), 0 2px 6px rgb(64 12 40 / 0.06)",
+        "purpose": "Selected segment in segmented control."
+      }
+    ],
+    "motion": [
+      {
+        "name": "salida",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Expo-out curve for every transition."
+      },
+      {
+        "name": "torta-slices",
+        "value": "stroke-dasharray 520ms, stroke-dashoffset 520ms var(--salida)",
+        "purpose": "The one authored motion: torta slices settle as the recipe changes."
+      },
+      {
+        "name": "torta-emphasis",
+        "value": "stroke-width 180ms, opacity 180ms var(--salida)",
+        "purpose": "Active slice thickens by 6 units; others fade to 32%."
+      },
+      {
+        "name": "state",
+        "value": "120–180ms var(--salida)",
+        "purpose": "Colour/background state changes; press scale 0.97 in 120ms."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "transition-duration: 1ms; animation-duration: 1ms",
+        "purpose": "prefers-reduced-motion collapses all transitions; the save spinner slows to 2s."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "desktop",
+        "value": "960px"
+      },
+      {
+        "name": "items-container",
+        "value": "600px (container query on recipe item list)"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Fuchsia action; large variant is \"Registrar venta\" above the tab bar.",
+      "html": "<button class=\"ds-btn ds-btn-primary\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg> Registrar venta</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border-radius:12px;border:1px solid transparent;font:600 1rem/1 system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;cursor:pointer;transition:background-color 160ms cubic-bezier(0.16,1,0.3,1),transform 120ms cubic-bezier(0.16,1,0.3,1)} .ds-btn:active{transform:scale(0.97)} .ds-btn:focus-visible{outline:2.5px solid var(--fucsia,#b0185b);outline-offset:2px} .ds-btn-primary{background:var(--fucsia,#b0185b);color:#fff;min-height:56px;font-size:1.08rem;border-radius:14px;box-shadow:0 1px 2px rgb(140 16 72 / 0.3),0 4px 12px rgb(140 16 72 / 0.18)} .ds-btn-primary:hover{background:var(--fucsia-hondo,#8c1048)}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "White plate with pink rule; empty-state and lesser actions.",
+      "html": "<button class=\"ds-btn ds-btn-secondary\">Anotar lo que compras</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border-radius:12px;border:1px solid transparent;font:600 1rem/1 system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;cursor:pointer;transition:background-color 160ms cubic-bezier(0.16,1,0.3,1),transform 120ms cubic-bezier(0.16,1,0.3,1)} .ds-btn:active{transform:scale(0.97)} .ds-btn:focus-visible{outline:2.5px solid var(--fucsia,#b0185b);outline-offset:2px} .ds-btn-secondary{background:var(--fondo-elevado,#fff);color:var(--tinta,#2a1424);border-color:var(--linea-fuerte,#e2c6d4)} .ds-btn-secondary:hover{background:var(--fondo-hundido,#fbeef3)}"
+    },
+    {
+      "name": "Danger Soft Button",
+      "kind": "button",
+      "refersTo": "button-danger-soft",
+      "description": "Destructive entry point; opens an inline red confirmation.",
+      "html": "<button class=\"ds-btn ds-btn-danger-soft\">Borrar receta</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border-radius:12px;border:1px solid transparent;font:600 1rem/1 system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;cursor:pointer;transition:background-color 160ms cubic-bezier(0.16,1,0.3,1),transform 120ms cubic-bezier(0.16,1,0.3,1)} .ds-btn:active{transform:scale(0.97)} .ds-btn:focus-visible{outline:2.5px solid var(--fucsia,#b0185b);outline-offset:2px} .ds-btn-danger-soft{background:transparent;color:var(--peligro,#b8231b)} .ds-btn-danger-soft:hover{background:var(--peligro-suave,#fde8e6)}"
+    },
+    {
+      "name": "Number Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Labelled number input with affix; comma decimals; fuchsia focus halo.",
+      "html": "<div class=\"ds-campo\"><label for=\"ds-n\">Tu precio de venta</label><div class=\"ds-num\"><span class=\"ds-afijo\">$</span><input id=\"ds-n\" inputmode=\"decimal\" placeholder=\"0\"></div><p class=\"ds-ayuda\">Déjalo vacío para usar el sugerido.</p></div>",
+      "css": ".ds-campo{display:flex;flex-direction:column;gap:6px;font-family:system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;color:var(--tinta,#2a1424)} .ds-campo label{font-weight:600;font-size:0.95rem} .ds-num{display:flex;border:1px solid var(--linea-fuerte,#e2c6d4);border-radius:10px;background:var(--fondo-elevado,#fff);transition:border-color 140ms cubic-bezier(0.16,1,0.3,1),box-shadow 140ms cubic-bezier(0.16,1,0.3,1)} .ds-num:hover{border-color:var(--tinta-3,#75606e)} .ds-num:focus-within{border-color:var(--fucsia,#b0185b);box-shadow:0 0 0 3px rgb(176 24 91 / 0.16)} .ds-afijo{display:flex;align-items:center;padding:0 0 0 12px;color:var(--tinta-3,#75606e);font-size:0.92rem} .ds-num input{flex:1;min-width:0;min-height:48px;border:0;outline:none;background:transparent;padding:0 12px;font:400 1rem system-ui,sans-serif;font-variant-numeric:tabular-nums;color:inherit} .ds-ayuda{margin:0;font-size:0.85rem;color:var(--tinta-3,#75606e)}"
+    },
+    {
+      "name": "Segmented Control",
+      "kind": "chip",
+      "refersTo": "segmented",
+      "description": "Currency and type switches (USD / Bs).",
+      "html": "<div class=\"ds-seg\" role=\"radiogroup\" aria-label=\"Moneda\"><button role=\"radio\" aria-checked=\"true\">$</button><button role=\"radio\" aria-checked=\"false\">Bs</button></div>",
+      "css": ".ds-seg{display:inline-flex;padding:3px;gap:3px;border-radius:12px;background:var(--fondo-hundido,#fbeef3);border:1px solid var(--linea,#f0dde6)} .ds-seg button{min-height:40px;min-width:44px;padding:0 14px;border:0;border-radius:9px;background:transparent;color:var(--tinta-2,#6b5463);font:600 0.95rem system-ui,sans-serif;cursor:pointer;transition:background-color 160ms cubic-bezier(0.16,1,0.3,1),color 160ms cubic-bezier(0.16,1,0.3,1)} .ds-seg button:hover{color:var(--tinta,#2a1424)} .ds-seg button:focus-visible{outline:2.5px solid var(--fucsia,#b0185b);outline-offset:2px} .ds-seg button[aria-checked=\"true\"]{background:var(--fondo-elevado,#fff);color:var(--fucsia,#b0185b);box-shadow:0 1px 2px rgb(64 12 40 / 0.1),0 2px 6px rgb(64 12 40 / 0.06)}"
+    },
+    {
+      "name": "BCV Rate Chip",
+      "kind": "chip",
+      "refersTo": "chip-rate",
+      "description": "Sun yellow pill in the fuchsia header with today's rate.",
+      "html": "<div class=\"ds-head\"><span class=\"ds-marca\">Mis Bizcochos</span><a href=\"#\" class=\"ds-chip-tasa\"><span class=\"ds-chip-et\">BCV</span><span>214,37</span></a></div>",
+      "css": ".ds-head{display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--fucsia,#b0185b)} .ds-marca{margin-right:auto;color:#fff;font:700 1.2rem \"Bricolage Grotesque Variable\",ui-rounded,system-ui,sans-serif;letter-spacing:-0.02em} .ds-chip-tasa{display:inline-flex;align-items:baseline;gap:6px;padding:5px 11px;border-radius:999px;background:var(--amarillo,#ffd23f);color:var(--tinta,#2a1424);text-decoration:none;font:650 0.95rem \"Bricolage Grotesque Variable\",ui-rounded,system-ui,sans-serif;font-variant-numeric:tabular-nums;box-shadow:0 1px 2px rgb(60 0 30 / 0.25)} .ds-chip-tasa:focus-visible{outline:2.5px solid var(--amarillo,#ffd23f);outline-offset:2px} .ds-chip-et{font-size:0.7rem;font-weight:700;letter-spacing:0.02em}"
+    },
+    {
+      "name": "Movement List",
+      "kind": "card",
+      "refersTo": "list",
+      "description": "Sales and expenses: +/− badge, title, dollar amount with Bs in turquoise ink under it. No green.",
+      "html": "<ul class=\"ds-lista\"><li><a href=\"#\" class=\"ds-fila\"><span class=\"ds-marca-f ds-venta\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg></span><span class=\"ds-fp\"><span class=\"ds-ft\">Bizcocho de vainilla</span><span class=\"ds-fs\">2 und · Pago móvil</span></span><span class=\"ds-fc\"><span>+$18,00</span><span class=\"ds-fs ds-bs\">Bs. 3.858,66</span></span></a></li><li><a href=\"#\" class=\"ds-fila\"><span class=\"ds-marca-f ds-gasto\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/></svg></span><span class=\"ds-fp\"><span class=\"ds-ft\">Harina y huevos</span><span class=\"ds-fs\">Insumos</span></span><span class=\"ds-fc\"><span>−$7,40</span><span class=\"ds-fs ds-bs\">Bs. 1.586,34</span></span></a></li></ul>",
+      "css": ".ds-lista{list-style:none;margin:0;padding:0;border-radius:14px;background:var(--fondo-elevado,#fff);box-shadow:0 1px 2px rgb(64 12 40 / 0.06),0 4px 14px rgb(64 12 40 / 0.07);overflow:hidden;font-family:system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif} .ds-lista li+li{border-top:1px solid var(--linea,#f0dde6)} .ds-fila{display:flex;align-items:center;gap:12px;min-height:64px;padding:10px 16px;color:var(--tinta,#2a1424);text-decoration:none;transition:background-color 140ms cubic-bezier(0.16,1,0.3,1)} .ds-fila:hover{background:var(--fondo,#fff7fa)} .ds-fila:active{background:var(--fondo-hundido,#fbeef3)} .ds-fila:focus-visible{outline:2.5px solid var(--fucsia,#b0185b);outline-offset:-2px} .ds-marca-f{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;flex-shrink:0} .ds-venta{background:var(--fucsia-suave,#fde4ee);color:var(--fucsia,#b0185b)} .ds-gasto{background:var(--fondo-hundido,#fbeef3);color:var(--tinta-2,#6b5463)} .ds-fp{display:flex;flex-direction:column;margin-right:auto;min-width:0} .ds-ft{font-weight:600} .ds-fs{font-size:0.85rem;color:var(--tinta-3,#75606e);font-weight:400} .ds-fc{display:flex;flex-direction:column;align-items:flex-end;font-weight:650;white-space:nowrap;font-variant-numeric:tabular-nums} .ds-bs{color:var(--turquesa-tinta,#0b6c69)}"
+    },
+    {
+      "name": "Month Rows",
+      "kind": "custom",
+      "refersTo": "list-row",
+      "description": "Plain label/amount rows instead of stat tiles; signs carry direction.",
+      "html": "<dl class=\"ds-renglones\"><div><dt>Vendiste</dt><dd>+$240,00</dd></div><div><dt>Gastaste</dt><dd>−$96,50</dd></div><div class=\"ds-total\"><dt>Te quedó</dt><dd>$143,50</dd></div></dl>",
+      "css": ".ds-renglones{margin:0;display:flex;flex-direction:column;font-family:system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;color:var(--tinta,#2a1424)} .ds-renglones>div{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--linea,#f0dde6)} .ds-renglones dt{color:var(--tinta-2,#6b5463);font-weight:500} .ds-renglones dd{margin:0;font:650 1.15rem \"Bricolage Grotesque Variable\",ui-rounded,system-ui,sans-serif;font-variant-numeric:tabular-nums} .ds-renglones .ds-total{border-bottom:0} .ds-renglones .ds-total dt{color:var(--tinta,#2a1424);font-weight:650} .ds-renglones .ds-total dd{font-size:1.35rem}"
+    },
+    {
+      "name": "Navigation Rail",
+      "kind": "nav",
+      "refersTo": "rail",
+      "description": "Desktop fuchsia side rail; active item is a sun-yellow plate. On phones this becomes a white bottom tab bar with a fuchsia active marker.",
+      "html": "<nav class=\"ds-rail\" aria-label=\"Secciones\"><span class=\"ds-rail-marca\">Mis Bizcochos</span><a href=\"#\" class=\"ds-pestana\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"/><path d=\"M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/></svg><span>Inicio</span></a><a href=\"#\" class=\"ds-pestana\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m15 11-1 9\"/><path d=\"m19 11-4-7\"/><path d=\"M2 11h20\"/><path d=\"m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4\"/><path d=\"M4.5 15.5h15\"/><path d=\"m5 11 4-7\"/><path d=\"m9 11 1 9\"/></svg><span>Insumos</span></a><a href=\"#\" class=\"ds-pestana\" aria-current=\"page\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"9\" cy=\"7\" r=\"2\"/><path d=\"M7.2 7.9 3 11v9c0 .6.4 1 1 1h16c.6 0 1-.4 1-1v-9c0-2-3-6-7-8l-3.6 2.6\"/><path d=\"M16 13H3\"/><path d=\"M16 17H3\"/></svg><span>Recetas</span></a></nav>",
+      "css": ".ds-rail{display:flex;flex-direction:column;gap:4px;width:232px;padding:20px 12px;background:var(--fucsia,#b0185b);font-family:system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif} .ds-rail-marca{display:block;padding:4px 12px 20px;color:#fff;font:700 1.35rem/1.15 \"Bricolage Grotesque Variable\",ui-rounded,system-ui,sans-serif;letter-spacing:-0.02em} .ds-pestana{display:flex;align-items:center;gap:12px;min-height:44px;padding:0 12px;border-radius:12px;color:#ffe3ef;text-decoration:none;font-size:0.95rem;font-weight:600;transition:color 160ms cubic-bezier(0.16,1,0.3,1),background-color 160ms cubic-bezier(0.16,1,0.3,1)} .ds-pestana:hover{background:rgb(255 255 255 / 0.1)} .ds-pestana:focus-visible{outline:2.5px solid var(--amarillo,#ffd23f);outline-offset:2px} .ds-pestana[aria-current=\"page\"]{background:var(--amarillo,#ffd23f);color:var(--tinta,#2a1424)}"
+    },
+    {
+      "name": "Torta",
+      "kind": "custom",
+      "refersTo": "suggested-price",
+      "description": "Signature: the price as a top-down cake on a gold board; slices in fixed serie-1..6 order, legend table mandatory.",
+      "html": "<figure class=\"ds-torta\"><svg viewBox=\"0 0 200 200\" class=\"ds-torta-svg\" aria-hidden=\"true\"><circle cx=\"100\" cy=\"100\" r=\"98\" class=\"ds-base\"/><circle cx=\"100\" cy=\"100\" r=\"93.5\" class=\"ds-brillo\"/><circle cx=\"100\" cy=\"100\" r=\"88\" fill=\"#fff\"/><g transform=\"rotate(-90 100 100)\" fill=\"none\" stroke-width=\"34\"><circle class=\"ds-p\" cx=\"100\" cy=\"100\" r=\"70\" stroke=\"var(--serie-1,#d6246e)\" stroke-dasharray=\"137.7 440\" stroke-dashoffset=\"0\"/><circle class=\"ds-p\" cx=\"100\" cy=\"100\" r=\"70\" stroke=\"var(--serie-2,#13a3a0)\" stroke-dasharray=\"36.9 440\" stroke-dashoffset=\"-139.9\"/><circle class=\"ds-p\" cx=\"100\" cy=\"100\" r=\"70\" stroke=\"var(--serie-3,#f08a24)\" stroke-dasharray=\"19.8 440\" stroke-dashoffset=\"-179\"/><circle class=\"ds-p\" cx=\"100\" cy=\"100\" r=\"70\" stroke=\"var(--serie-4,#7a52d1)\" stroke-dasharray=\"46.6 440\" stroke-dashoffset=\"-201\"/><circle class=\"ds-p\" cx=\"100\" cy=\"100\" r=\"70\" stroke=\"var(--serie-5,#5e8fd6)\" stroke-dasharray=\"10.1 440\" stroke-dashoffset=\"-249.8\"/><circle class=\"ds-p\" cx=\"100\" cy=\"100\" r=\"70\" stroke=\"var(--serie-6,#c99a12)\" stroke-dasharray=\"175.5 440\" stroke-dashoffset=\"-262.1\"/></g></svg><div class=\"ds-centro\"><span class=\"ds-et\">Precio</span><strong class=\"ds-val\">$9,00</strong><span class=\"ds-sub\">Bs. 1.929,33</span></div><figcaption class=\"ds-leyenda\"><table><tbody><tr tabindex=\"0\"><th><i style=\"background:var(--serie-1,#d6246e)\"></i>Ingredientes</th><td>$2,87</td><td class=\"ds-pct\">31,8%</td></tr><tr tabindex=\"0\"><th><i style=\"background:var(--serie-2,#13a3a0)\"></i>Empaque</th><td>$0,80</td><td class=\"ds-pct\">8,9%</td></tr><tr tabindex=\"0\"><th><i style=\"background:var(--serie-3,#f08a24)\"></i>Horno</th><td>$0,45</td><td class=\"ds-pct\">5%</td></tr><tr tabindex=\"0\"><th><i style=\"background:var(--serie-4,#7a52d1)\"></i>Tu trabajo</th><td>$1,00</td><td class=\"ds-pct\">11,1%</td></tr><tr tabindex=\"0\"><th><i style=\"background:var(--serie-5,#5e8fd6)\"></i>Merma</th><td>$0,26</td><td class=\"ds-pct\">2,8%</td></tr><tr tabindex=\"0\"><th><i style=\"background:var(--serie-6,#c99a12)\"></i>Ganancia</th><td>$3,63</td><td class=\"ds-pct\">40,3%</td></tr></tbody></table></figcaption></figure>",
+      "css": ".ds-torta{margin:0;display:grid;justify-items:center;gap:16px;max-width:340px;font-family:system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;color:var(--tinta,#2a1424)} .ds-torta-svg,.ds-centro{grid-row:1;grid-column:1} .ds-torta-svg{width:min(100%,300px);height:auto;overflow:visible} .ds-base{fill:var(--oro,#c99a12);stroke:#a47b06;stroke-width:1.2} .ds-brillo{fill:none;stroke:var(--oro-claro,#f3dc94);stroke-width:1.6;stroke-dasharray:2.5 3.5;stroke-linecap:round} .ds-p{transition:stroke-dasharray 520ms cubic-bezier(0.16,1,0.3,1),stroke-dashoffset 520ms cubic-bezier(0.16,1,0.3,1),stroke-width 180ms cubic-bezier(0.16,1,0.3,1),opacity 180ms cubic-bezier(0.16,1,0.3,1);cursor:pointer} .ds-p:hover{stroke-width:40} .ds-torta-svg g:hover .ds-p:not(:hover){opacity:0.32} .ds-centro{align-self:center;display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none} .ds-et{font-size:0.75rem;font-weight:600;color:var(--tinta-3,#75606e)} .ds-val{color:var(--oro-tinta,#7f5c00);font:700 1.6rem/1.1 \"Bricolage Grotesque Variable\",ui-rounded,system-ui,sans-serif;letter-spacing:-0.02em;font-variant-numeric:tabular-nums} .ds-sub{font-size:0.72rem;color:var(--turquesa-tinta,#0b6c69)} .ds-leyenda{width:100%} .ds-leyenda table{width:100%;border-collapse:collapse} .ds-leyenda tr{transition:background-color 140ms cubic-bezier(0.16,1,0.3,1)} .ds-leyenda tr:hover,.ds-leyenda tr:focus-visible{background:var(--fondo-hundido,#fbeef3);outline:none} .ds-leyenda th,.ds-leyenda td{padding:7px 8px;border-bottom:1px solid var(--linea,#f0dde6);font-size:0.95rem} .ds-leyenda th{text-align:left;font-weight:500;display:flex;align-items:center;gap:10px} .ds-leyenda i{width:12px;height:12px;border-radius:4px;flex-shrink:0} .ds-leyenda td{text-align:right;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap} .ds-leyenda td.ds-pct{font-weight:400;color:var(--tinta-3,#75606e)} @media (prefers-reduced-motion: reduce){.ds-p,.ds-leyenda tr{transition-duration:1ms}}"
+    },
+    {
+      "name": "Suggested Price",
+      "kind": "card",
+      "refersTo": "suggested-price",
+      "description": "Gold frosting panel with the suggested price; Bs in gold ink context.",
+      "html": "<div class=\"ds-sugerido\"><span class=\"ds-sug-et\">Precio sugerido</span><span class=\"ds-sug-cifra\">$9,00</span><span class=\"ds-sug-sub\">Bs. 1.929,33 · exacto $8,95</span><button class=\"ds-sug-btn\">Usar este precio</button></div>",
+      "css": ".ds-sugerido{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:16px;border-radius:14px;background:var(--oro-claro,#f3dc94);color:var(--oro-tinta,#7f5c00);font-family:system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif} .ds-sug-et{font-weight:600;font-size:0.92rem} .ds-sug-cifra{font:700 2.2rem/1.05 \"Bricolage Grotesque Variable\",ui-rounded,system-ui,sans-serif;color:var(--tinta,#2a1424);letter-spacing:-0.02em;font-variant-numeric:tabular-nums} .ds-sug-sub{font-variant-numeric:tabular-nums} .ds-sug-btn{margin-top:6px;min-height:38px;padding:0 13px;border-radius:10px;border:1px solid var(--linea-fuerte,#e2c6d4);background:var(--fondo-elevado,#fff);color:var(--tinta,#2a1424);font:600 0.92rem system-ui,sans-serif;cursor:pointer;transition:background-color 160ms cubic-bezier(0.16,1,0.3,1),transform 120ms cubic-bezier(0.16,1,0.3,1)} .ds-sug-btn:hover{background:var(--fondo-hundido,#fbeef3)} .ds-sug-btn:active{transform:scale(0.97)} .ds-sug-btn:focus-visible{outline:2.5px solid var(--fucsia,#b0185b);outline-offset:2px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Piñata Table",
+    "overview": "The app is the party table at a Venezuelan birthday: a fuchsia shell around a white tablecloth with a faint pink tint, sun yellow where the eye should land, turquoise for bolívares and gold for the cake board and every price. It rejects the grey finance-app ledger with one accent. Numbers are friendly and big where they answer a question (this month's profit, today's rate, a suggested price) and quiet everywhere else.\n\nDensity is a phone in a kitchen: one column, 16px side gutters, 44–64px touch rows, a fixed bottom tab bar, and the main action floating above it. On a computer the same content sits in a centred column (680px, 1040px for the recipe editor and Inicio), with the fuchsia moved into a side rail. Surfaces are flat white on the pinkish ground, separated by hairlines in pink-tinted lines and lifted only by soft plum shadows on lists, panels and floating actions.\n\nThe signature is the torta: a top-down cake donut whose slices show where each dollar of a price goes, sitting on a gold board ring, with the price in the centre and a legend table of values beside it.",
+    "keyCharacteristics": [
+      "Fuchsia shell, pink-tinted white ground, near-black plum ink.",
+      "Two-currency ink: dollars in ink, bolívares in turquoise ink, prices in gold ink.",
+      "Plain label/amount rows instead of stat tiles.",
+      "Bricolage Grotesque for headings and answer figures; system sans for everything read.",
+      "One authored motion: the torta slices settling into place."
+    ],
+    "rules": [
+      {
+        "name": "The Two-Currency Ink Rule",
+        "body": "Bolívares always read in turquoise ink (`turquesa-tinta`), dollars in plum ink, prices in gold ink (`oro-tinta`). The Bs colour wins over any other text colour it sits inside (the stylesheet ends with a doubled `.bs` selector to guarantee it).",
+        "section": "colors"
+      },
+      {
+        "name": "The No Finance Green Rule",
+        "body": "Income and expense are told apart by `+` / `−` signs and by the row badge (plus on Fuchsia Blush, minus on Pressed Pink), never by green and red amounts. Red is reserved for a real loss or an error.",
+        "section": "colors"
+      },
+      {
+        "name": "The Sun Is Rare Rule",
+        "body": "Sun Yellow marks only today's rate and where you are (rate chip, rate panel, active rail item, selection). It is never a decorative fill.",
+        "section": "colors"
+      },
+      {
+        "name": "The Fixed Slice Order Rule",
+        "body": "`serie-1` to `serie-6` map to the six cost parts in that order, always. Never cycle, reorder, or add a seventh colour.",
+        "section": "colors"
+      },
+      {
+        "name": "The Answer Speaks Bricolage Rule",
+        "body": "A figure that answers the baker's question (profit, rate, price, row totals) is set in the display face; amounts inside lists and tables stay in the body face at 600–650. Every amount carries tabular numerals.",
+        "section": "typography"
+      },
+      {
+        "name": "The Rows Not Tiles Rule",
+        "body": "Summaries are label/amount rows (`.renglones`), never KPI tiles or cards-per-number.",
+        "section": "layout"
+      },
+      {
+        "name": "The Plum Shadow Rule",
+        "body": "Every shadow is tinted with the plum ink or the fuchsia, soft and two-layered. Blocks of form fields use a 1px Pink Hairline border instead of a shadow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** set every Bs amount in turquoise ink (`turquesa-tinta`) and every price in gold ink (`oro-tinta`); keep dollars in plum ink.",
+      "**Do** mark income and expense with `+` / `−` signs and the row badge (plus on Fuchsia Blush, minus on Pressed Pink).",
+      "**Do** keep the torta's slice order and colours exactly `serie-1` to `serie-6`, and always pair the cake with its legend table of values.",
+      "**Do** summarise with plain label/amount rows divided by a Pink Hairline.",
+      "**Do** keep touch targets at 44px or more and amounts in tabular numerals.",
+      "**Do** tint shadows plum or fuchsia and keep them soft.",
+      "**Do** keep state feedback to colour, background and press-scale in 120–180ms on `cubic-bezier(0.16, 1, 0.3, 1)`, and respect reduced motion."
+    ],
+    "donts": [
+      "**Don't** use green for income or profit; red only for a real loss or an error.",
+      "**Don't** set Bs amounts in any colour but turquoise ink, and don't use the bright `turquesa`, `oro` or `serie-*` hues as text.",
+      "**Don't** let the torta stand without its legend: orange and gold slices are below 3:1 against the surface.",
+      "**Don't** cycle, reorder or extend the chart series, or swap merma back to a grey.",
+      "**Don't** build stat tiles or KPI cards for the month's numbers.",
+      "**Don't** spend Sun Yellow on decoration; it marks only the rate and the current place.",
+      "**Don't** add a second authored animation; the torta's slices are the one."
+    ]
+  }
+}
