@@ -21,33 +21,38 @@ export function Inicio() {
   return (
     <section className="pantalla inicio">
       <h1 className="solo-lector">Inicio</h1>
+      <div className="inicio-mes">
       <SelectorMes mes={mes} onCambio={setMes} />
 
       <div className="ganancia">
         <span className="ganancia-etiqueta">{r.ganancia < 0 ? 'Este mes vas perdiendo' : 'Te quedó este mes'}</span>
         <span className={`ganancia-cifra num ${r.ganancia < 0 ? 'texto-peligro' : ''}`}>{fmtUSD(r.ganancia)}</span>
-        <span className="ganancia-bs num">{enBs(r.ganancia, tasa)}</span>
+        <span className="ganancia-bs bs num">{enBs(r.ganancia, tasa)}</span>
       </div>
 
-      <dl className="totales totales-dos">
+      <dl className="renglones">
         <div>
-          <dt>Vendiste</dt>
-          <dd className="num texto-venta">{fmtUSD(r.ingresos)}</dd>
-          <dd className="tenue pequeno">
-            {r.ventas} {r.ventas === 1 ? 'venta' : 'ventas'}
-            {r.unidades ? ` · ${fmtNum(r.unidades)} und` : ''}
-          </dd>
+          <dt>
+            Vendiste
+            <span className="tenue pequeno">
+              {' '}
+              · {r.ventas} {r.ventas === 1 ? 'venta' : 'ventas'}
+              {r.unidades ? `, ${fmtNum(r.unidades)} und` : ''}
+            </span>
+          </dt>
+          <dd className="num">+{fmtUSD(r.ingresos)}</dd>
         </div>
         <div>
           <dt>Gastaste</dt>
-          <dd className="num">{fmtUSD(r.gastos)}</dd>
-          <dd className="tenue pequeno">en compras y servicios</dd>
+          <dd className="num">−{fmtUSD(r.gastos)}</dd>
         </div>
       </dl>
 
-      <a className="boton boton-primario boton-ancho boton-grande" href="#/cuentas/nuevo?tipo=venta">
+      <a className="boton boton-primario boton-ancho boton-grande boton-venta-fijo" href="#/cuentas/nuevo?tipo=venta">
         <Plus size={22} /> Registrar venta
       </a>
+      </div>
+      <div className="inicio-lado">
 
       {sinNada ? (
         <Vacio
@@ -103,6 +108,7 @@ export function Inicio() {
           </div>
         </>
       )}
+      </div>
     </section>
   )
 }

@@ -86,7 +86,7 @@ export function Insumos() {
                           </span>
                           <span className="fila-cifra">
                             <span className="num">{fmtUSD(i.precioUSD)}</span>
-                            <span className="fila-sub num">{enBs(i.precioUSD, tasa)}</span>
+                            <span className="fila-sub num bs">{enBs(i.precioUSD, tasa)}</span>
                           </span>
                         </a>
                       </li>

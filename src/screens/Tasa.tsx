@@ -51,7 +51,7 @@ export function Tasa() {
         <button type="button" className="boton boton-secundario boton-chico invertir" onClick={() => setDolares(!dolares)}>
           <ArrowDownUp size={16} /> Cambiar a {dolares ? 'bolívares → dólares' : 'dólares → bolívares'}
         </button>
-        <output className="convertidor-resultado num" aria-live="polite">
+        <output className={`convertidor-resultado num ${dolares ? 'bs' : ''}`} aria-live="polite">
           {valor > 0 ? (dolares ? fmtBs(resultado) : fmtUSD(resultado)) : 'Falta la tasa'}
         </output>
         {valor > 0 && (
@@ -63,7 +63,7 @@ export function Tasa() {
                   <th scope="row" className="num">
                     {fmtUSD(n)}
                   </th>
-                  <td className="num">{fmtBs(n * valor)}</td>
+                  <td className="num bs">{fmtBs(n * valor)}</td>
                 </tr>
               ))}
             </tbody>

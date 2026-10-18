@@ -19,7 +19,6 @@
   --linea: #f0dde6;
   --linea-fuerte: #e2c6d4;
 
-  --venta: #11764a;
   --peligro: #b8231b;
   --peligro-suave: #fde8e6;
   --aviso: #8a5a00;
@@ -116,8 +115,33 @@ a {
   text-align: center;
 }
 
-.texto-venta {
-  color: var(--venta);
+/* Bolívares always read in turquoise ink; dollars stay in ink, prices in gold. */
+.bs,
+.fila-sub.bs,
+.tenue .bs {
+  color: var(--turquesa-tinta);
+}
+
+.solo-movil {
+  display: contents;
+}
+
+@media (min-width: 960px) {
+  .solo-movil {
+    display: none;
+  }
+}
+
+.enlace-boton {
+  align-self: flex-start;
+  padding: 6px 0;
+  border: 0;
+  background: none;
+  color: var(--fucsia);
+  font: 600 0.92rem var(--letra);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
 }
 
 .texto-peligro {
@@ -908,8 +932,8 @@ a.fila:active {
 }
 
 .marca-venta {
-  background: #e3f4ec;
-  color: var(--venta);
+  background: var(--fucsia-suave);
+  color: var(--fucsia);
 }
 
 .marca-gasto {
@@ -984,50 +1008,98 @@ a.fila:active {
 }
 
 .ganancia-bs {
-  color: var(--tinta-2);
   font-size: 1.05rem;
 }
 
-.totales {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.renglones {
   margin: 0;
-  border-radius: var(--radio);
-  background: var(--fondo-elevado);
-  box-shadow: var(--sombra);
+  display: flex;
+  flex-direction: column;
 }
 
-.totales > div {
-  padding: 14px 16px;
-  min-width: 0;
+.renglones > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--linea);
 }
 
-.totales > div + div {
-  border-left: 1px solid var(--linea);
-}
-
-.totales dt {
-  font-size: 0.85rem;
-  color: var(--tinta-3);
+.renglones dt {
+  color: var(--tinta-2);
   font-weight: 500;
 }
 
-.totales dd {
+.renglones dd {
   margin: 0;
   font-family: var(--letra-display);
   font-weight: 650;
-  font-size: 1.2rem;
-  overflow-wrap: anywhere;
+  font-size: 1.15rem;
+  white-space: nowrap;
 }
 
-.totales dd.tenue {
-  font-family: var(--letra);
-  font-weight: 400;
-  font-size: 0.85rem;
+.renglones .renglon-total {
+  border-bottom: 0;
 }
 
-.totales-dos {
-  grid-template-columns: 1fr 1fr;
+.renglones .renglon-total dt {
+  color: var(--tinta);
+  font-weight: 650;
+}
+
+.renglones .renglon-total dd {
+  font-size: 1.35rem;
+}
+
+.inicio-mes,
+.inicio-lado {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.boton-venta-fijo {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  width: auto;
+  bottom: calc(var(--alto-pestanas) + 12px + env(safe-area-inset-bottom));
+  z-index: 5;
+  box-shadow: var(--sombra-alta);
+}
+
+.pantalla.inicio {
+  padding-bottom: 72px;
+}
+
+@media (min-width: 960px) {
+  .pantalla.inicio {
+    max-width: 1040px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+    column-gap: 40px;
+  }
+
+  .inicio-lado {
+    padding-top: 52px;
+  }
+
+  .inicio-lado .grupo:first-child {
+    margin-top: 0;
+  }
+
+  .pantalla.inicio {
+    padding-bottom: 0;
+  }
+
+  .boton-venta-fijo {
+    position: static;
+    width: 100%;
+    box-shadow: 0 1px 2px rgb(140 16 72 / 0.3), 0 4px 12px rgb(140 16 72 / 0.18);
+  }
 }
 
 /* ───────── Recipe editor ───────── */
@@ -1259,7 +1331,7 @@ input[type='range']::-moz-range-thumb {
 .pie-precio strong {
   font-family: var(--letra-display);
   font-size: 1.1rem;
-  color: var(--tinta);
+  color: var(--oro-tinta);
 }
 
 @media (min-width: 960px) {
@@ -1301,18 +1373,19 @@ input[type='range']::-moz-range-thumb {
   overflow: visible;
 }
 
+/* The gold cake board: solid gold ring with a pressed scallop line. */
 .torta-base {
-  fill: var(--oro-claro);
-  stroke: var(--oro);
+  fill: var(--oro);
+  stroke: #a47b06;
   stroke-width: 1.2;
 }
 
 .torta-base-brillo {
   fill: none;
-  stroke: #fff6d6;
-  stroke-width: 1.4;
-  stroke-dasharray: 3 5;
-  opacity: 0.9;
+  stroke: var(--oro-claro);
+  stroke-width: 1.6;
+  stroke-dasharray: 2.5 3.5;
+  stroke-linecap: round;
 }
 
 .torta-fondo {
@@ -1352,6 +1425,7 @@ input[type='range']::-moz-range-thumb {
 }
 
 .torta-centro-valor {
+  color: var(--oro-tinta);
   font-family: var(--letra-display);
   font-weight: 700;
   font-size: clamp(1.25rem, 6vw, 1.6rem);
@@ -1368,6 +1442,37 @@ input[type='range']::-moz-range-thumb {
 
 .torta-leyenda {
   width: 100%;
+}
+
+.torta-mini {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px 12px 12px;
+  border-radius: var(--radio);
+  background: var(--fondo-elevado);
+  box-shadow: var(--sombra);
+}
+
+.torta-mini .torta-svg {
+  width: 112px;
+  flex-shrink: 0;
+}
+
+.torta-mini-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.torta-mini-valor {
+  font-family: var(--letra-display);
+  font-weight: 700;
+  font-size: 1.9rem;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--oro-tinta);
 }
 
 .torta-leyenda table {

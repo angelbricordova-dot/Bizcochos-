@@ -53,7 +53,7 @@ export function Recetas() {
                   </span>
                   <span className="fila-cifra">
                     <span className="precio-dorado num">{fmtUSD(d.precio)}</span>
-                    <span className="fila-sub num">{enBs(d.precio, tasa)}</span>
+                    <span className="fila-sub num bs">{enBs(d.precio, tasa)}</span>
                   </span>
                 </a>
               </li>
@@ -201,6 +201,15 @@ export function EditorReceta({ id }: { id: string }) {
               />
             )}
           </Campo>
+          <div className="solo-movil">
+            <Torta
+              d={d}
+              rinde={r.rinde}
+              tasa={tasa}
+              compacta
+              alVer={() => document.getElementById('reparto')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
+            />
+          </div>
           {r.nota && <p className="nota">{r.nota}</p>}
           <Campo etiqueta="¿Cuántas porciones salen?" ayuda="Pon 1 si lo vendes entero.">
             {(i, dsc) => (
@@ -355,7 +364,7 @@ export function EditorReceta({ id }: { id: string }) {
             <span className="sugerido-etiqueta">Precio sugerido{r.rinde > 1 ? ' por porción' : ''}</span>
             <span className="sugerido-cifra num">{fmtUSD(d.precioSugerido)}</span>
             <span className="tenue num">
-              {enBs(d.precioSugerido, tasa)} · exacto {fmtUSD(d.precioExacto)}
+              <span className="bs">{enBs(d.precioSugerido, tasa)}</span> · exacto {fmtUSD(d.precioExacto)}
             </span>
             {r.precioVenta !== d.precioSugerido && d.precioSugerido > 0 && (
               <button type="button" className="boton boton-secundario boton-chico" onClick={() => setR({ ...r, precioVenta: d.precioSugerido })}>

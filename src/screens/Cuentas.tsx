@@ -62,11 +62,11 @@ export function FilaMovimiento({ m, nombreReceta }: { m: Movimiento; nombreRecet
         <span className="fila-sub">{detalle.filter(Boolean).join(' · ') || fechaCorta(m.fecha)}</span>
       </span>
       <span className="fila-cifra">
-        <span className={`num ${venta ? 'texto-venta' : ''}`}>
+        <span className="num">
           {venta ? '+' : '−'}
           {fmtUSD(m.montoUSD)}
         </span>
-        <span className="fila-sub num">{m.moneda === 'VES' ? fmtBs(m.monto) : enBs(m.montoUSD, m.tasa)}</span>
+        <span className="fila-sub num bs">{m.moneda === 'VES' ? fmtBs(m.monto) : enBs(m.montoUSD, m.tasa)}</span>
       </span>
     </a>
   )
@@ -94,16 +94,16 @@ export function Cuentas() {
       }
     >
       <SelectorMes mes={mes} onCambio={setMes} />
-      <dl className="totales">
+      <dl className="renglones">
         <div>
           <dt>Ventas</dt>
-          <dd className="num texto-venta">{fmtUSD(resumen.ingresos)}</dd>
+          <dd className="num">+{fmtUSD(resumen.ingresos)}</dd>
         </div>
         <div>
           <dt>Gastos</dt>
-          <dd className="num">{fmtUSD(resumen.gastos)}</dd>
+          <dd className="num">−{fmtUSD(resumen.gastos)}</dd>
         </div>
-        <div>
+        <div className="renglon-total">
           <dt>Ganancia</dt>
           <dd className={`num ${resumen.ganancia < 0 ? 'texto-peligro' : ''}`}>{fmtUSD(resumen.ganancia)}</dd>
         </div>
@@ -379,7 +379,9 @@ export function FormMovimiento({ id }: { id: string }) {
           {m.monto > 0 && m.tasa > 0 ? (
             <>
               <span className="resultado-cifra num">{fmtUSD(montoUSD)}</span>
-              <span className="tenue num">{fmtBs(montoUSD * m.tasa)} a la tasa de ese día</span>
+              <span className="tenue num">
+                <span className="bs">{fmtBs(montoUSD * m.tasa)}</span> a la tasa de ese día
+              </span>
             </>
           ) : (
             <span className="tenue">Se guarda en dólares con la tasa del día, para que tus cuentas no cambien con el dólar.</span>

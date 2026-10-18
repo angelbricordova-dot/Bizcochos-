@@ -23,7 +23,20 @@ const HUECO = 2.2 // surface gap between slices, in px along the ring
  * A bizcocho seen from above on its gold cake board: each slice is where part of the
  * price goes, per portion. Hovering a slice or a legend row names it in the centre.
  */
-export function Torta({ d, rinde, tasa }: { d: Desglose; rinde: number; tasa: number }) {
+export function Torta({
+  d,
+  rinde,
+  tasa,
+  compacta,
+  alVer,
+}: {
+  d: Desglose
+  rinde: number
+  tasa: number
+  /** Small cake beside the price, for the top of the phone editor. */
+  compacta?: boolean
+  alVer?: () => void
+}) {
   const [activa, setActiva] = useState<Clave | null>(null)
   const n = rinde > 0 ? rinde : 1
   const valores: Record<Clave, number> = {
@@ -49,36 +62,67 @@ export function Torta({ d, rinde, tasa }: { d: Desglose; rinde: number; tasa: nu
 
   const sel = activa ? arcos.find((a) => a.clave === activa) : null
 
+  const dibujo = (
+    <svg viewBox="0 0 200 200" className="torta-svg" role="img" aria-hidden="true">
+      <circle cx="100" cy="100" r="98" className="torta-base" />
+      <circle cx="100" cy="100" r="93.5" className="torta-base-brillo" />
+      <circle cx="100" cy="100" r={R + GROSOR / 2 + 1} className="torta-fondo" />
+      {total === 0 ? (
+        <circle cx="100" cy="100" r={R} fill="none" stroke="var(--linea)" strokeWidth={GROSOR} />
+      ) : (
+        <g transform="rotate(-90 100 100)">
+          {arcos.map((a) => (
+            <circle
+              key={a.clave}
+              cx="100"
+              cy="100"
+              r={R}
+              fill="none"
+              stroke={a.color}
+              strokeWidth={activa === a.clave ? GROSOR + 6 : GROSOR}
+              strokeDasharray={`${a.largo} ${CIRC}`}
+              strokeDashoffset={-a.inicio}
+              className="torta-porcion"
+              data-apagada={activa && activa !== a.clave ? '' : undefined}
+              onPointerEnter={compacta ? undefined : () => setActiva(a.clave)}
+              onPointerLeave={compacta ? undefined : () => setActiva(null)}
+            />
+          ))}
+        </g>
+      )}
+    </svg>
+  )
+
+  if (compacta) {
+    return (
+      <div className="torta-mini">
+        {dibujo}
+        <div className="torta-mini-texto">
+          <span className="torta-centro-etiqueta">{n > 1 ? 'Precio por porción' : 'Precio'}</span>
+          <strong className="torta-mini-valor num">{fmtUSD(d.precio)}</strong>
+          <span className="bs num">{enBs(d.precio, tasa)}</span>
+          <span className="tenue pequeno num">
+            {pierde ? (
+              <span className="texto-peligro">Pierdes {fmtUSD(-d.gananciaPorcion)}</span>
+            ) : (
+              <>
+                Costo {fmtUSD(d.costoPorcion)} · ganas {fmtPct(d.margenReal)}
+              </>
+            )}
+          </span>
+          {alVer && (
+            <button type="button" className="enlace-boton" onClick={alVer}>
+              Ver el reparto
+            </button>
+          )}
+        </div>
+      </div>
+    )
+  }
+
   return (
-    <figure className="torta" aria-label="Cómo se reparte el precio de una porción">
-      <svg viewBox="0 0 200 200" className="torta-svg" role="img" aria-hidden="true">
-        <circle cx="100" cy="100" r="98" className="torta-base" />
-        <circle cx="100" cy="100" r="93" className="torta-base-brillo" />
-        <circle cx="100" cy="100" r={R + GROSOR / 2 + 1} className="torta-fondo" />
-        {total === 0 ? (
-          <circle cx="100" cy="100" r={R} fill="none" stroke="var(--linea)" strokeWidth={GROSOR} />
-        ) : (
-          <g transform="rotate(-90 100 100)">
-            {arcos.map((a) => (
-              <circle
-                key={a.clave}
-                cx="100"
-                cy="100"
-                r={R}
-                fill="none"
-                stroke={a.color}
-                strokeWidth={activa === a.clave ? GROSOR + 6 : GROSOR}
-                strokeDasharray={`${a.largo} ${CIRC}`}
-                strokeDashoffset={-a.inicio}
-                className="torta-porcion"
-                data-apagada={activa && activa !== a.clave ? '' : undefined}
-                onPointerEnter={() => setActiva(a.clave)}
-                onPointerLeave={() => setActiva(null)}
-              />
-            ))}
-          </g>
-        )}
-      </svg>
+    <figure className="torta" id="reparto" aria-label="Cómo se reparte el precio de una porción">
+      {dibujo}
       <div className="torta-centro" aria-live="polite">
         {sel ? (
           <>
@@ -90,7 +134,7 @@ export function Torta({ d, rinde, tasa }: { d: Desglose; rinde: number; tasa: nu
           <>
             <span className="torta-centro-etiqueta">{n > 1 ? 'Precio por porción' : 'Precio'}</span>
             <strong className="torta-centro-valor">{fmtUSD(d.precio)}</strong>
-            <span className="torta-centro-sub">{enBs(d.precio, tasa)}</span>
+            <span className="torta-centro-sub bs">{enBs(d.precio, tasa)}</span>
           </>
         )}
       </div>
