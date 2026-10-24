@@ -70,7 +70,7 @@ export function Torta({
     <svg viewBox="0 0 200 200" className="torta-svg" role="img" aria-hidden="true">
       <circle cx="100" cy="100" r="98" className="torta-base" />
       <circle cx="100" cy="100" r="93.5" className="torta-base-brillo" />
-      <circle cx="100" cy="100" r={R + GROSOR / 2 + 1} className="torta-fondo" />
+      <circle cx="100" cy="100" r={R + GROSOR / 2 + 3} className="torta-fondo" />
       {total === 0 ? (
         <circle cx="100" cy="100" r={R} fill="none" stroke="var(--linea)" strokeWidth={GROSOR} />
       ) : (
@@ -194,7 +194,7 @@ export function TortaMes({ ingresos, gastos }: { ingresos: number; gastos: numbe
     <svg viewBox="0 0 200 200" className="torta-svg" role="img" aria-label={`De lo vendido, ${Math.round(fGasto * 100)}% se fue en gastos y te quedó ${Math.round(fQueda * 100)}%`}>
       <circle cx="100" cy="100" r="98" className="torta-base" />
       <circle cx="100" cy="100" r="93.5" className="torta-base-brillo" />
-      <circle cx="100" cy="100" r={R + GROSOR / 2 + 1} className="torta-fondo" />
+      <circle cx="100" cy="100" r={R + GROSOR / 2 + 3} className="torta-fondo" />
       {total === 0 ? (
         <circle cx="100" cy="100" r={R} fill="none" stroke="var(--linea)" strokeWidth={GROSOR} />
       ) : (
