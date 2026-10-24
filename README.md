@@ -2,10 +2,18 @@
 
 App web (instalable en el teléfono) para un emprendimiento de bizcochos:
 
-- **Insumos**: lo que compras, con el precio del paquete en dólares o en bolívares. Calcula el costo por gramo, mililitro o unidad.
-- **Recetas**: ingredientes, empaque, horno, tu trabajo y la merma. Te dice cuánto cuesta cada bizcocho (o porción) y en cuánto venderlo según la ganancia que quieras. La "torta" muestra a dónde va cada dólar del precio.
-- **Cuentas**: registra ventas y gastos con la tasa BCV del día. Ves lo que vendiste, lo que gastaste y lo que te quedó cada mes.
-- **Tasa BCV**: se actualiza sola y convierte de dólares a bolívares y al revés. Si no hay internet, puedes escribirla a mano.
+- **Inicio**: lo que te quedó en el mes en $ y Bs, la meta de ventas, cuánto te deben y las próximas entregas.
+- **Encargos**: pedidos con fecha y hora de entrega, abonos y lo que falta por cobrar. Estados: por hacer, listo y entregado. El resumen se manda al cliente por WhatsApp con un toque.
+- **Productos**: bizcochos, pies, cheesecakes… con ingredientes, horno y tu trabajo. Calcula el costo y el precio sugerido entero y por porción. La "torta" muestra a dónde va cada dólar del precio.
+- **Cuentas**: ventas y gastos con la tasa BCV del día, para ver lo que entró y lo que salió cada mes.
+- **Cobrar**: tu QR y los datos de Pago Móvil, con botones para copiar, y el monto pasado a bolívares.
+- **Lista de compras**: según los encargos de los próximos días, cuánto hay que comprar de cada insumo y cuánto cuesta.
+- **Precios para WhatsApp**: la lista de precios del día en $ y Bs, lista para mandar o subir a estados.
+- **Reportes**: ventas contra gastos de los últimos 6 meses, lo más vendido y cómo te pagan.
+- **Insumos** y **Tasa BCV**: lo que compras con su precio, y el convertidor $ ⇄ Bs.
+- **Modo oscuro**: automático, claro u oscuro, en Ajustes.
+
+Los datos de pago (cédula, teléfono, QR) se escriben en **Ajustes → Datos de pago**. Quedan en la base de datos privada, detrás de la contraseña, y nunca en este repositorio público.
 
 Todo se guarda en dólares, y los bolívares se muestran con la tasa. Los datos viven en la nube (Upstash Redis en Vercel), así que el teléfono y la computadora ven lo mismo. Se entra con una contraseña.
 

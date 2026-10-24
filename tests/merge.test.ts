@@ -46,3 +46,10 @@ test('esDatosValidos rechaza basura', () => {
   assert.equal(esDatosValidos({ insumos: { a: ins('a', 'A', 1) } }), true)
   assert.equal(esDatosValidos({}), true)
 })
+
+test('los encargos también se mezclan por registro', () => {
+  const enc = (nombre: string, updatedAt: number) => ({ id: 'e', cliente: nombre, items: [], entrega: '2026-10-30', estado: 'pendiente' as const, updatedAt })
+  const m = mezclar({ ...datosVacios(), encargos: { e: enc('Ana', 2) } }, { encargos: { e: enc('Ana María', 5) } })
+  assert.equal(m.encargos.e.cliente, 'Ana María')
+  assert.equal(esDatosValidos({ encargos: { e: enc('x', 1) } }), true)
+})
