@@ -37,7 +37,7 @@ function GraficoMeses({ meses }: { meses: Mes[] }) {
           <span className="muestra" style={{ background: 'var(--serie-1)' }} aria-hidden="true" /> Ventas
         </span>
         <span>
-          <span className="muestra" style={{ background: 'var(--serie-4)' }} aria-hidden="true" /> Gastos
+          <span className="muestra" style={{ background: 'var(--serie-gasto)' }} aria-hidden="true" /> Gastos
         </span>
       </figcaption>
       <div className="grafico-lienzo">
@@ -63,7 +63,7 @@ function GraficoMeses({ meses }: { meses: Mes[] }) {
               >
                 <rect x={x0 - 6} y={0} width={ANCHO_GRUPO - 4} height={ALTO + 28} fill="transparent" />
                 <path d={barra(x0, y(m.ingresos) + 4, w, (m.ingresos / tope) * ALTO)} fill="var(--serie-1)" />
-                <path d={barra(x0 + w + 2, y(m.gastos) + 4, w, (m.gastos / tope) * ALTO)} fill="var(--serie-4)" />
+                <path d={barra(x0 + w + 2, y(m.gastos) + 4, w, (m.gastos / tope) * ALTO)} fill="var(--serie-gasto)" />
                 <text x={x0 + w + 1} y={ALTO + 22} className="grafico-eje" textAnchor="middle">
                   {mesCorto(m.mes)}
                 </text>
@@ -78,7 +78,7 @@ function GraficoMeses({ meses }: { meses: Mes[] }) {
               <span className="muestra" style={{ background: 'var(--serie-1)' }} aria-hidden="true" /> Ventas {fmtUSD(sel.ingresos)}
             </span>
             <span>
-              <span className="muestra" style={{ background: 'var(--serie-4)' }} aria-hidden="true" /> Gastos {fmtUSD(sel.gastos)}
+              <span className="muestra" style={{ background: 'var(--serie-gasto)' }} aria-hidden="true" /> Gastos {fmtUSD(sel.gastos)}
             </span>
             <span>Ganancia {fmtUSD(sel.ganancia)}</span>
           </div>

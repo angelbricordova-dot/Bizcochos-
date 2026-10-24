@@ -176,3 +176,50 @@ export function Torta({
     </figure>
   )
 }
+
+/**
+ * The month as a cake on its gold board: of everything sold, the slice that went to
+ * expenses and the slice she kept. Empty board when nothing was sold yet.
+ */
+export function TortaMes({ ingresos, gastos }: { ingresos: number; gastos: number }) {
+  const total = Math.max(ingresos, gastos)
+  const fGasto = total > 0 ? Math.min(gastos / total, 1) : 0
+  const fQueda = total > 0 ? Math.max(ingresos - gastos, 0) / total : 0
+  const arcos = [
+    { clave: 'gastos', color: 'var(--serie-gasto)', frac: fGasto },
+    { clave: 'queda', color: 'var(--serie-6)', frac: fQueda },
+  ]
+  let acumulado = 0
+  return (
+    <svg viewBox="0 0 200 200" className="torta-svg" role="img" aria-label={`De lo vendido, ${Math.round(fGasto * 100)}% se fue en gastos y te quedó ${Math.round(fQueda * 100)}%`}>
+      <circle cx="100" cy="100" r="98" className="torta-base" />
+      <circle cx="100" cy="100" r="93.5" className="torta-base-brillo" />
+      <circle cx="100" cy="100" r={R + GROSOR / 2 + 1} className="torta-fondo" />
+      {total === 0 ? (
+        <circle cx="100" cy="100" r={R} fill="none" stroke="var(--linea)" strokeWidth={GROSOR} />
+      ) : (
+        <g transform="rotate(-90 100 100)">
+          {arcos.map((a) => {
+            const largo = Math.max(a.frac * CIRC - (a.frac > 0 && a.frac < 1 ? HUECO : 0), 0)
+            const inicio = acumulado
+            acumulado += a.frac * CIRC
+            return (
+              <circle
+                key={a.clave}
+                cx="100"
+                cy="100"
+                r={R}
+                fill="none"
+                stroke={a.color}
+                strokeWidth={GROSOR}
+                strokeDasharray={`${largo} ${CIRC}`}
+                strokeDashoffset={-inicio}
+                className="torta-porcion"
+              />
+            )
+          })}
+        </g>
+      )}
+    </svg>
+  )
+}

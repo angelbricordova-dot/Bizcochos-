@@ -48,7 +48,9 @@ export function resumenItems(items: ItemEncargo[]): string {
     .map((it) =>
       it.formato === 'porcion'
         ? `${fmtNum(it.cantidad)} ${it.cantidad === 1 ? 'porción' : 'porciones'} de ${it.descripcion}`
-        : `${fmtNum(it.cantidad)} ${it.descripcion}`,
+        : it.cantidad === 1
+          ? it.descripcion
+          : `${it.descripcion} ×${fmtNum(it.cantidad)}`,
     )
     .join(', ')
 }
@@ -166,7 +168,12 @@ function mensajeEncargo(e: Encargo, pagado: number, tasa: number, negocio: strin
   const resta = Math.max(total - pagado, 0)
   const bs = (v: number) => (tasa > 0 ? ` (${fmtBs(v * tasa)})` : '')
   const lineas = e.items.map((it) => {
-    const que = it.formato === 'porcion' ? `${fmtNum(it.cantidad)} porc. de ${it.descripcion}` : `${fmtNum(it.cantidad)} ${it.descripcion}`
+    const que =
+      it.formato === 'porcion'
+        ? `${fmtNum(it.cantidad)} ${it.cantidad === 1 ? 'porción' : 'porciones'} de ${it.descripcion}`
+        : it.cantidad === 1
+          ? it.descripcion
+          : `${it.descripcion} ×${fmtNum(it.cantidad)}`
     return `• ${que} — ${fmtUSD(it.cantidad * it.precioUSD)}`
   })
   const entrega = `${fechaLarga(e.entrega)}${e.hora ? `, ${hora12(e.hora)}` : ''}`

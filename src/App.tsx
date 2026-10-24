@@ -101,10 +101,11 @@ function Contenido({ ruta }: { ruta: string[] }) {
 function EstadoGuardado() {
   const { sync } = useApp()
   if (sync === 'guardado') return null
-  const texto =
-    sync === 'guardando' ? 'Guardando…' : sync === 'pendiente' ? 'Sin conexión: se guardará al volver' : 'No se pudo guardar; reintentando'
+  const texto = sync === 'guardando' ? 'Guardando…' : sync === 'pendiente' ? 'Sin conexión' : 'Reintentando'
+  const detalle =
+    sync === 'guardando' ? 'Guardando en la nube' : sync === 'pendiente' ? 'Sin conexión: se guardará al volver' : 'No se pudo guardar; reintentando'
   return (
-    <span className="estado-guardado" role="status" data-estado={sync}>
+    <span className="estado-guardado" role="status" data-estado={sync} title={detalle} aria-label={detalle}>
       {sync === 'guardando' ? <Loader2 size={14} className="girando" /> : <CloudOff size={14} />}
       <span>{texto}</span>
     </span>

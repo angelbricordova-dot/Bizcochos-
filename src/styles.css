@@ -35,6 +35,8 @@
   --serie-4: #7a52d1;
   --serie-5: #5e8fd6;
   --serie-6: #c99a12;
+  /* Expenses in charts: a hue no torta slice uses (validated with fuchsia and gold, both themes). */
+  --serie-gasto: #3f6fb0;
 
   --radio: 16px;
   --radio-chico: 12px;
@@ -281,9 +283,7 @@ a {
   text-decoration: none;
   margin-right: auto;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  min-width: 0;
+  flex-shrink: 0;
 }
 
 .chip-tasa {
@@ -311,15 +311,19 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 5px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--fondo-hundido);
   font-size: 0.75rem;
-  color: var(--tinta-3);
-  max-width: 34vw;
+  font-weight: 600;
+  color: var(--tinta-2);
+  white-space: nowrap;
 }
 
-.estado-guardado span {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+@media (max-width: 380px) {
+  .estado-guardado span {
+    display: none;
+  }
 }
 
 .pestanas {
@@ -362,7 +366,8 @@ a {
 }
 
 .pestana[aria-current='page'] .pestana-icono {
-  background: var(--fucsia-suave);
+  background: var(--fucsia);
+  color: #fff;
 }
 
 .punto {
@@ -374,6 +379,11 @@ a {
   border-radius: 50%;
   background: var(--fucsia);
   box-shadow: 0 0 0 2px var(--fondo-elevado);
+}
+
+.pestana[aria-current='page'] .punto {
+  background: var(--amarillo);
+  box-shadow: 0 0 0 2px var(--fucsia);
 }
 
 .riel {
@@ -1306,12 +1316,29 @@ a.fila:active {
   margin: 0 -10px;
 }
 
+.ganancia-fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
 .ganancia {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 2px;
   padding: 4px 0;
+  min-width: 0;
+}
+
+.torta-mes {
+  width: 104px;
+  flex-shrink: 0;
+}
+
+.torta-mes .torta-svg {
+  width: 100%;
 }
 
 .ganancia-etiqueta {
@@ -1439,16 +1466,18 @@ a.fila:active {
   z-index: 5;
 }
 
-.acciones-inicio .boton-primario {
-  box-shadow: var(--sombra-alta);
-}
-
-.acciones-inicio .boton-secundario {
-  box-shadow: var(--sombra);
+/* A ground strip from the buttons down to the tab bar, so list rows never show through. */
+.acciones-inicio::before {
+  content: '';
+  position: absolute;
+  inset: -10px -16px -12px;
+  z-index: -1;
+  background: var(--fondo);
+  border-top: 1px solid var(--linea);
 }
 
 .pantalla.inicio {
-  padding-bottom: 76px;
+  padding-bottom: 88px;
 }
 
 @media (min-width: 960px) {
@@ -1473,8 +1502,8 @@ a.fila:active {
     position: static;
   }
 
-  .acciones-inicio .boton {
-    box-shadow: none;
+  .acciones-inicio::before {
+    display: none;
   }
 }
 

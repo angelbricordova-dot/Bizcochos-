@@ -1,6 +1,7 @@
 import { CalendarPlus, Plus } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { cuentaEncargo, encargoAbierto, pagosPorEncargo, resumenMes } from '../../shared/calc'
+import { TortaMes } from '../components/Torta'
 import { Vacio } from '../components/ui'
 import { enBs, fechaRelativa, fmtUSD, hoy, mesDe, saludo, unidadesTexto } from '../lib/format'
 import { useApp, useTasa, vivos } from '../lib/store'
@@ -35,10 +36,18 @@ export function Inicio() {
         <p className="saludo">{saludo()}</p>
         <SelectorMes mes={mes} onCambio={setMes} />
 
-        <div className="ganancia">
-          <span className="ganancia-etiqueta">{r.ganancia < 0 ? 'Este mes vas perdiendo' : esteMes ? 'Te quedó este mes' : 'Te quedó ese mes'}</span>
-          <span className={`ganancia-cifra num ${r.ganancia < 0 ? 'texto-peligro' : ''}`}>{fmtUSD(r.ganancia)}</span>
-          <span className="ganancia-bs bs num">{enBs(r.ganancia, tasa)}</span>
+        <div className="ganancia-fila">
+          <div className="ganancia">
+            <span className="ganancia-etiqueta">
+              <span className="muestra" style={{ background: 'var(--serie-6)' }} aria-hidden="true" />{' '}
+              {r.ganancia < 0 ? 'Este mes vas perdiendo' : esteMes ? 'Te quedó este mes' : 'Te quedó ese mes'}
+            </span>
+            <span className={`ganancia-cifra num ${r.ganancia < 0 ? 'texto-peligro' : ''}`}>{fmtUSD(r.ganancia)}</span>
+            <span className="ganancia-bs bs num">{enBs(r.ganancia, tasa)}</span>
+          </div>
+          <div className="torta-mes">
+            <TortaMes ingresos={r.ingresos} gastos={r.gastos} />
+          </div>
         </div>
 
         {meta > 0 ? (
@@ -64,7 +73,9 @@ export function Inicio() {
             <dd className="num">+{fmtUSD(r.ingresos)}</dd>
           </div>
           <div>
-            <dt>Gastaste</dt>
+            <dt>
+              <span className="muestra" style={{ background: 'var(--serie-gasto)' }} aria-hidden="true" /> Gastaste
+            </dt>
             <dd className="num">−{fmtUSD(r.gastos)}</dd>
           </div>
           {teDeben > 0.004 && (
