@@ -21,7 +21,7 @@
   --fondo-hundido: #fbeef3;
   --linea: #f0dde6;
   --linea-fuerte: #e2c6d4;
-  --placeholder: #a8919f;
+  --placeholder: #806b79;
 
   --peligro: #b8231b;
   --peligro-suave: #fde8e6;
@@ -71,7 +71,7 @@
     --fondo-hundido: #1c1019;
     --linea: #382533;
     --linea-fuerte: #4d3445;
-    --placeholder: #876f7e;
+    --placeholder: #9d8796;
     --peligro: #ff7a70;
     --peligro-suave: #3d1714;
     --aviso: #f3c35a;
@@ -102,7 +102,7 @@
   --fondo-hundido: #1c1019;
   --linea: #382533;
   --linea-fuerte: #4d3445;
-  --placeholder: #876f7e;
+  --placeholder: #9d8796;
   --peligro: #ff7a70;
   --peligro-suave: #3d1714;
   --aviso: #f3c35a;
@@ -2261,7 +2261,6 @@ input[type='range']::-moz-range-thumb {
   border-radius: 16px 16px 16px 4px;
   background: var(--fondo-elevado);
   border: 1px solid var(--linea);
-  box-shadow: var(--sombra);
 }
 
 .burbuja pre {

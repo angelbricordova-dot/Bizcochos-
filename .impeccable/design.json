@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-18T04:38:34+00:00",
+  "generatedAt": "2026-10-24T23:27:34Z",
   "title": "Design System: Mis Bizcochos",
   "extensions": {
     "colorMeta": {
@@ -9,30 +9,32 @@
         "displayName": "Piñata Fuchsia",
         "canonical": "oklch(49.9% 0.188 1.7)",
         "tonalRamp": [
-          "#2d0007",
-          "#4f001f",
-          "#830038",
-          "#aa0c56",
-          "#d44178",
-          "#ff699c",
-          "#ff90c2",
-          "#ffc9e8"
-        ]
+          "#1d0109",
+          "#4c0123",
+          "#80063f",
+          "#b41e5e",
+          "#de4b81",
+          "#fd7fa7",
+          "#fdbccd",
+          "#fde9ed"
+        ],
+        "darkToken": "fucsia-oscuro"
       },
       "fucsia-hondo": {
         "role": "primary",
         "displayName": "Deep Fuchsia",
         "canonical": "oklch(42.1% 0.160 1.1)",
         "tonalRamp": [
-          "#2d0008",
-          "#4f0020",
-          "#7b003a",
-          "#a02858",
-          "#c94f7a",
-          "#f3759e",
-          "#ff9bc4",
-          "#ffc9e9"
-        ]
+          "#1d000a",
+          "#4b0323",
+          "#800440",
+          "#aa3260",
+          "#d35983",
+          "#fd7ea8",
+          "#febcce",
+          "#fee8ed"
+        ],
+        "darkToken": "fucsia-hondo-oscuro"
       },
       "fucsia-suave": {
         "role": "primary",
@@ -40,59 +42,45 @@
         "canonical": "oklch(94.2% 0.030 351.5)",
         "tonalRamp": [
           "#15060d",
-          "#301e26",
-          "#4d3941",
-          "#6c575f",
-          "#8f7982",
-          "#b49da7",
-          "#dbc3cd",
-          "#ffe7f1"
-        ]
+          "#322028",
+          "#523f47",
+          "#745f68",
+          "#98828b",
+          "#bea6b0",
+          "#e2c9d3",
+          "#fde8f0"
+        ],
+        "darkToken": "fucsia-suave-oscuro"
+      },
+      "fucsia-texto": {
+        "role": "primary",
+        "displayName": "Fuchsia Ink",
+        "canonical": "oklch(49.9% 0.188 1.7)",
+        "tonalRamp": [
+          "#1d0109",
+          "#4c0123",
+          "#80063f",
+          "#b41e5e",
+          "#de4b81",
+          "#fd7fa7",
+          "#fdbccd",
+          "#fde9ed"
+        ],
+        "darkToken": "fucsia-texto-oscuro"
       },
       "amarillo": {
         "role": "secondary",
         "displayName": "Sun Yellow",
         "canonical": "oklch(87.9% 0.162 90.9)",
         "tonalRamp": [
-          "#1e0100",
-          "#3b1c00",
-          "#5f3600",
-          "#805600",
-          "#a47900",
-          "#ca9f00",
-          "#f2c52c",
-          "#ffeb83"
-        ]
-      },
-      "turquesa-tinta": {
-        "role": "secondary",
-        "displayName": "Bolívar Turquoise Ink",
-        "canonical": "oklch(48.1% 0.080 191.4)",
-        "tonalRamp": [
-          "#001313",
-          "#002f2d",
-          "#004c4a",
-          "#0a6c69",
-          "#3d8f8c",
-          "#64b5b1",
-          "#8adcd7",
-          "#aefffc"
-        ],
-        "note": "Text colour for every Bs amount (5.9:1 on fondo)."
-      },
-      "turquesa": {
-        "role": "secondary",
-        "displayName": "Turquoise",
-        "canonical": "oklch(64.8% 0.108 192.4)",
-        "tonalRamp": [
-          "#001517",
-          "#003232",
-          "#00504f",
-          "#00706e",
-          "#009491",
-          "#3bbab6",
-          "#69e1dd",
-          "#8fffff"
+          "#0f0b01",
+          "#302503",
+          "#544305",
+          "#7c6308",
+          "#a68509",
+          "#d2a90a",
+          "#f9cc36",
+          "#feeec0"
         ]
       },
       "oro": {
@@ -100,14 +88,14 @@
         "displayName": "Cake-Board Gold",
         "canonical": "oklch(71.1% 0.142 86.0)",
         "tonalRamp": [
-          "#210000",
-          "#3f1900",
-          "#603500",
-          "#815400",
-          "#a67800",
-          "#cc9d19",
-          "#f4c34f",
-          "#ffe883"
+          "#100a01",
+          "#322403",
+          "#574105",
+          "#806107",
+          "#ab8208",
+          "#d6a62a",
+          "#faca56",
+          "#feedc7"
         ]
       },
       "oro-claro": {
@@ -115,30 +103,78 @@
         "displayName": "Gold Frosting",
         "canonical": "oklch(89.7% 0.094 92.4)",
         "tonalRamp": [
-          "#190600",
-          "#342000",
-          "#513d00",
-          "#705b0b",
-          "#947e37",
-          "#b9a35d",
-          "#e0c982",
-          "#ffeda5"
-        ]
+          "#0f0b00",
+          "#302501",
+          "#544301",
+          "#796419",
+          "#9d8741",
+          "#c3ad66",
+          "#e7d088",
+          "#ffeeba"
+        ],
+        "darkToken": "oro-claro-oscuro"
       },
       "oro-tinta": {
         "role": "tertiary",
         "displayName": "Price Gold Ink",
         "canonical": "oklch(49.8% 0.102 82.7)",
         "tonalRamp": [
-          "#1e0100",
-          "#3b1b00",
-          "#5a3800",
-          "#7a5700",
-          "#9e7a2e",
-          "#c49f55",
-          "#ebc57b",
-          "#ffe99e"
+          "#110a01",
+          "#332403",
+          "#594005",
+          "#835f07",
+          "#a78338",
+          "#cea85e",
+          "#f2cb81",
+          "#feeccb"
+        ],
+        "darkToken": "oro-tinta-oscuro"
+      },
+      "oro-borde": {
+        "role": "tertiary",
+        "displayName": "Board Edge",
+        "canonical": "oklch(60.7% 0.123 84.8)",
+        "tonalRamp": [
+          "#110a01",
+          "#322402",
+          "#584103",
+          "#816005",
+          "#ab8217",
+          "#d2a748",
+          "#f6cb6c",
+          "#feedcb"
         ]
+      },
+      "turquesa": {
+        "role": "secondary",
+        "displayName": "Turquoise",
+        "canonical": "oklch(64.8% 0.108 192.4)",
+        "tonalRamp": [
+          "#010e0e",
+          "#042d2c",
+          "#0a504e",
+          "#127573",
+          "#1a9d9a",
+          "#47c3c0",
+          "#70e8e4",
+          "#b4fffb"
+        ]
+      },
+      "turquesa-tinta": {
+        "role": "secondary",
+        "displayName": "Bolívar Turquoise Ink",
+        "canonical": "oklch(48.1% 0.080 191.4)",
+        "tonalRamp": [
+          "#000e0e",
+          "#022d2c",
+          "#05504e",
+          "#1b7471",
+          "#479995",
+          "#6dbeba",
+          "#91e2de",
+          "#b7fefa"
+        ],
+        "darkToken": "turquesa-tinta-oscuro"
       },
       "tinta": {
         "role": "neutral",
@@ -146,14 +182,15 @@
         "canonical": "oklch(22.9% 0.045 338.0)",
         "tonalRamp": [
           "#160412",
-          "#321b2b",
-          "#4f3748",
-          "#6f5466",
-          "#93768a",
-          "#b89aae",
-          "#dfc0d5",
-          "#ffe4f9"
-        ]
+          "#341e2e",
+          "#553c4d",
+          "#775c6f",
+          "#9c7f93",
+          "#c2a4b8",
+          "#e5c6db",
+          "#ffe6f7"
+        ],
+        "darkToken": "tinta-oscuro"
       },
       "tinta-2": {
         "role": "neutral",
@@ -161,14 +198,15 @@
         "canonical": "oklch(47.5% 0.038 339.5)",
         "tonalRamp": [
           "#150510",
-          "#301d2a",
-          "#4e3846",
-          "#6d5665",
-          "#907888",
-          "#b69cac",
-          "#dcc1d3",
-          "#ffe5f7"
-        ]
+          "#331f2c",
+          "#533d4c",
+          "#755e6d",
+          "#998191",
+          "#bfa5b6",
+          "#e3c8d9",
+          "#ffe6f6"
+        ],
+        "darkToken": "tinta-2-oscuro"
       },
       "tinta-3": {
         "role": "neutral",
@@ -176,13 +214,44 @@
         "canonical": "oklch(51.4% 0.034 338.5)",
         "tonalRamp": [
           "#140610",
-          "#2f1d2a",
-          "#4c3946",
-          "#6b5664",
-          "#8f7987",
-          "#b49dac",
-          "#dac2d2",
+          "#32202c",
+          "#523e4b",
+          "#745f6d",
+          "#988290",
+          "#bda6b5",
+          "#e1c9d9",
           "#ffe6f6"
+        ],
+        "darkToken": "tinta-3-oscuro"
+      },
+      "tinta-fija": {
+        "role": "neutral",
+        "displayName": "Fixed Plum Ink",
+        "canonical": "oklch(22.9% 0.045 338.0)",
+        "tonalRamp": [
+          "#160412",
+          "#341e2e",
+          "#553c4d",
+          "#775c6f",
+          "#9c7f93",
+          "#c2a4b8",
+          "#e5c6db",
+          "#ffe6f7"
+        ]
+      },
+      "tinta-fija-tenue": {
+        "role": "neutral",
+        "displayName": "Fixed Muted Ink (rate panel only)",
+        "canonical": "oklch(40.4% 0.083 86.9)",
+        "tonalRamp": [
+          "#100a01",
+          "#322402",
+          "#574204",
+          "#7b6328",
+          "#9f864c",
+          "#c5ab70",
+          "#e9ce92",
+          "#feedc7"
         ]
       },
       "fondo": {
@@ -191,14 +260,15 @@
         "canonical": "oklch(98.3% 0.009 352.4)",
         "tonalRamp": [
           "#0e0a0b",
-          "#282224",
-          "#443e40",
-          "#625b5e",
-          "#857e81",
-          "#aaa2a5",
-          "#d0c8cb",
+          "#2a2527",
+          "#494345",
+          "#6b6466",
+          "#8e878a",
+          "#b3acae",
+          "#d6cfd1",
           "#f4ecef"
-        ]
+        ],
+        "darkToken": "fondo-oscuro"
       },
       "fondo-elevado": {
         "role": "neutral",
@@ -206,14 +276,15 @@
         "canonical": "oklch(100.0% 0.000 89.9)",
         "tonalRamp": [
           "#0b0b0b",
-          "#242424",
-          "#404040",
-          "#5d5d5d",
-          "#808080",
-          "#a4a4a4",
-          "#cacaca",
+          "#262626",
+          "#454545",
+          "#666666",
+          "#898989",
+          "#aeaeae",
+          "#d1d1d1",
           "#eeeeee"
-        ]
+        ],
+        "darkToken": "fondo-elevado-oscuro"
       },
       "fondo-hundido": {
         "role": "neutral",
@@ -221,14 +292,15 @@
         "canonical": "oklch(96.1% 0.015 352.0)",
         "tonalRamp": [
           "#10090c",
-          "#2a2125",
-          "#473c41",
-          "#655a5e",
-          "#887d81",
-          "#ada1a5",
-          "#d3c7cb",
+          "#2d2327",
+          "#4c4246",
+          "#6e6367",
+          "#91858a",
+          "#b6aaaf",
+          "#dacdd2",
           "#f7eaef"
-        ]
+        ],
+        "darkToken": "fondo-hundido-oscuro"
       },
       "linea": {
         "role": "neutral",
@@ -236,14 +308,15 @@
         "canonical": "oklch(91.5% 0.024 347.2)",
         "tonalRamp": [
           "#12070d",
-          "#2d1f26",
-          "#4a3b42",
-          "#685860",
-          "#8c7b83",
-          "#b19fa7",
-          "#d7c5cd",
+          "#2f2229",
+          "#4f4047",
+          "#716169",
+          "#95848c",
+          "#baa8b1",
+          "#decbd4",
           "#fce8f1"
-        ]
+        ],
+        "darkToken": "linea-oscuro"
       },
       "linea-fuerte": {
         "role": "neutral",
@@ -251,13 +324,75 @@
         "canonical": "oklch(85.4% 0.037 346.2)",
         "tonalRamp": [
           "#16050e",
-          "#311d28",
-          "#4e3844",
-          "#6d5662",
-          "#917885",
-          "#b79ca9",
-          "#ddc1cf",
-          "#ffe5f4"
+          "#341f2a",
+          "#543d49",
+          "#765e6a",
+          "#9a818e",
+          "#c0a5b3",
+          "#e4c8d6",
+          "#fde8f2"
+        ],
+        "darkToken": "linea-fuerte-oscuro"
+      },
+      "placeholder": {
+        "role": "neutral",
+        "displayName": "Placeholder",
+        "canonical": "oklch(68.2% 0.034 340.9)",
+        "tonalRamp": [
+          "#14060f",
+          "#32202b",
+          "#523e4a",
+          "#745f6c",
+          "#98828f",
+          "#bea6b4",
+          "#e1c9d8",
+          "#fde7f4"
+        ],
+        "darkToken": "placeholder-oscuro"
+      },
+      "blanco": {
+        "role": "neutral",
+        "displayName": "White",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#262626",
+          "#454545",
+          "#666666",
+          "#898989",
+          "#aeaeae",
+          "#d1d1d1",
+          "#eeeeee"
+        ]
+      },
+      "rosa-riel": {
+        "role": "neutral",
+        "displayName": "Rail Pink",
+        "canonical": "oklch(94.2% 0.034 350.0)",
+        "tonalRamp": [
+          "#15050d",
+          "#331f29",
+          "#543e48",
+          "#765e69",
+          "#9a818c",
+          "#c0a6b1",
+          "#e4c8d4",
+          "#ffe7f1"
+        ]
+      },
+      "rosa-niebla": {
+        "role": "neutral",
+        "displayName": "Mist Pink (toast close only)",
+        "canonical": "oklch(89.5% 0.025 341.9)",
+        "tonalRamp": [
+          "#12070e",
+          "#2f222a",
+          "#4f4049",
+          "#71616a",
+          "#95838d",
+          "#baa8b2",
+          "#decbd6",
+          "#fbe8f3"
         ]
       },
       "peligro": {
@@ -265,15 +400,16 @@
         "displayName": "Loss Red",
         "canonical": "oklch(50.8% 0.185 28.9)",
         "tonalRamp": [
-          "#300000",
-          "#520000",
-          "#880000",
-          "#ae1510",
-          "#d94639",
-          "#ff6e5d",
-          "#ff9582",
-          "#ffcdbc"
-        ]
+          "#1f0000",
+          "#500001",
+          "#850605",
+          "#b9241c",
+          "#e35042",
+          "#ff8575",
+          "#ffbfb5",
+          "#fceae7"
+        ],
+        "darkToken": "peligro-oscuro"
       },
       "peligro-suave": {
         "role": "status",
@@ -281,58 +417,91 @@
         "canonical": "oklch(94.7% 0.023 24.1)",
         "tonalRamp": [
           "#140707",
-          "#2e201e",
-          "#4b3b3a",
-          "#6a5957",
-          "#8e7b79",
-          "#b39f9d",
-          "#d9c5c3",
+          "#312221",
+          "#51403f",
+          "#736160",
+          "#978482",
+          "#bca9a7",
+          "#e0cbca",
           "#fee9e7"
-        ]
+        ],
+        "darkToken": "peligro-suave-oscuro"
       },
       "aviso": {
         "role": "status",
         "displayName": "Notice Amber",
         "canonical": "oklch(50.8% 0.108 73.3)",
         "tonalRamp": [
-          "#230000",
-          "#411500",
-          "#613300",
-          "#815200",
-          "#a7752b",
-          "#cd9a53",
-          "#f5c079",
-          "#ffe49c"
-        ]
+          "#120901",
+          "#362204",
+          "#5e3d08",
+          "#8b5b01",
+          "#b07e36",
+          "#d7a35c",
+          "#fcc67f",
+          "#ffebd3"
+        ],
+        "darkToken": "aviso-oscuro"
       },
       "aviso-suave": {
         "role": "status",
         "displayName": "Notice Cream",
         "canonical": "oklch(96.5% 0.046 90.9)",
         "tonalRamp": [
-          "#120a00",
-          "#2c2306",
-          "#493f22",
-          "#675d3f",
-          "#8a8061",
-          "#afa484",
-          "#d6caa9",
+          "#0f0b01",
+          "#2f2508",
+          "#4e4427",
+          "#706547",
+          "#948969",
+          "#b9ad8d",
+          "#dcd0af",
           "#faeecc"
+        ],
+        "darkToken": "aviso-suave-oscuro"
+      },
+      "aviso-fijo": {
+        "role": "status",
+        "displayName": "Fixed Notice (rate panel only)",
+        "canonical": "oklch(42.6% 0.090 74.7)",
+        "tonalRamp": [
+          "#120900",
+          "#362202",
+          "#5e3e04",
+          "#845e22",
+          "#a98148",
+          "#d0a66c",
+          "#f4c98e",
+          "#ffebd2"
+        ]
+      },
+      "whatsapp": {
+        "role": "status",
+        "displayName": "WhatsApp Green (icon only)",
+        "canonical": "oklch(64.4% 0.165 150.8)",
+        "tonalRamp": [
+          "#001004",
+          "#032f13",
+          "#025425",
+          "#0a7b3a",
+          "#16a451",
+          "#4eca75",
+          "#75ef97",
+          "#c8fed3"
         ]
       },
       "serie-1": {
         "role": "chart",
-        "displayName": "Series 1 · Ingredientes",
+        "displayName": "Series 1 · Ingredientes / Ventas",
         "canonical": "oklch(57.9% 0.214 2.8)",
         "tonalRamp": [
-          "#2d0006",
-          "#4f001e",
-          "#8b0035",
-          "#b30052",
-          "#de2e74",
-          "#ff5b98",
-          "#ff84bd",
-          "#ffc9e6"
+          "#1d0009",
+          "#4d0021",
+          "#80053d",
+          "#ba045b",
+          "#e93a7d",
+          "#fe7fa4",
+          "#febccc",
+          "#fde8ed"
         ]
       },
       "serie-2": {
@@ -340,14 +509,14 @@
         "displayName": "Series 2 · Empaque",
         "canonical": "oklch(64.8% 0.108 192.4)",
         "tonalRamp": [
-          "#001517",
-          "#003232",
-          "#00504f",
-          "#00706e",
-          "#009491",
-          "#3bbab6",
-          "#69e1dd",
-          "#8fffff"
+          "#010e0e",
+          "#042d2c",
+          "#0a504e",
+          "#127573",
+          "#1a9d9a",
+          "#47c3c0",
+          "#70e8e4",
+          "#b4fffb"
         ]
       },
       "serie-3": {
@@ -355,30 +524,30 @@
         "displayName": "Series 3 · Horno",
         "canonical": "oklch(72.9% 0.162 58.8)",
         "tonalRamp": [
-          "#2b0000",
-          "#4d0100",
-          "#781800",
-          "#9c3d00",
-          "#c46200",
-          "#ed871f",
-          "#ffae51",
-          "#ffd994"
+          "#150801",
+          "#3c1e02",
+          "#683601",
+          "#96520b",
+          "#c86f0a",
+          "#f7912e",
+          "#ffc394",
+          "#fdebdd"
         ],
-        "note": "2.4:1 vs surface #FFFAFC; legend table with values is mandatory."
+        "darkToken": "serie-3-oscuro"
       },
       "serie-4": {
         "role": "chart",
         "displayName": "Series 4 · Tu trabajo",
         "canonical": "oklch(54.8% 0.187 293.8)",
         "tonalRamp": [
-          "#14003b",
-          "#2b085b",
-          "#4b1396",
-          "#673cba",
-          "#8962e3",
-          "#ad88ff",
-          "#d2afff",
-          "#f3deff"
+          "#0f0029",
+          "#2f0265",
+          "#501c9c",
+          "#6f46c4",
+          "#926ced",
+          "#b39bff",
+          "#d3c9fc",
+          "#efecfc"
         ]
       },
       "serie-5": {
@@ -386,114 +555,591 @@
         "displayName": "Series 5 · Merma",
         "canonical": "oklch(64.6% 0.120 257.6)",
         "tonalRamp": [
-          "#00003c",
-          "#001e5c",
-          "#0d3d7d",
-          "#2e5da0",
-          "#5081c7",
-          "#74a6ef",
-          "#99cdff",
-          "#bcf1ff"
-        ],
-        "note": "Blue chosen for merma because a grey failed the dataviz validator chroma floor."
+          "#000a21",
+          "#022453",
+          "#144383",
+          "#3766a9",
+          "#598ad1",
+          "#7db0f9",
+          "#b7d3fc",
+          "#e6effc"
+        ]
       },
       "serie-6": {
         "role": "chart",
-        "displayName": "Series 6 · Ganancia",
+        "displayName": "Series 6 · Ganancia / Te quedó",
         "canonical": "oklch(71.1% 0.142 86.0)",
         "tonalRamp": [
-          "#210000",
-          "#3f1900",
-          "#603500",
-          "#815400",
-          "#a67800",
-          "#cc9d19",
-          "#f4c34f",
-          "#ffe883"
+          "#100a01",
+          "#322403",
+          "#574105",
+          "#806107",
+          "#ab8208",
+          "#d6a62a",
+          "#faca56",
+          "#feedc7"
         ],
-        "note": "2.5:1 vs surface #FFFAFC; legend table with values is mandatory."
+        "darkToken": "serie-6-oscuro"
+      },
+      "serie-gasto": {
+        "role": "chart",
+        "displayName": "Expense Blue",
+        "canonical": "oklch(53.9% 0.115 256.5)",
+        "tonalRamp": [
+          "#000a20",
+          "#022551",
+          "#144481",
+          "#3766a7",
+          "#598bce",
+          "#7db0f6",
+          "#b6d3fc",
+          "#e6effc"
+        ]
+      },
+      "fucsia-oscuro": {
+        "role": "primary",
+        "displayName": "Piñata Fuchsia · night",
+        "canonical": "oklch(54.2% 0.197 0.3)",
+        "tonalRamp": [
+          "#1c010a",
+          "#4c0124",
+          "#810141",
+          "#b71361",
+          "#e14684",
+          "#fe7da9",
+          "#fdbcce",
+          "#fce9ee"
+        ],
+        "theme": "dark",
+        "lightToken": "fucsia"
+      },
+      "fucsia-hondo-oscuro": {
+        "role": "primary",
+        "displayName": "Deep Fuchsia · night",
+        "canonical": "oklch(48.5% 0.180 0.4)",
+        "tonalRamp": [
+          "#1d000a",
+          "#4b0324",
+          "#800441",
+          "#b12561",
+          "#db4f84",
+          "#fd7ea9",
+          "#febcce",
+          "#fee8ee"
+        ],
+        "theme": "dark",
+        "lightToken": "fucsia-hondo"
+      },
+      "fucsia-suave-oscuro": {
+        "role": "primary",
+        "displayName": "Fuchsia Blush · night",
+        "canonical": "oklch(26.0% 0.065 348.9)",
+        "tonalRamp": [
+          "#1b010f",
+          "#3d172b",
+          "#5f364b",
+          "#82576c",
+          "#a8798f",
+          "#ce9eb4",
+          "#f3c0d8",
+          "#ffe7f2"
+        ],
+        "theme": "dark",
+        "lightToken": "fucsia-suave"
+      },
+      "fucsia-texto-oscuro": {
+        "role": "primary",
+        "displayName": "Fuchsia Ink · night",
+        "canonical": "oklch(70.2% 0.173 357.7)",
+        "tonalRamp": [
+          "#1c010b",
+          "#4b0126",
+          "#800145",
+          "#ad2b66",
+          "#d75389",
+          "#fd7dae",
+          "#ffbbd1",
+          "#fce8ee"
+        ],
+        "theme": "dark",
+        "lightToken": "fucsia-texto"
+      },
+      "oro-claro-oscuro": {
+        "role": "tertiary",
+        "displayName": "Gold Frosting · night",
+        "canonical": "oklch(30.8% 0.052 87.6)",
+        "tonalRamp": [
+          "#100a01",
+          "#312402",
+          "#514322",
+          "#736543",
+          "#978865",
+          "#bcad88",
+          "#e0d0aa",
+          "#fdedc7"
+        ],
+        "theme": "dark",
+        "lightToken": "oro-claro"
+      },
+      "oro-tinta-oscuro": {
+        "role": "tertiary",
+        "displayName": "Price Gold Ink · night",
+        "canonical": "oklch(82.8% 0.130 88.7)",
+        "tonalRamp": [
+          "#100a00",
+          "#312500",
+          "#564200",
+          "#7d620d",
+          "#a88411",
+          "#cfa93e",
+          "#f4cc65",
+          "#ffedc1"
+        ],
+        "theme": "dark",
+        "lightToken": "oro-tinta"
+      },
+      "turquesa-tinta-oscuro": {
+        "role": "secondary",
+        "displayName": "Bolívar Turquoise Ink · night",
+        "canonical": "oklch(78.8% 0.113 190.8)",
+        "tonalRamp": [
+          "#010e0d",
+          "#052d2b",
+          "#0c504d",
+          "#147571",
+          "#049d98",
+          "#3fc5bf",
+          "#6ae9e2",
+          "#b5fffa"
+        ],
+        "theme": "dark",
+        "lightToken": "turquesa-tinta"
+      },
+      "tinta-oscuro": {
+        "role": "neutral",
+        "displayName": "Plum Ink · night",
+        "canonical": "oklch(95.5% 0.013 345.5)",
+        "tonalRamp": [
+          "#0f090c",
+          "#2b2428",
+          "#4a4246",
+          "#6c6368",
+          "#8f868b",
+          "#b4abb0",
+          "#d8ced3",
+          "#f5ebf0"
+        ],
+        "theme": "dark",
+        "lightToken": "tinta"
+      },
+      "tinta-2-oscuro": {
+        "role": "neutral",
+        "displayName": "Muted Plum · night",
+        "canonical": "oklch(79.6% 0.031 341.5)",
+        "tonalRamp": [
+          "#14060f",
+          "#31212b",
+          "#513f4a",
+          "#735f6b",
+          "#97828e",
+          "#bca7b4",
+          "#e0cad7",
+          "#fee7f4"
+        ],
+        "theme": "dark",
+        "lightToken": "tinta-2"
+      },
+      "tinta-3-oscuro": {
+        "role": "neutral",
+        "displayName": "Faded Plum · night",
+        "canonical": "oklch(69.4% 0.033 339.6)",
+        "tonalRamp": [
+          "#140610",
+          "#31202c",
+          "#513e4b",
+          "#735f6c",
+          "#978290",
+          "#bda6b5",
+          "#e0c9d8",
+          "#fee6f6"
+        ],
+        "theme": "dark",
+        "lightToken": "tinta-3"
+      },
+      "fondo-oscuro": {
+        "role": "neutral",
+        "displayName": "Tablecloth · night",
+        "canonical": "oklch(17.6% 0.022 338.0)",
+        "tonalRamp": [
+          "#11080e",
+          "#2e222a",
+          "#4d4149",
+          "#6f626a",
+          "#92848e",
+          "#b8a9b3",
+          "#dbccd6",
+          "#f9e9f4"
+        ],
+        "theme": "dark",
+        "lightToken": "fondo"
+      },
+      "fondo-elevado-oscuro": {
+        "role": "neutral",
+        "displayName": "White Plate · night",
+        "canonical": "oklch(21.7% 0.028 335.1)",
+        "tonalRamp": [
+          "#120710",
+          "#2f212c",
+          "#4f404b",
+          "#71606c",
+          "#948390",
+          "#baa8b5",
+          "#ddcbd8",
+          "#fbe8f6"
+        ],
+        "theme": "dark",
+        "lightToken": "fondo-elevado"
+      },
+      "fondo-hundido-oscuro": {
+        "role": "neutral",
+        "displayName": "Pressed Pink · night",
+        "canonical": "oklch(19.3% 0.026 336.0)",
+        "tonalRamp": [
+          "#12070f",
+          "#2f222b",
+          "#4e404a",
+          "#70616c",
+          "#94838f",
+          "#b9a8b4",
+          "#ddcbd8",
+          "#fbe8f5"
+        ],
+        "theme": "dark",
+        "lightToken": "fondo-hundido"
+      },
+      "linea-oscuro": {
+        "role": "neutral",
+        "displayName": "Pink Hairline · night",
+        "canonical": "oklch(29.3% 0.037 336.4)",
+        "tonalRamp": [
+          "#140511",
+          "#321f2d",
+          "#523e4c",
+          "#745e6e",
+          "#988192",
+          "#bea5b7",
+          "#e2c8da",
+          "#fde7f7"
+        ],
+        "theme": "dark",
+        "lightToken": "linea"
+      },
+      "linea-fuerte-oscuro": {
+        "role": "neutral",
+        "displayName": "Pink Rule · night",
+        "canonical": "oklch(36.0% 0.045 339.0)",
+        "tonalRamp": [
+          "#170411",
+          "#351d2e",
+          "#553c4d",
+          "#785c6f",
+          "#9c7f92",
+          "#c2a3b7",
+          "#e6c6db",
+          "#fde7f5"
+        ],
+        "theme": "dark",
+        "lightToken": "linea-fuerte"
+      },
+      "placeholder-oscuro": {
+        "role": "neutral",
+        "displayName": "Placeholder · night",
+        "canonical": "oklch(57.0% 0.037 340.5)",
+        "tonalRamp": [
+          "#150510",
+          "#331f2c",
+          "#533d4b",
+          "#755e6d",
+          "#998190",
+          "#bfa5b5",
+          "#e3c8d8",
+          "#fee7f5"
+        ],
+        "theme": "dark",
+        "lightToken": "placeholder"
+      },
+      "peligro-oscuro": {
+        "role": "status",
+        "displayName": "Loss Red · night",
+        "canonical": "oklch(73.3% 0.164 26.2)",
+        "tonalRamp": [
+          "#1e0001",
+          "#4f0105",
+          "#840710",
+          "#b1322f",
+          "#db5952",
+          "#fe857b",
+          "#febfb8",
+          "#fee9e6"
+        ],
+        "theme": "dark",
+        "lightToken": "peligro"
+      },
+      "peligro-suave-oscuro": {
+        "role": "status",
+        "displayName": "Loss Blush · night",
+        "canonical": "oklch(26.2% 0.061 26.6)",
+        "tonalRamp": [
+          "#1f0001",
+          "#3f1916",
+          "#623833",
+          "#865953",
+          "#ab7b76",
+          "#d2a09a",
+          "#f7c3bc",
+          "#fceae7"
+        ],
+        "theme": "dark",
+        "lightToken": "peligro-suave"
+      },
+      "aviso-oscuro": {
+        "role": "status",
+        "displayName": "Notice Amber · night",
+        "canonical": "oklch(84.0% 0.133 84.5)",
+        "tonalRamp": [
+          "#110a01",
+          "#322402",
+          "#584103",
+          "#816003",
+          "#ad8103",
+          "#d5a639",
+          "#fac961",
+          "#feedca"
+        ],
+        "theme": "dark",
+        "lightToken": "aviso"
+      },
+      "aviso-suave-oscuro": {
+        "role": "status",
+        "displayName": "Notice Cream · night",
+        "canonical": "oklch(28.0% 0.046 85.6)",
+        "tonalRamp": [
+          "#110a00",
+          "#302508",
+          "#504328",
+          "#726448",
+          "#96886a",
+          "#bbac8d",
+          "#dfcfb0",
+          "#fcedcc"
+        ],
+        "theme": "dark",
+        "lightToken": "aviso-suave"
+      },
+      "serie-3-oscuro": {
+        "role": "chart",
+        "displayName": "Series 3 · Horno · night",
+        "canonical": "oklch(66.0% 0.156 54.4)",
+        "tonalRamp": [
+          "#160700",
+          "#3e1c01",
+          "#6b3402",
+          "#9b4e02",
+          "#cf6a04",
+          "#f88f40",
+          "#fec29b",
+          "#fdeade"
+        ],
+        "theme": "dark",
+        "lightToken": "serie-3"
+      },
+      "serie-6-oscuro": {
+        "role": "chart",
+        "displayName": "Series 6 · Ganancia / Te quedó · night",
+        "canonical": "oklch(64.9% 0.130 84.7)",
+        "tonalRamp": [
+          "#110a00",
+          "#332401",
+          "#594100",
+          "#80610e",
+          "#ac8212",
+          "#d4a73f",
+          "#f8ca65",
+          "#feedc9"
+        ],
+        "theme": "dark",
+        "lightToken": "serie-6"
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Month profit on Inicio; rate figure on Tasa."
+        "purpose": "The month's \"te quedó\" on Inicio."
+      },
+      "display-tasa": {
+        "displayName": "Display tasa",
+        "purpose": "The BCV rate on the yellow Tasa panel."
       },
       "figure": {
         "displayName": "Figure",
-        "purpose": "Suggested price, converter result, compact torta price."
+        "purpose": "Converter result; the Cobrar amount in Bs."
+      },
+      "figure-price": {
+        "displayName": "Figure price",
+        "purpose": "Suggested price and compact torta price, in gold ink."
       },
       "headline": {
         "displayName": "Headline",
         "purpose": "Screen titles."
       },
-      "title": {
-        "displayName": "Title",
-        "purpose": "Block legends and headings, month selector."
+      "torta-centre": {
+        "displayName": "Torta centre",
+        "purpose": "Price or hovered part inside the cake."
+      },
+      "total": {
+        "displayName": "Total",
+        "purpose": "Summary total row, result-well figure, rail wordmark (700)."
+      },
+      "wordmark": {
+        "displayName": "Wordmark",
+        "purpose": "Business name in the phone header, Fuchsia Ink."
       },
       "row-figure": {
         "displayName": "Row figure",
-        "purpose": "Amounts in plain label/amount summary rows."
+        "purpose": "Amounts in plain summary rows; section and converter headings."
+      },
+      "title-lg": {
+        "displayName": "Title large",
+        "purpose": "Month selector; sticky price strip figure."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Block legends and headings, price-card titles, greeting."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "All reading text and inputs."
+        "purpose": "All reading text and inputs; button labels at 600."
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Field labels, button text."
+        "purpose": "Field labels, segmented options, legend cells, rail items, toast action."
+      },
+      "control-small": {
+        "displayName": "Control small",
+        "purpose": "Link buttons, small buttons, input affixes, notes."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Order status pills, chart legends, data tables, payment labels."
+      },
+      "pequeno": {
+        "displayName": "Pequeño",
+        "purpose": "The .pequeno utility for secondary lines and helper paragraphs."
       },
       "small": {
         "displayName": "Small",
-        "purpose": "Helper text, list sub-lines, errors."
+        "purpose": "Field helpers and errors, list sub-lines, tooltips."
+      },
+      "micro": {
+        "displayName": "Micro",
+        "purpose": "Save-status pill; torta centre label."
       },
       "tab": {
         "displayName": "Tab",
-        "purpose": "Bottom tab labels."
+        "purpose": "Bottom tab labels; status chips at 700."
+      },
+      "_oneOffs": {
+        "displayName": "One-offs (not steps)",
+        "purpose": "Login title 1.8rem; empty-state heading 1.3rem; group titles 1.02rem; data-table header 0.8rem; rail counter 0.78rem; BCV tag 0.7rem. New work takes the nearest step above."
       }
     },
     "shadows": [
       {
-        "name": "sombra",
-        "value": "0 1px 2px rgb(64 12 40 / 0.06), 0 4px 14px rgb(64 12 40 / 0.07)",
-        "purpose": "Plate: resting lists, converter, compact torta."
-      },
-      {
         "name": "sombra-alta",
-        "value": "0 2px 4px rgb(64 12 40 / 0.08), 0 10px 28px rgb(64 12 40 / 0.14)",
-        "purpose": "Lifted: floating actions above the tab bar."
+        "value": "0 2px 6px rgb(64 12 40 / 0.1), 0 14px 34px rgb(64 12 40 / 0.16)",
+        "purpose": "Floating: action pill, undo toast, chart tooltip."
       },
       {
-        "name": "fuchsia-glow",
-        "value": "0 1px 2px rgb(140 16 72 / 0.3), 0 4px 12px rgb(140 16 72 / 0.18)",
-        "purpose": "Primary buttons."
+        "name": "sombra-alta-oscuro",
+        "value": "0 2px 6px rgb(0 0 0 / 0.4), 0 14px 34px rgb(0 0 0 / 0.45)",
+        "purpose": "Floating, dark theme."
       },
       {
-        "name": "tab-edge",
-        "value": "0 -6px 20px rgb(64 12 40 / 0.06)",
-        "purpose": "Mobile tab bar upward edge."
+        "name": "sombra",
+        "value": "0 1px 2px rgb(64 12 40 / 0.05), 0 6px 18px rgb(64 12 40 / 0.06)",
+        "purpose": "Resting; only on the WhatsApp preview bubble, the one non-floating exception. Not a pattern to copy."
       },
       {
-        "name": "focus-halo",
-        "value": "0 0 0 3px rgb(176 24 91 / 0.16)",
-        "purpose": "Focused inputs, number fields, search."
+        "name": "sombra-oscuro",
+        "value": "0 1px 2px rgb(0 0 0 / 0.3), 0 6px 18px rgb(0 0 0 / 0.25)",
+        "purpose": "Resting, dark theme."
       },
       {
-        "name": "segment-selected",
+        "name": "anillo",
+        "value": "0 0 0 3px rgb(176 24 91 / 0.18)",
+        "purpose": "Focus ring on inputs, number fields, search, checkboxes."
+      },
+      {
+        "name": "anillo-oscuro",
+        "value": "0 0 0 3px rgb(240 106 159 / 0.28)",
+        "purpose": "Focus ring, dark theme."
+      },
+      {
+        "name": "segmento",
         "value": "0 1px 2px rgb(64 12 40 / 0.1), 0 2px 6px rgb(64 12 40 / 0.06)",
-        "purpose": "Selected segment in segmented control."
+        "purpose": "Selected segment lift inside the segmented control."
+      },
+      {
+        "name": "perilla-switch",
+        "value": "0 1px 3px rgb(0 0 0 / 0.25)",
+        "purpose": "Switch knob."
+      },
+      {
+        "name": "perilla-range",
+        "value": "0 1px 4px rgb(64 12 40 / 0.35)",
+        "purpose": "Range thumb."
+      },
+      {
+        "name": "entrar",
+        "value": "0 10px 40px rgb(60 0 30 / 0.35)",
+        "purpose": "Login box on the fuchsia ground; one use."
+      },
+      {
+        "name": "precio-borde",
+        "value": "inset 0 0 0 1px rgb(201 154 18 / 0.45)",
+        "purpose": "Inset gold line on the price pill (a line, not a lift)."
+      },
+      {
+        "name": "lavado-blanco",
+        "value": "rgb(255 255 255 / 0.1)",
+        "purpose": "Hover wash on rail items and the toast action (background, not shadow)."
+      },
+      {
+        "name": "lavado-tasa",
+        "value": "rgb(255 255 255 / 0.55)",
+        "purpose": "Warning wash inside the yellow rate panel (background)."
+      },
+      {
+        "name": "borde-tasa",
+        "value": "rgb(42 20 36 / 0.15)",
+        "purpose": "Secondary button border on the yellow rate panel."
       }
     ],
     "motion": [
       {
         "name": "salida",
         "value": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "Expo-out curve for every transition."
+        "purpose": "Expo-out curve for every transition and animation."
+      },
+      {
+        "name": "state",
+        "value": "120–220ms var(--salida)",
+        "purpose": "Press scale 0.97 (120ms), colours 140–180ms, tab pill and header line 200ms, switch knob 220ms."
       },
       {
         "name": "torta-slices",
         "value": "stroke-dasharray 520ms, stroke-dashoffset 520ms var(--salida)",
-        "purpose": "The one authored motion: torta slices settle as the recipe changes."
+        "purpose": "Torta slices settle as the recipe changes."
       },
       {
         "name": "torta-emphasis",
@@ -501,24 +1147,58 @@
         "purpose": "Active slice thickens by 6 units; others fade to 32%."
       },
       {
-        "name": "state",
-        "value": "120–180ms var(--salida)",
-        "purpose": "Colour/background state changes; press scale 0.97 in 120ms."
+        "name": "bar-fill",
+        "value": "transform 600ms var(--salida)",
+        "purpose": "Goal meter and product bars fill by scaleX from the left."
+      },
+      {
+        "name": "toast-rise",
+        "value": "aviso-entra 260ms var(--salida): from opacity 0, translateY 12px, scale 0.97",
+        "purpose": "Undo toast entrance; stays 6s with undo, 3.2s without."
+      },
+      {
+        "name": "spinner",
+        "value": "rotate 360deg 0.9s linear infinite",
+        "purpose": "Save and loading spinner."
       },
       {
         "name": "reduced-motion",
         "value": "transition-duration: 1ms; animation-duration: 1ms",
-        "purpose": "prefers-reduced-motion collapses all transitions; the save spinner slows to 2s."
+        "purpose": "prefers-reduced-motion collapses all motion; the spinner stops."
       }
     ],
     "breakpoints": [
       {
+        "name": "estado-compacto",
+        "value": "380px (max-width: save-status text hides)"
+      },
+      {
         "name": "desktop",
-        "value": "960px"
+        "value": "960px (rail, two-column Inicio and editor)"
       },
       {
         "name": "items-container",
         "value": "600px (container query on recipe item list)"
+      }
+    ],
+    "themes": [
+      {
+        "name": "auto",
+        "label": "Automático",
+        "selector": "@media (prefers-color-scheme: dark) :root:not([data-tema='claro'])",
+        "purpose": "Follows the phone; default."
+      },
+      {
+        "name": "claro",
+        "label": "Claro",
+        "selector": ":root[data-tema='claro']",
+        "purpose": "Forces the light tokens."
+      },
+      {
+        "name": "oscuro",
+        "label": "Oscuro",
+        "selector": ":root[data-tema='oscuro']",
+        "purpose": "Forces the dark tokens (the *-oscuro colours)."
       }
     ]
   },
@@ -527,105 +1207,124 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Fuchsia action; large variant is \"Registrar venta\" above the tab bar.",
-      "html": "<button class=\"ds-btn ds-btn-primary\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg> Registrar venta</button>",
-      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border-radius:12px;border:1px solid transparent;font:600 1rem/1 system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;cursor:pointer;transition:background-color 160ms cubic-bezier(0.16,1,0.3,1),transform 120ms cubic-bezier(0.16,1,0.3,1)} .ds-btn:active{transform:scale(0.97)} .ds-btn:focus-visible{outline:2.5px solid var(--fucsia,#b0185b);outline-offset:2px} .ds-btn-primary{background:var(--fucsia,#b0185b);color:#fff;min-height:56px;font-size:1.08rem;border-radius:14px;box-shadow:0 1px 2px rgb(140 16 72 / 0.3),0 4px 12px rgb(140 16 72 / 0.18)} .ds-btn-primary:hover{background:var(--fucsia-hondo,#8c1048)}"
+      "description": "Fuchsia fill, white label, no shadow; presses in. Large (54px) for the fixed actions on Inicio.",
+      "html": "<button class=\"ds-btn-primary\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg> Registrar venta</button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border:1px solid transparent;border-radius:12px;background:var(--fucsia,#b0185b);color:#fff;font:600 1rem/1 system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;cursor:pointer;transition:background-color 160ms cubic-bezier(0.16,1,0.3,1),transform 120ms cubic-bezier(0.16,1,0.3,1)} .ds-btn-primary:hover{background:var(--fucsia-hondo,#8c1048)} .ds-btn-primary:active{transform:scale(0.97)} .ds-btn-primary:focus-visible{outline:2.5px solid var(--fucsia-texto,#b0185b);outline-offset:2px}"
     },
     {
       "name": "Secondary Button",
       "kind": "button",
       "refersTo": "button-secondary",
-      "description": "White plate with pink rule; empty-state and lesser actions.",
-      "html": "<button class=\"ds-btn ds-btn-secondary\">Anotar lo que compras</button>",
-      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border-radius:12px;border:1px solid transparent;font:600 1rem/1 system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;cursor:pointer;transition:background-color 160ms cubic-bezier(0.16,1,0.3,1),transform 120ms cubic-bezier(0.16,1,0.3,1)} .ds-btn:active{transform:scale(0.97)} .ds-btn:focus-visible{outline:2.5px solid var(--fucsia,#b0185b);outline-offset:2px} .ds-btn-secondary{background:var(--fondo-elevado,#fff);color:var(--tinta,#2a1424);border-color:var(--linea-fuerte,#e2c6d4)} .ds-btn-secondary:hover{background:var(--fondo-hundido,#fbeef3)}"
-    },
-    {
-      "name": "Danger Soft Button",
-      "kind": "button",
-      "refersTo": "button-danger-soft",
-      "description": "Destructive entry point; opens an inline red confirmation.",
-      "html": "<button class=\"ds-btn ds-btn-danger-soft\">Borrar receta</button>",
-      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border-radius:12px;border:1px solid transparent;font:600 1rem/1 system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;cursor:pointer;transition:background-color 160ms cubic-bezier(0.16,1,0.3,1),transform 120ms cubic-bezier(0.16,1,0.3,1)} .ds-btn:active{transform:scale(0.97)} .ds-btn:focus-visible{outline:2.5px solid var(--fucsia,#b0185b);outline-offset:2px} .ds-btn-danger-soft{background:transparent;color:var(--peligro,#b8231b)} .ds-btn-danger-soft:hover{background:var(--peligro-suave,#fde8e6)}"
+      "description": "White plate with a Pink Rule border; Pressed Pink on hover. The WhatsApp variant tints only its icon green.",
+      "html": "<button class=\"ds-btn-sec\">Encargo</button>",
+      "css": ".ds-btn-sec{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border:1px solid var(--linea-fuerte,#e2c6d4);border-radius:12px;background:var(--fondo-elevado,#fff);color:var(--tinta,#2a1424);font:600 1rem/1 system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;cursor:pointer;transition:background-color 160ms cubic-bezier(0.16,1,0.3,1),transform 120ms cubic-bezier(0.16,1,0.3,1)} .ds-btn-sec:hover{background:var(--fondo-hundido,#fbeef3)} .ds-btn-sec:active{transform:scale(0.97)} .ds-btn-sec:focus-visible{outline:2.5px solid var(--fucsia-texto,#b0185b);outline-offset:2px}"
     },
     {
       "name": "Number Field",
       "kind": "input",
       "refersTo": "input",
-      "description": "Labelled number input with affix; comma decimals; fuchsia focus halo.",
-      "html": "<div class=\"ds-campo\"><label for=\"ds-n\">Tu precio de venta</label><div class=\"ds-num\"><span class=\"ds-afijo\">$</span><input id=\"ds-n\" inputmode=\"decimal\" placeholder=\"0\"></div><p class=\"ds-ayuda\">Déjalo vacío para usar el sugerido.</p></div>",
-      "css": ".ds-campo{display:flex;flex-direction:column;gap:6px;font-family:system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;color:var(--tinta,#2a1424)} .ds-campo label{font-weight:600;font-size:0.95rem} .ds-num{display:flex;border:1px solid var(--linea-fuerte,#e2c6d4);border-radius:10px;background:var(--fondo-elevado,#fff);transition:border-color 140ms cubic-bezier(0.16,1,0.3,1),box-shadow 140ms cubic-bezier(0.16,1,0.3,1)} .ds-num:hover{border-color:var(--tinta-3,#75606e)} .ds-num:focus-within{border-color:var(--fucsia,#b0185b);box-shadow:0 0 0 3px rgb(176 24 91 / 0.16)} .ds-afijo{display:flex;align-items:center;padding:0 0 0 12px;color:var(--tinta-3,#75606e);font-size:0.92rem} .ds-num input{flex:1;min-width:0;min-height:48px;border:0;outline:none;background:transparent;padding:0 12px;font:400 1rem system-ui,sans-serif;font-variant-numeric:tabular-nums;color:inherit} .ds-ayuda{margin:0;font-size:0.85rem;color:var(--tinta-3,#75606e)}"
+      "description": "48px field with a Faded Plum affix inside the border; comma decimals; fuchsia-ink border and 3px ring on focus.",
+      "html": "<label class=\"ds-campo\"><span>Monto en dólares</span><span class=\"ds-num\"><span class=\"ds-afijo\">$</span><input inputmode=\"decimal\" placeholder=\"0\" value=\"12,50\"></span></label>",
+      "css": ".ds-campo{display:flex;flex-direction:column;gap:6px;font:600 0.95rem system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;color:var(--tinta,#2a1424);max-width:280px} .ds-num{display:flex;align-items:stretch;border:1px solid var(--linea-fuerte,#e2c6d4);border-radius:12px;background:var(--fondo-elevado,#fff);transition:border-color 140ms cubic-bezier(0.16,1,0.3,1),box-shadow 140ms cubic-bezier(0.16,1,0.3,1)} .ds-num:focus-within{border-color:var(--fucsia-texto,#b0185b);box-shadow:0 0 0 3px rgb(176 24 91 / 0.18)} .ds-afijo{display:flex;align-items:center;padding:0 0 0 12px;color:var(--tinta-3,#75606e);font-weight:400;font-size:0.92rem} .ds-num input{flex:1;min-width:0;min-height:48px;padding:0 12px;border:0;background:transparent;color:inherit;font:400 1rem system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;font-variant-numeric:tabular-nums;outline:none} .ds-num input::placeholder{color:var(--placeholder,#806b79)}"
     },
     {
       "name": "Segmented Control",
-      "kind": "chip",
+      "kind": "input",
       "refersTo": "segmented",
-      "description": "Currency and type switches (USD / Bs).",
-      "html": "<div class=\"ds-seg\" role=\"radiogroup\" aria-label=\"Moneda\"><button role=\"radio\" aria-checked=\"true\">$</button><button role=\"radio\" aria-checked=\"false\">Bs</button></div>",
-      "css": ".ds-seg{display:inline-flex;padding:3px;gap:3px;border-radius:12px;background:var(--fondo-hundido,#fbeef3);border:1px solid var(--linea,#f0dde6)} .ds-seg button{min-height:40px;min-width:44px;padding:0 14px;border:0;border-radius:9px;background:transparent;color:var(--tinta-2,#6b5463);font:600 0.95rem system-ui,sans-serif;cursor:pointer;transition:background-color 160ms cubic-bezier(0.16,1,0.3,1),color 160ms cubic-bezier(0.16,1,0.3,1)} .ds-seg button:hover{color:var(--tinta,#2a1424)} .ds-seg button:focus-visible{outline:2.5px solid var(--fucsia,#b0185b);outline-offset:2px} .ds-seg button[aria-checked=\"true\"]{background:var(--fondo-elevado,#fff);color:var(--fucsia,#b0185b);box-shadow:0 1px 2px rgb(64 12 40 / 0.1),0 2px 6px rgb(64 12 40 / 0.06)}"
+      "description": "Pressed Pink track; the selected option is a white plate with fuchsia-ink text. Used for Apariencia: Automático, Claro, Oscuro.",
+      "html": "<div class=\"ds-seg\" role=\"radiogroup\" aria-label=\"Apariencia\"><button role=\"radio\" aria-checked=\"true\">Automático</button><button role=\"radio\" aria-checked=\"false\">Claro</button><button role=\"radio\" aria-checked=\"false\">Oscuro</button></div>",
+      "css": ".ds-seg{display:inline-flex;gap:3px;padding:3px;border-radius:12px;background:var(--fondo-hundido,#fbeef3);border:1px solid var(--linea,#f0dde6)} .ds-seg button{min-height:40px;min-width:44px;padding:0 14px;border:0;border-radius:9px;background:transparent;color:var(--tinta-2,#6b5463);font:600 0.95rem system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;cursor:pointer;transition:background-color 180ms cubic-bezier(0.16,1,0.3,1),color 180ms cubic-bezier(0.16,1,0.3,1),box-shadow 180ms cubic-bezier(0.16,1,0.3,1)} .ds-seg button[aria-checked=\"true\"]{background:var(--fondo-elevado,#fff);color:var(--fucsia-texto,#b0185b);box-shadow:0 1px 2px rgb(64 12 40 / 0.1),0 2px 6px rgb(64 12 40 / 0.06)} .ds-seg button:focus-visible{outline:2.5px solid var(--fucsia-texto,#b0185b);outline-offset:2px}"
     },
     {
-      "name": "BCV Rate Chip",
-      "kind": "chip",
-      "refersTo": "chip-rate",
-      "description": "Sun yellow pill in the fuchsia header with today's rate.",
-      "html": "<div class=\"ds-head\"><span class=\"ds-marca\">Mis Bizcochos</span><a href=\"#\" class=\"ds-chip-tasa\"><span class=\"ds-chip-et\">BCV</span><span>214,37</span></a></div>",
-      "css": ".ds-head{display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--fucsia,#b0185b)} .ds-marca{margin-right:auto;color:#fff;font:700 1.2rem \"Bricolage Grotesque Variable\",ui-rounded,system-ui,sans-serif;letter-spacing:-0.02em} .ds-chip-tasa{display:inline-flex;align-items:baseline;gap:6px;padding:5px 11px;border-radius:999px;background:var(--amarillo,#ffd23f);color:var(--tinta,#2a1424);text-decoration:none;font:650 0.95rem \"Bricolage Grotesque Variable\",ui-rounded,system-ui,sans-serif;font-variant-numeric:tabular-nums;box-shadow:0 1px 2px rgb(60 0 30 / 0.25)} .ds-chip-tasa:focus-visible{outline:2.5px solid var(--amarillo,#ffd23f);outline-offset:2px} .ds-chip-et{font-size:0.7rem;font-weight:700;letter-spacing:0.02em}"
+      "name": "Phone Header",
+      "kind": "nav",
+      "refersTo": "header-mobile",
+      "description": "Light header on the tablecloth: fuchsia-ink wordmark, the yellow BCV chip and a settings icon. A hairline appears under it on scroll.",
+      "html": "<header class=\"ds-cab\"><a href=\"#\" class=\"ds-marca\">Mis Bizcochos</a><a href=\"#\" class=\"ds-chip-tasa\"><span class=\"ds-bcv\">BCV</span><span>214,3021</span></a><button class=\"ds-icono\" aria-label=\"Ajustes\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg></button></header>",
+      "css": ".ds-cab{display:flex;align-items:center;gap:8px;padding:10px 12px 10px 16px;background:var(--fondo,#fff7fa);border-bottom:1px solid var(--linea,#f0dde6)} .ds-marca{margin-right:auto;color:var(--fucsia-texto,#b0185b);font:700 1.2rem/1.15 \"Bricolage Grotesque Variable\",ui-rounded,system-ui,sans-serif;letter-spacing:-0.02em;text-decoration:none} .ds-chip-tasa{display:inline-flex;align-items:baseline;gap:6px;padding:6px 12px;border-radius:999px;background:var(--amarillo,#ffd23f);color:var(--tinta-fija,#2a1424);font:650 0.95rem \"Bricolage Grotesque Variable\",ui-rounded,system-ui,sans-serif;font-variant-numeric:tabular-nums;text-decoration:none} .ds-bcv{font-size:0.7rem;font-weight:700;letter-spacing:0.02em} .ds-icono{display:inline-grid;place-items:center;width:44px;height:44px;border:0;border-radius:12px;background:transparent;color:var(--tinta-2,#6b5463);cursor:pointer;transition:background-color 160ms cubic-bezier(0.16,1,0.3,1)} .ds-icono:hover{background:var(--fondo-hundido,#fbeef3)} .ds-cab a:focus-visible,.ds-icono:focus-visible{outline:2.5px solid var(--fucsia-texto,#b0185b);outline-offset:2px;border-radius:6px}"
     },
     {
-      "name": "Movement List",
-      "kind": "card",
-      "refersTo": "list",
-      "description": "Sales and expenses: +/− badge, title, dollar amount with Bs in turquoise ink under it. No green.",
-      "html": "<ul class=\"ds-lista\"><li><a href=\"#\" class=\"ds-fila\"><span class=\"ds-marca-f ds-venta\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg></span><span class=\"ds-fp\"><span class=\"ds-ft\">Bizcocho de vainilla</span><span class=\"ds-fs\">2 und · Pago móvil</span></span><span class=\"ds-fc\"><span>+$18,00</span><span class=\"ds-fs ds-bs\">Bs. 3.858,66</span></span></a></li><li><a href=\"#\" class=\"ds-fila\"><span class=\"ds-marca-f ds-gasto\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/></svg></span><span class=\"ds-fp\"><span class=\"ds-ft\">Harina y huevos</span><span class=\"ds-fs\">Insumos</span></span><span class=\"ds-fc\"><span>−$7,40</span><span class=\"ds-fs ds-bs\">Bs. 1.586,34</span></span></a></li></ul>",
-      "css": ".ds-lista{list-style:none;margin:0;padding:0;border-radius:14px;background:var(--fondo-elevado,#fff);box-shadow:0 1px 2px rgb(64 12 40 / 0.06),0 4px 14px rgb(64 12 40 / 0.07);overflow:hidden;font-family:system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif} .ds-lista li+li{border-top:1px solid var(--linea,#f0dde6)} .ds-fila{display:flex;align-items:center;gap:12px;min-height:64px;padding:10px 16px;color:var(--tinta,#2a1424);text-decoration:none;transition:background-color 140ms cubic-bezier(0.16,1,0.3,1)} .ds-fila:hover{background:var(--fondo,#fff7fa)} .ds-fila:active{background:var(--fondo-hundido,#fbeef3)} .ds-fila:focus-visible{outline:2.5px solid var(--fucsia,#b0185b);outline-offset:-2px} .ds-marca-f{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;flex-shrink:0} .ds-venta{background:var(--fucsia-suave,#fde4ee);color:var(--fucsia,#b0185b)} .ds-gasto{background:var(--fondo-hundido,#fbeef3);color:var(--tinta-2,#6b5463)} .ds-fp{display:flex;flex-direction:column;margin-right:auto;min-width:0} .ds-ft{font-weight:600} .ds-fs{font-size:0.85rem;color:var(--tinta-3,#75606e);font-weight:400} .ds-fc{display:flex;flex-direction:column;align-items:flex-end;font-weight:650;white-space:nowrap;font-variant-numeric:tabular-nums} .ds-bs{color:var(--turquesa-tinta,#0b6c69)}"
-    },
-    {
-      "name": "Month Rows",
-      "kind": "custom",
-      "refersTo": "list-row",
-      "description": "Plain label/amount rows instead of stat tiles; signs carry direction.",
-      "html": "<dl class=\"ds-renglones\"><div><dt>Vendiste</dt><dd>+$240,00</dd></div><div><dt>Gastaste</dt><dd>−$96,50</dd></div><div class=\"ds-total\"><dt>Te quedó</dt><dd>$143,50</dd></div></dl>",
-      "css": ".ds-renglones{margin:0;display:flex;flex-direction:column;font-family:system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;color:var(--tinta,#2a1424)} .ds-renglones>div{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--linea,#f0dde6)} .ds-renglones dt{color:var(--tinta-2,#6b5463);font-weight:500} .ds-renglones dd{margin:0;font:650 1.15rem \"Bricolage Grotesque Variable\",ui-rounded,system-ui,sans-serif;font-variant-numeric:tabular-nums} .ds-renglones .ds-total{border-bottom:0} .ds-renglones .ds-total dt{color:var(--tinta,#2a1424);font-weight:650} .ds-renglones .ds-total dd{font-size:1.35rem}"
+      "name": "Tab Bar",
+      "kind": "nav",
+      "refersTo": "tab-bar",
+      "description": "Phone bottom bar: five tabs; the active one fills a fuchsia pill behind a white icon and sets its label in fuchsia ink. A dot on Encargos marks orders due today.",
+      "html": "<nav class=\"ds-tabs\" aria-label=\"Secciones\"><a href=\"#\" class=\"ds-tab\" aria-current=\"page\"><span class=\"ds-tab-ico\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"/><path d=\"M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/></svg></span><span>Inicio</span></a><a href=\"#\" class=\"ds-tab\"><span class=\"ds-tab-ico\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M8 2v4\"/><path d=\"M16 2v4\"/><rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\"/><path d=\"M3 10h18\"/></svg><span class=\"ds-punto\"></span></span><span>Encargos</span></a><a href=\"#\" class=\"ds-tab\"><span class=\"ds-tab-ico\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m15 11-1 9\"/><path d=\"m19 11-4-7\"/><path d=\"M2 11h20\"/><path d=\"m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4\"/><path d=\"M4.5 15.5h15\"/><path d=\"m5 11 4-7\"/><path d=\"m9 11 1 9\"/></svg></span><span>Productos</span></a><a href=\"#\" class=\"ds-tab\"><span class=\"ds-tab-ico\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z\"/><path d=\"M14 8H8\"/><path d=\"M16 12H8\"/><path d=\"M13 16H8\"/></svg></span><span>Cuentas</span></a><a href=\"#\" class=\"ds-tab\"><span class=\"ds-tab-ico\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"7\" height=\"7\" x=\"3\" y=\"3\" rx=\"1\"/><rect width=\"7\" height=\"7\" x=\"14\" y=\"3\" rx=\"1\"/><rect width=\"7\" height=\"7\" x=\"14\" y=\"14\" rx=\"1\"/><rect width=\"7\" height=\"7\" x=\"3\" y=\"14\" rx=\"1\"/></svg></span><span>Más</span></a></nav>",
+      "css": ".ds-tabs{display:grid;grid-template-columns:repeat(5,1fr);max-width:420px;background:var(--fondo-elevado,#fff);border-top:1px solid var(--linea,#f0dde6);font-family:system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif} .ds-tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:64px;color:var(--tinta-3,#75606e);text-decoration:none;font-size:0.72rem;font-weight:600;transition:color 160ms cubic-bezier(0.16,1,0.3,1)} .ds-tab-ico{position:relative;display:grid;place-items:center;width:56px;height:30px;border-radius:999px;transition:background-color 200ms cubic-bezier(0.16,1,0.3,1)} .ds-tab:hover .ds-tab-ico{background:var(--fondo-hundido,#fbeef3)} .ds-tab[aria-current=\"page\"]{color:var(--fucsia-texto,#b0185b)} .ds-tab[aria-current=\"page\"] .ds-tab-ico{background:var(--fucsia,#b0185b);color:#fff} .ds-tab:focus-visible{outline:2.5px solid var(--fucsia-texto,#b0185b);outline-offset:-2px;border-radius:6px} .ds-punto{position:absolute;top:3px;right:14px;width:9px;height:9px;border-radius:50%;background:var(--fucsia,#b0185b);box-shadow:0 0 0 2px var(--fondo-elevado,#fff)}"
     },
     {
       "name": "Navigation Rail",
       "kind": "nav",
       "refersTo": "rail",
-      "description": "Desktop fuchsia side rail; active item is a sun-yellow plate. On phones this becomes a white bottom tab bar with a fuchsia active marker.",
-      "html": "<nav class=\"ds-rail\" aria-label=\"Secciones\"><span class=\"ds-rail-marca\">Mis Bizcochos</span><a href=\"#\" class=\"ds-pestana\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"/><path d=\"M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/></svg><span>Inicio</span></a><a href=\"#\" class=\"ds-pestana\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m15 11-1 9\"/><path d=\"m19 11-4-7\"/><path d=\"M2 11h20\"/><path d=\"m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4\"/><path d=\"M4.5 15.5h15\"/><path d=\"m5 11 4-7\"/><path d=\"m9 11 1 9\"/></svg><span>Insumos</span></a><a href=\"#\" class=\"ds-pestana\" aria-current=\"page\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"9\" cy=\"7\" r=\"2\"/><path d=\"M7.2 7.9 3 11v9c0 .6.4 1 1 1h16c.6 0 1-.4 1-1v-9c0-2-3-6-7-8l-3.6 2.6\"/><path d=\"M16 13H3\"/><path d=\"M16 17H3\"/></svg><span>Recetas</span></a></nav>",
-      "css": ".ds-rail{display:flex;flex-direction:column;gap:4px;width:232px;padding:20px 12px;background:var(--fucsia,#b0185b);font-family:system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif} .ds-rail-marca{display:block;padding:4px 12px 20px;color:#fff;font:700 1.35rem/1.15 \"Bricolage Grotesque Variable\",ui-rounded,system-ui,sans-serif;letter-spacing:-0.02em} .ds-pestana{display:flex;align-items:center;gap:12px;min-height:44px;padding:0 12px;border-radius:12px;color:#ffe3ef;text-decoration:none;font-size:0.95rem;font-weight:600;transition:color 160ms cubic-bezier(0.16,1,0.3,1),background-color 160ms cubic-bezier(0.16,1,0.3,1)} .ds-pestana:hover{background:rgb(255 255 255 / 0.1)} .ds-pestana:focus-visible{outline:2.5px solid var(--amarillo,#ffd23f);outline-offset:2px} .ds-pestana[aria-current=\"page\"]{background:var(--amarillo,#ffd23f);color:var(--tinta,#2a1424)}"
+      "description": "Desktop (960px+) fuchsia rail listing every section; the active item is a sun-yellow plate with fixed ink; a white count pill marks orders due today.",
+      "html": "<nav class=\"ds-rail\" aria-label=\"Secciones\"><span class=\"ds-rail-marca\">Mis Bizcochos</span><a href=\"#\" class=\"ds-rail-item\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"/><path d=\"M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/></svg><span>Inicio</span></a><a href=\"#\" class=\"ds-rail-item\" aria-current=\"page\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M8 2v4\"/><path d=\"M16 2v4\"/><rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\"/><path d=\"M3 10h18\"/></svg><span>Encargos</span><span class=\"ds-cuenta\">2</span></a><a href=\"#\" class=\"ds-rail-item\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m15 11-1 9\"/><path d=\"m19 11-4-7\"/><path d=\"M2 11h20\"/><path d=\"m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4\"/><path d=\"M4.5 15.5h15\"/><path d=\"m5 11 4-7\"/><path d=\"m9 11 1 9\"/></svg><span>Productos</span></a><a href=\"#\" class=\"ds-rail-item\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z\"/><path d=\"M14 8H8\"/><path d=\"M16 12H8\"/><path d=\"M13 16H8\"/></svg><span>Cuentas</span></a><a href=\"#\" class=\"ds-rail-item\" style=\"margin-top:14px\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"14\" height=\"20\" x=\"5\" y=\"2\" rx=\"2\" ry=\"2\"/><path d=\"M12 18h.01\"/></svg><span>Cobrar</span></a></nav>",
+      "css": ".ds-rail{display:flex;flex-direction:column;gap:2px;width:248px;padding:20px 12px;background:var(--fucsia,#b0185b);font-family:system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif} .ds-rail-marca{display:block;padding:4px 12px 22px;color:#fff;font:700 1.35rem/1.15 \"Bricolage Grotesque Variable\",ui-rounded,system-ui,sans-serif;letter-spacing:-0.02em} .ds-rail-item{display:flex;align-items:center;gap:12px;min-height:42px;padding:0 12px;border-radius:12px;color:#ffe3ef;text-decoration:none;font-size:0.95rem;font-weight:600;transition:background-color 160ms cubic-bezier(0.16,1,0.3,1)} .ds-rail-item:hover{background:rgb(255 255 255 / 0.1)} .ds-rail-item:focus-visible{outline:2.5px solid var(--amarillo,#ffd23f);outline-offset:2px} .ds-rail-item[aria-current=\"page\"]{background:var(--amarillo,#ffd23f);color:var(--tinta-fija,#2a1424)} .ds-cuenta{margin-left:auto;min-width:22px;padding:0 7px;border-radius:999px;background:#fff;color:var(--fucsia,#b0185b);font-size:0.78rem;font-weight:700;text-align:center}"
+    },
+    {
+      "name": "Movement List",
+      "kind": "card",
+      "refersTo": "list",
+      "description": "White plate edged by a 1px line (no shadow); 64px rows with a sign badge, title and sub-line, amount right with Bs in turquoise ink under it.",
+      "html": "<ul class=\"ds-lista\"><li><a href=\"#\" class=\"ds-fila\"><span class=\"ds-marca ds-venta\">+</span><span class=\"ds-principal\"><span class=\"ds-titulo\">Bizcocho de naranja <span class=\"ds-chip ds-chip-listo\">Listo</span></span><span class=\"ds-sub\">Hoy · 2 porciones</span></span><span class=\"ds-cifra\">+$12,00<span class=\"ds-sub ds-bs\">Bs. 2.571,63</span></span></a></li><li><a href=\"#\" class=\"ds-fila\"><span class=\"ds-marca ds-gasto\">−</span><span class=\"ds-principal\"><span class=\"ds-titulo\">Harina y huevos</span><span class=\"ds-sub\">Ayer</span></span><span class=\"ds-cifra\">−$8,40<span class=\"ds-sub ds-bs\">Bs. 1.800,14</span></span></a></li></ul>",
+      "css": ".ds-lista{list-style:none;margin:0;padding:0;max-width:420px;border-radius:16px;background:var(--fondo-elevado,#fff);border:1px solid var(--linea,#f0dde6);overflow:hidden;font-family:system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;color:var(--tinta,#2a1424)} .ds-lista li+li{border-top:1px solid var(--linea,#f0dde6)} .ds-fila{display:flex;align-items:center;gap:12px;min-height:64px;padding:11px 16px;color:inherit;text-decoration:none;transition:background-color 140ms cubic-bezier(0.16,1,0.3,1)} .ds-fila:hover{background:var(--fondo,#fff7fa)} .ds-fila:active{background:var(--fondo-hundido,#fbeef3)} .ds-fila:focus-visible{outline:2.5px solid var(--fucsia-texto,#b0185b);outline-offset:-3px} .ds-marca{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;flex-shrink:0;font-weight:700} .ds-venta{background:var(--fucsia-suave,#fde4ee);color:var(--fucsia-texto,#b0185b)} .ds-gasto{background:var(--fondo-hundido,#fbeef3);color:var(--tinta-2,#6b5463)} .ds-principal{display:flex;flex-direction:column;min-width:0;margin-right:auto} .ds-titulo{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;font-weight:600} .ds-sub{font-size:0.85rem;font-weight:400;color:var(--tinta-3,#75606e)} .ds-cifra{display:flex;flex-direction:column;align-items:flex-end;font-weight:650;font-variant-numeric:tabular-nums;white-space:nowrap} .ds-bs{color:var(--turquesa-tinta,#0b6c69)} .ds-chip{display:inline-flex;padding:1px 8px;border-radius:999px;font-size:0.72rem;font-weight:700;letter-spacing:0.01em} .ds-chip-listo{background:var(--fucsia-suave,#fde4ee);color:var(--fucsia-texto,#b0185b)}"
+    },
+    {
+      "name": "Order Status",
+      "kind": "chip",
+      "refersTo": "status",
+      "description": "Pill at the top of an order: pendiente on Pressed Pink, listo on Fuchsia Blush, entregado on Gold Frosting, cancelado on Loss Blush; plus the small 0.72rem status chips used in rows.",
+      "html": "<div class=\"ds-estados\"><span class=\"ds-estado\">Pendiente</span><span class=\"ds-estado ds-listo\">Listo</span><span class=\"ds-estado ds-entregado\">Entregado</span><span class=\"ds-estado ds-cancelado\">Cancelado</span><span class=\"ds-chip2 ds-chip-peligro\">Atrasado</span></div>",
+      "css": ".ds-estados{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-family:system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif} .ds-estado{padding:5px 12px;border-radius:999px;background:var(--fondo-hundido,#fbeef3);color:var(--tinta-2,#6b5463);font-weight:600;font-size:0.9rem} .ds-listo{background:var(--fucsia-suave,#fde4ee);color:var(--fucsia-texto,#b0185b)} .ds-entregado{background:var(--oro-claro,#f3dc94);color:var(--oro-tinta,#7f5c00)} .ds-cancelado{background:var(--peligro-suave,#fde8e6);color:var(--peligro,#b8231b)} .ds-chip2{display:inline-flex;padding:1px 8px;border-radius:999px;font-size:0.72rem;font-weight:700;letter-spacing:0.01em} .ds-chip-peligro{background:var(--peligro-suave,#fde8e6);color:var(--peligro,#b8231b)}"
+    },
+    {
+      "name": "Checkbox Row and Switch",
+      "kind": "input",
+      "refersTo": "checkbox",
+      "description": "A whole list row is the checkbox label: 26px box fills fuchsia with a white check. The switch is a 46×28 pill that turns fuchsia.",
+      "html": "<div class=\"ds-checks\"><label class=\"ds-check\"><input type=\"checkbox\" checked><span class=\"ds-caja\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg></span><span>Torta tres leches</span></label><label class=\"ds-switch\"><input type=\"checkbox\" checked><span>Incluir precios en bolívares</span></label></div>",
+      "css": ".ds-checks{display:flex;flex-direction:column;gap:12px;max-width:380px;font-family:system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;color:var(--tinta,#2a1424)} .ds-check{position:relative;display:flex;align-items:center;gap:12px;min-height:56px;padding:0 16px;border:1px solid var(--linea,#f0dde6);border-radius:16px;background:var(--fondo-elevado,#fff);font-weight:600;cursor:pointer} .ds-check:hover{background:var(--fondo,#fff7fa)} .ds-check input,.ds-switch input{position:absolute;opacity:0;width:1px;height:1px} .ds-caja{display:grid;place-items:center;width:26px;height:26px;flex-shrink:0;border-radius:8px;border:1.5px solid var(--linea-fuerte,#e2c6d4);background:var(--fondo-elevado,#fff);color:transparent;transition:background-color 160ms cubic-bezier(0.16,1,0.3,1),border-color 160ms cubic-bezier(0.16,1,0.3,1),color 160ms cubic-bezier(0.16,1,0.3,1)} .ds-check input:checked+.ds-caja{background:var(--fucsia,#b0185b);border-color:var(--fucsia,#b0185b);color:#fff} .ds-check input:focus-visible+.ds-caja{box-shadow:0 0 0 3px rgb(176 24 91 / 0.18)} .ds-switch{position:relative;display:flex;align-items:center;cursor:pointer;font-weight:500} .ds-switch span{position:relative;padding-left:58px;line-height:28px} .ds-switch span::before,.ds-switch span::after{content:\"\";position:absolute;left:0;top:50%;transform:translateY(-50%);transition:background-color 180ms cubic-bezier(0.16,1,0.3,1),transform 220ms cubic-bezier(0.16,1,0.3,1)} .ds-switch span::before{width:46px;height:28px;border-radius:999px;background:var(--linea-fuerte,#e2c6d4)} .ds-switch span::after{left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgb(0 0 0 / 0.25)} .ds-switch input:checked+span::before{background:var(--fucsia,#b0185b)} .ds-switch input:checked+span::after{transform:translate(18px,-50%)} .ds-switch input:focus-visible+span::before{outline:2.5px solid var(--fucsia-texto,#b0185b);outline-offset:2px}"
+    },
+    {
+      "name": "Undo Toast",
+      "kind": "custom",
+      "refersTo": "toast",
+      "description": "Floating fixed-ink bar confirming a save or delete; after a delete it offers \"Deshacer\" in Sun Yellow for 6s. Takes the floating shadow.",
+      "html": "<div class=\"ds-toasts\"><div class=\"ds-toast\" role=\"status\"><span>“Pie de limón” borrado</span><button class=\"ds-deshacer\">Deshacer</button></div><div class=\"ds-toast\" role=\"status\"><span>Venta guardada · +$12,00</span><button class=\"ds-cerrar\" aria-label=\"Cerrar aviso\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M18 6 6 18\"/><path d=\"m6 6 12 12\"/></svg></button></div></div>",
+      "css": ".ds-toasts{display:flex;flex-direction:column;align-items:flex-start;gap:12px;font-family:system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif} .ds-toast{display:flex;align-items:center;gap:12px;padding:10px 10px 10px 16px;border-radius:14px;background:var(--tinta-fija,#2a1424);color:#fff;font-weight:500;box-shadow:0 2px 6px rgb(64 12 40 / 0.1),0 14px 34px rgb(64 12 40 / 0.16);animation:ds-sube 260ms cubic-bezier(0.16,1,0.3,1)} .ds-deshacer{min-height:36px;padding:0 12px;border:0;border-radius:9px;background:transparent;color:var(--amarillo,#ffd23f);font:700 0.95rem system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;cursor:pointer} .ds-deshacer:hover{background:rgb(255 255 255 / 0.1)} .ds-cerrar{display:grid;place-items:center;width:32px;height:32px;border:0;border-radius:8px;background:transparent;color:#e9d6e1;cursor:pointer} .ds-cerrar:hover{background:rgb(255 255 255 / 0.1)} .ds-toast button:focus-visible{outline:2.5px solid var(--amarillo,#ffd23f);outline-offset:2px} @keyframes ds-sube{from{opacity:0;transform:translateY(12px) scale(0.97)}} @media (prefers-reduced-motion: reduce){.ds-toast{animation-duration:1ms}}"
     },
     {
       "name": "Torta",
       "kind": "custom",
       "refersTo": "suggested-price",
-      "description": "Signature: the price as a top-down cake on a gold board; slices in fixed serie-1..6 order, legend table mandatory.",
-      "html": "<figure class=\"ds-torta\"><svg viewBox=\"0 0 200 200\" class=\"ds-torta-svg\" aria-hidden=\"true\"><circle cx=\"100\" cy=\"100\" r=\"98\" class=\"ds-base\"/><circle cx=\"100\" cy=\"100\" r=\"93.5\" class=\"ds-brillo\"/><circle cx=\"100\" cy=\"100\" r=\"88\" fill=\"#fff\"/><g transform=\"rotate(-90 100 100)\" fill=\"none\" stroke-width=\"34\"><circle class=\"ds-p\" cx=\"100\" cy=\"100\" r=\"70\" stroke=\"var(--serie-1,#d6246e)\" stroke-dasharray=\"137.7 440\" stroke-dashoffset=\"0\"/><circle class=\"ds-p\" cx=\"100\" cy=\"100\" r=\"70\" stroke=\"var(--serie-2,#13a3a0)\" stroke-dasharray=\"36.9 440\" stroke-dashoffset=\"-139.9\"/><circle class=\"ds-p\" cx=\"100\" cy=\"100\" r=\"70\" stroke=\"var(--serie-3,#f08a24)\" stroke-dasharray=\"19.8 440\" stroke-dashoffset=\"-179\"/><circle class=\"ds-p\" cx=\"100\" cy=\"100\" r=\"70\" stroke=\"var(--serie-4,#7a52d1)\" stroke-dasharray=\"46.6 440\" stroke-dashoffset=\"-201\"/><circle class=\"ds-p\" cx=\"100\" cy=\"100\" r=\"70\" stroke=\"var(--serie-5,#5e8fd6)\" stroke-dasharray=\"10.1 440\" stroke-dashoffset=\"-249.8\"/><circle class=\"ds-p\" cx=\"100\" cy=\"100\" r=\"70\" stroke=\"var(--serie-6,#c99a12)\" stroke-dasharray=\"175.5 440\" stroke-dashoffset=\"-262.1\"/></g></svg><div class=\"ds-centro\"><span class=\"ds-et\">Precio</span><strong class=\"ds-val\">$9,00</strong><span class=\"ds-sub\">Bs. 1.929,33</span></div><figcaption class=\"ds-leyenda\"><table><tbody><tr tabindex=\"0\"><th><i style=\"background:var(--serie-1,#d6246e)\"></i>Ingredientes</th><td>$2,87</td><td class=\"ds-pct\">31,8%</td></tr><tr tabindex=\"0\"><th><i style=\"background:var(--serie-2,#13a3a0)\"></i>Empaque</th><td>$0,80</td><td class=\"ds-pct\">8,9%</td></tr><tr tabindex=\"0\"><th><i style=\"background:var(--serie-3,#f08a24)\"></i>Horno</th><td>$0,45</td><td class=\"ds-pct\">5%</td></tr><tr tabindex=\"0\"><th><i style=\"background:var(--serie-4,#7a52d1)\"></i>Tu trabajo</th><td>$1,00</td><td class=\"ds-pct\">11,1%</td></tr><tr tabindex=\"0\"><th><i style=\"background:var(--serie-5,#5e8fd6)\"></i>Merma</th><td>$0,26</td><td class=\"ds-pct\">2,8%</td></tr><tr tabindex=\"0\"><th><i style=\"background:var(--serie-6,#c99a12)\"></i>Ganancia</th><td>$3,63</td><td class=\"ds-pct\">40,3%</td></tr></tbody></table></figcaption></figure>",
-      "css": ".ds-torta{margin:0;display:grid;justify-items:center;gap:16px;max-width:340px;font-family:system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;color:var(--tinta,#2a1424)} .ds-torta-svg,.ds-centro{grid-row:1;grid-column:1} .ds-torta-svg{width:min(100%,300px);height:auto;overflow:visible} .ds-base{fill:var(--oro,#c99a12);stroke:#a47b06;stroke-width:1.2} .ds-brillo{fill:none;stroke:var(--oro-claro,#f3dc94);stroke-width:1.6;stroke-dasharray:2.5 3.5;stroke-linecap:round} .ds-p{transition:stroke-dasharray 520ms cubic-bezier(0.16,1,0.3,1),stroke-dashoffset 520ms cubic-bezier(0.16,1,0.3,1),stroke-width 180ms cubic-bezier(0.16,1,0.3,1),opacity 180ms cubic-bezier(0.16,1,0.3,1);cursor:pointer} .ds-p:hover{stroke-width:40} .ds-torta-svg g:hover .ds-p:not(:hover){opacity:0.32} .ds-centro{align-self:center;display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none} .ds-et{font-size:0.75rem;font-weight:600;color:var(--tinta-3,#75606e)} .ds-val{color:var(--oro-tinta,#7f5c00);font:700 1.6rem/1.1 \"Bricolage Grotesque Variable\",ui-rounded,system-ui,sans-serif;letter-spacing:-0.02em;font-variant-numeric:tabular-nums} .ds-sub{font-size:0.72rem;color:var(--turquesa-tinta,#0b6c69)} .ds-leyenda{width:100%} .ds-leyenda table{width:100%;border-collapse:collapse} .ds-leyenda tr{transition:background-color 140ms cubic-bezier(0.16,1,0.3,1)} .ds-leyenda tr:hover,.ds-leyenda tr:focus-visible{background:var(--fondo-hundido,#fbeef3);outline:none} .ds-leyenda th,.ds-leyenda td{padding:7px 8px;border-bottom:1px solid var(--linea,#f0dde6);font-size:0.95rem} .ds-leyenda th{text-align:left;font-weight:500;display:flex;align-items:center;gap:10px} .ds-leyenda i{width:12px;height:12px;border-radius:4px;flex-shrink:0} .ds-leyenda td{text-align:right;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap} .ds-leyenda td.ds-pct{font-weight:400;color:var(--tinta-3,#75606e)} @media (prefers-reduced-motion: reduce){.ds-p,.ds-leyenda tr{transition-duration:1ms}}"
-    },
-    {
-      "name": "Suggested Price",
-      "kind": "card",
-      "refersTo": "suggested-price",
-      "description": "Gold frosting panel with the suggested price; Bs in gold ink context.",
-      "html": "<div class=\"ds-sugerido\"><span class=\"ds-sug-et\">Precio sugerido</span><span class=\"ds-sug-cifra\">$9,00</span><span class=\"ds-sug-sub\">Bs. 1.929,33 · exacto $8,95</span><button class=\"ds-sug-btn\">Usar este precio</button></div>",
-      "css": ".ds-sugerido{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:16px;border-radius:14px;background:var(--oro-claro,#f3dc94);color:var(--oro-tinta,#7f5c00);font-family:system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif} .ds-sug-et{font-weight:600;font-size:0.92rem} .ds-sug-cifra{font:700 2.2rem/1.05 \"Bricolage Grotesque Variable\",ui-rounded,system-ui,sans-serif;color:var(--tinta,#2a1424);letter-spacing:-0.02em;font-variant-numeric:tabular-nums} .ds-sug-sub{font-variant-numeric:tabular-nums} .ds-sug-btn{margin-top:6px;min-height:38px;padding:0 13px;border-radius:10px;border:1px solid var(--linea-fuerte,#e2c6d4);background:var(--fondo-elevado,#fff);color:var(--tinta,#2a1424);font:600 0.92rem system-ui,sans-serif;cursor:pointer;transition:background-color 160ms cubic-bezier(0.16,1,0.3,1),transform 120ms cubic-bezier(0.16,1,0.3,1)} .ds-sug-btn:hover{background:var(--fondo-hundido,#fbeef3)} .ds-sug-btn:active{transform:scale(0.97)} .ds-sug-btn:focus-visible{outline:2.5px solid var(--fucsia,#b0185b);outline-offset:2px}"
+      "description": "Signature: the price as a top-down cake on a gold board; slices in fixed serie-1..6 order, legend table mandatory. The Inicio month torta uses the same board with serie-gasto and serie-6.",
+      "html": "<figure class=\"ds-torta\"><svg viewBox=\"0 0 200 200\" class=\"ds-torta-svg\" aria-hidden=\"true\"><circle cx=\"100\" cy=\"100\" r=\"98\" class=\"ds-base\"/><circle cx=\"100\" cy=\"100\" r=\"93.5\" class=\"ds-brillo\"/><circle cx=\"100\" cy=\"100\" r=\"90\" class=\"ds-disco\"/><g transform=\"rotate(-90 100 100)\" fill=\"none\" stroke-width=\"34\"><circle class=\"ds-p\" cx=\"100\" cy=\"100\" r=\"70\" stroke=\"var(--serie-1,#d6246e)\" stroke-dasharray=\"137.7 440\" stroke-dashoffset=\"0\"/><circle class=\"ds-p\" cx=\"100\" cy=\"100\" r=\"70\" stroke=\"var(--serie-2,#13a3a0)\" stroke-dasharray=\"36.9 440\" stroke-dashoffset=\"-139.9\"/><circle class=\"ds-p\" cx=\"100\" cy=\"100\" r=\"70\" stroke=\"var(--serie-3,#f08a24)\" stroke-dasharray=\"19.8 440\" stroke-dashoffset=\"-179\"/><circle class=\"ds-p\" cx=\"100\" cy=\"100\" r=\"70\" stroke=\"var(--serie-4,#7a52d1)\" stroke-dasharray=\"46.6 440\" stroke-dashoffset=\"-201\"/><circle class=\"ds-p\" cx=\"100\" cy=\"100\" r=\"70\" stroke=\"var(--serie-5,#5e8fd6)\" stroke-dasharray=\"10.1 440\" stroke-dashoffset=\"-249.8\"/><circle class=\"ds-p\" cx=\"100\" cy=\"100\" r=\"70\" stroke=\"var(--serie-6,#c99a12)\" stroke-dasharray=\"175.5 440\" stroke-dashoffset=\"-262.1\"/></g></svg><div class=\"ds-centro\"><span class=\"ds-et\">Precio</span><strong class=\"ds-val\">$9,00</strong><span class=\"ds-sub\">Bs. 1.929,33</span></div><figcaption class=\"ds-leyenda\"><table><tbody><tr tabindex=\"0\"><th><i style=\"background:var(--serie-1,#d6246e)\"></i>Ingredientes</th><td>$2,87</td><td class=\"ds-pct\">31,8%</td></tr><tr tabindex=\"0\"><th><i style=\"background:var(--serie-2,#13a3a0)\"></i>Empaque</th><td>$0,80</td><td class=\"ds-pct\">8,9%</td></tr><tr tabindex=\"0\"><th><i style=\"background:var(--serie-3,#f08a24)\"></i>Horno</th><td>$0,45</td><td class=\"ds-pct\">5%</td></tr><tr tabindex=\"0\"><th><i style=\"background:var(--serie-4,#7a52d1)\"></i>Tu trabajo</th><td>$1,00</td><td class=\"ds-pct\">11,1%</td></tr><tr tabindex=\"0\"><th><i style=\"background:var(--serie-5,#5e8fd6)\"></i>Merma</th><td>$0,26</td><td class=\"ds-pct\">2,8%</td></tr><tr tabindex=\"0\"><th><i style=\"background:var(--serie-6,#c99a12)\"></i>Ganancia</th><td>$3,63</td><td class=\"ds-pct\">40,3%</td></tr></tbody></table></figcaption></figure>",
+      "css": ".ds-torta{margin:0;display:grid;justify-items:center;gap:16px;max-width:340px;font-family:system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;color:var(--tinta,#2a1424)} .ds-torta-svg,.ds-centro{grid-row:1;grid-column:1} .ds-torta-svg{width:min(100%,300px);height:auto;overflow:visible} .ds-base{fill:var(--oro,#c99a12);stroke:#a47b06;stroke-width:1.2} .ds-brillo{fill:none;stroke:#f3dc94;stroke-width:1.6;stroke-dasharray:2.5 3.5;stroke-linecap:round} .ds-p{transition:stroke-dasharray 520ms cubic-bezier(0.16,1,0.3,1),stroke-dashoffset 520ms cubic-bezier(0.16,1,0.3,1),stroke-width 180ms cubic-bezier(0.16,1,0.3,1),opacity 180ms cubic-bezier(0.16,1,0.3,1);cursor:pointer} .ds-p:hover{stroke-width:40} .ds-torta-svg g:hover .ds-p:not(:hover){opacity:0.32} .ds-centro{align-self:center;display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none} .ds-et{font-size:0.75rem;font-weight:600;color:var(--tinta-3,#75606e)} .ds-val{color:var(--oro-tinta,#7f5c00);font:700 clamp(1.25rem,6vw,1.6rem)/1.1 \"Bricolage Grotesque Variable\",ui-rounded,system-ui,sans-serif;letter-spacing:-0.02em;font-variant-numeric:tabular-nums} .ds-sub{font-size:0.72rem;color:var(--turquesa-tinta,#0b6c69)} .ds-leyenda{width:100%} .ds-leyenda table{width:100%;border-collapse:collapse} .ds-leyenda tr{transition:background-color 140ms cubic-bezier(0.16,1,0.3,1)} .ds-leyenda tr:hover,.ds-leyenda tr:focus-visible{background:var(--fondo-hundido,#fbeef3)} .ds-leyenda tr:focus-visible{outline:2.5px solid var(--fucsia-texto,#b0185b);outline-offset:-2px} .ds-leyenda th,.ds-leyenda td{padding:7px 8px;border-bottom:1px solid var(--linea,#f0dde6);font-size:0.95rem} .ds-leyenda th{text-align:left;font-weight:500;display:flex;align-items:center;gap:10px} .ds-leyenda i{width:12px;height:12px;border-radius:4px;flex-shrink:0} .ds-leyenda td{text-align:right;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap} .ds-leyenda td.ds-pct{font-weight:400;color:var(--tinta-3,#75606e)} @media (prefers-reduced-motion: reduce){.ds-p,.ds-leyenda tr{transition-duration:1ms}} .ds-disco{fill:var(--fondo-elevado,#fff)}"
     }
   ],
   "narrative": {
     "northStar": "The Piñata Table",
-    "overview": "The app is the party table at a Venezuelan birthday: a fuchsia shell around a white tablecloth with a faint pink tint, sun yellow where the eye should land, turquoise for bolívares and gold for the cake board and every price. It rejects the grey finance-app ledger with one accent. Numbers are friendly and big where they answer a question (this month's profit, today's rate, a suggested price) and quiet everywhere else.\n\nDensity is a phone in a kitchen: one column, 16px side gutters, 44–64px touch rows, a fixed bottom tab bar, and the main action floating above it. On a computer the same content sits in a centred column (680px, 1040px for the recipe editor and Inicio), with the fuchsia moved into a side rail. Surfaces are flat white on the pinkish ground, separated by hairlines in pink-tinted lines and lifted only by soft plum shadows on lists, panels and floating actions.\n\nThe signature is the torta: a top-down cake donut whose slices show where each dollar of a price goes, sitting on a gold board ring, with the price in the centre and a legend table of values beside it.",
+    "overview": "The app is the party table at a Venezuelan birthday: a white tablecloth with a faint pink tint, fuchsia where something acts, sun yellow where the eye should land, turquoise for bolívares and gold for the cake board and every price. It rejects the grey finance-app ledger with one accent. Numbers are friendly and big where they answer a question (this month's profit, today's rate, a suggested price) and quiet everywhere else.\n\nThe refinement round made the table cleaner. On phones the header is the tablecloth itself with the business name in fuchsia; fuchsia gathers on what acts: the filled pill behind the active tab's icon, the primary buttons, the checkbox and switch when on, and the desktop rail. Cards and lists sit on the ground as white plates edged by a 1px pink line; shadows are reserved for things that float over the page. At night the same table is laid on a plum-black cloth, with every role lifted to read on it, chosen per device as Automático, Claro or Oscuro.\n\nDensity is a phone in a kitchen: one column, 16px side gutters, 56–64px touch rows, a fixed five-tab bar, and the day's main actions fixed above it. On a computer the same content sits in a centred column beside a fuchsia rail that lists every section. The signature is the torta: a top-down cake donut on a gold board whose slices show where each dollar of a price goes; on Inicio a smaller month torta sets what went to expenses against what she kept.",
     "keyCharacteristics": [
-      "Fuchsia shell, pink-tinted white ground, near-black plum ink.",
+      "Tablecloth ground, white plates edged by a 1px line, near-black plum ink; plum-black ground at night.",
+      "Fuchsia on what acts: active tab pill, primary actions, toggles, the desktop rail.",
       "Two-currency ink: dollars in ink, bolívares in turquoise ink, prices in gold ink.",
       "Plain label/amount rows instead of stat tiles.",
       "Bricolage Grotesque for headings and answer figures; system sans for everything read.",
-      "One authored motion: the torta slices settling into place."
+      "Shadows only on floating things: fixed actions, toasts, tooltips."
     ],
     "rules": [
       {
         "name": "The Two-Currency Ink Rule",
         "body": "Bolívares always read in turquoise ink (`turquesa-tinta`), dollars in plum ink, prices in gold ink (`oro-tinta`). The Bs colour wins over any other text colour it sits inside (the stylesheet ends with a doubled `.bs` selector to guarantee it).",
+        "section": "colors"
+      },
+      {
+        "name": "The Text-or-Fill Rule",
+        "body": "Fuchsia as text, outline or focused border is `fucsia-texto`; fuchsia as a filled surface is `fucsia`, with white on it. They match in light and split at night; using the fill token for text fails on the plum-black ground.",
+        "section": "colors"
+      },
+      {
+        "name": "The Fixed Ink Rule",
+        "body": "Text on Sun Yellow, on fixed-white chips and the toast ground uses `tinta-fija`, never `tinta`, because `tinta` turns pale at night and yellow does not.",
         "section": "colors"
       },
       {
@@ -635,47 +1334,65 @@
       },
       {
         "name": "The Sun Is Rare Rule",
-        "body": "Sun Yellow marks only today's rate and where you are (rate chip, rate panel, active rail item, selection). It is never a decorative fill.",
+        "body": "Sun Yellow marks only today's rate, where you are, and the one thing to do now (undo). It is never a decorative fill.",
         "section": "colors"
       },
       {
         "name": "The Fixed Slice Order Rule",
-        "body": "`serie-1` to `serie-6` map to the six cost parts in that order, always. Never cycle, reorder, or add a seventh colour.",
+        "body": "`serie-1` to `serie-6` map to the six cost parts in that order, always; expenses are always `serie-gasto`. Never cycle, reorder, or add a colour without re-running the validator in both themes.",
         "section": "colors"
       },
       {
         "name": "The Answer Speaks Bricolage Rule",
-        "body": "A figure that answers the baker's question (profit, rate, price, row totals) is set in the display face; amounts inside lists and tables stay in the body face at 600–650. Every amount carries tabular numerals.",
+        "body": "A figure that answers the baker's question (profit, rate, price, row totals, the amount to charge) is set in the display face; amounts inside lists and tables stay in the body face at 600–650. Every amount carries tabular numerals.",
+        "section": "typography"
+      },
+      {
+        "name": "The Spoken Number Rule",
+        "body": "Money reads the Venezuelan way: `$1.234,56` and `Bs. 1.234,56` with two decimals, tiny unit costs kept to three significant digits (`$0,0024`), the rate to four decimals, percentages to one. Signs are `+` and the true minus `−`. Counts choose the singular or plural word (\"1 venta\", \"3 ventas\", \"1 porción\"), never \"venta(s)\".",
         "section": "typography"
       },
       {
         "name": "The Rows Not Tiles Rule",
-        "body": "Summaries are label/amount rows (`.renglones`), never KPI tiles or cards-per-number.",
+        "body": "Summaries are label/amount rows, never KPI tiles or cards-per-number.",
         "section": "layout"
       },
       {
-        "name": "The Plum Shadow Rule",
-        "body": "Every shadow is tinted with the plum ink or the fuchsia, soft and two-layered. Blocks of form fields use a 1px Pink Hairline border instead of a shadow.",
+        "name": "The Line Not Shadow Rule",
+        "body": "Cards, lists, blocks, panels, the tab bar, the sticky footers and the Inicio action strip are separated by a 1px line. A shadow on a resting surface is drift.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Floating Earns Shadow Rule",
+        "body": "Only an element positioned over content (fixed or absolutely placed: action pill, toast, tooltip) takes `--sombra-alta`.",
         "section": "elevation"
       }
     ],
     "dos": [
-      "**Do** set every Bs amount in turquoise ink (`turquesa-tinta`) and every price in gold ink (`oro-tinta`); keep dollars in plum ink.",
-      "**Do** mark income and expense with `+` / `−` signs and the row badge (plus on Fuchsia Blush, minus on Pressed Pink).",
-      "**Do** keep the torta's slice order and colours exactly `serie-1` to `serie-6`, and always pair the cake with its legend table of values.",
-      "**Do** summarise with plain label/amount rows divided by a Pink Hairline.",
-      "**Do** keep touch targets at 44px or more and amounts in tabular numerals.",
-      "**Do** tint shadows plum or fuchsia and keep them soft.",
-      "**Do** keep state feedback to colour, background and press-scale in 120–180ms on `cubic-bezier(0.16, 1, 0.3, 1)`, and respect reduced motion."
+      "Do set every Bs amount in turquoise ink (`turquesa-tinta`) and every price in gold ink (`oro-tinta`); keep dollars in plum ink.",
+      "Do use `fucsia-texto` for fuchsia text, links and focus, and `fucsia` only for filled surfaces with white on them.",
+      "Do put `tinta-fija` on Sun Yellow and on fixed-white surfaces, so they read the same at night.",
+      "Do edge cards, lists and blocks with a 1px `linea` and keep `--sombra-alta` for fixed actions, toasts and tooltips.",
+      "Do mark income and expense with `+` / `−` signs and the row badge (plus on Fuchsia Blush, minus on Pressed Pink).",
+      "Do keep the torta's slice order and colours exactly `serie-1` to `serie-6`, expenses in `serie-gasto`, and pair every cake with values in text.",
+      "Do check every new colour pair in both themes; the dark tokens are part of the system, not an afterthought.",
+      "Do keep the QR on a white ground in every theme.",
+      "Do undo a delete from the toast rather than asking first.",
+      "Do summarise with plain label/amount rows divided by a Pink Hairline.",
+      "Do keep touch targets at 44px or more on phones and amounts in tabular numerals.",
+      "Do write money as `$1.234,56` / `Bs. 1.234,56` and pick singular or plural from the count.",
+      "Do keep state feedback to colour, background and press-scale in 120–220ms on `--salida`, and respect reduced motion."
     ],
     "donts": [
-      "**Don't** use green for income or profit; red only for a real loss or an error.",
-      "**Don't** set Bs amounts in any colour but turquoise ink, and don't use the bright `turquesa`, `oro` or `serie-*` hues as text.",
-      "**Don't** let the torta stand without its legend: orange and gold slices are below 3:1 against the surface.",
-      "**Don't** cycle, reorder or extend the chart series, or swap merma back to a grey.",
-      "**Don't** build stat tiles or KPI cards for the month's numbers.",
-      "**Don't** spend Sun Yellow on decoration; it marks only the rate and the current place.",
-      "**Don't** add a second authored animation; the torta's slices are the one."
+      "Don't use green for income or profit; red only for a real loss or an error. WhatsApp Green belongs to the WhatsApp icon alone.",
+      "Don't set Bs amounts in any colour but turquoise ink, and don't use the bright `turquesa`, `oro` or `serie-*` hues as text.",
+      "Don't set fuchsia text with the `fucsia` fill token, or text on yellow with `tinta`; both break at night.",
+      "Don't add a shadow to a resting card, list, block or bar; the line is the elevation.",
+      "Don't let the product torta stand without its legend table: orange and gold slices are below 3:1 against the light surface.",
+      "Don't cycle, reorder or extend the chart series, reuse a slice hue for expenses, or swap merma back to a grey.",
+      "Don't build stat tiles or KPI cards for the month's numbers.",
+      "Don't spend Sun Yellow on decoration; it marks only the rate, the current place and the undo.",
+      "Don't put payment details, account numbers or a QR image in the code; they come only from the owner's private settings."
     ]
   }
 }
