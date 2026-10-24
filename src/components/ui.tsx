@@ -143,34 +143,3 @@ export function Vacio({ titulo, children, accion }: { titulo: string; children: 
     </div>
   )
 }
-
-export function Confirmar({
-  texto,
-  onConfirmar,
-  children,
-}: {
-  texto: string
-  onConfirmar: () => void
-  children: ReactNode
-}) {
-  const [abierto, setAbierto] = useState(false)
-  if (!abierto)
-    return (
-      <button type="button" className="boton boton-peligro-suave" onClick={() => setAbierto(true)}>
-        {children}
-      </button>
-    )
-  return (
-    <div className="confirmar" role="alert">
-      <p>{texto}</p>
-      <div className="fila-botones">
-        <button type="button" className="boton boton-secundario" onClick={() => setAbierto(false)}>
-          Cancelar
-        </button>
-        <button type="button" className="boton boton-peligro" onClick={onConfirmar}>
-          Sí, borrar
-        </button>
-      </div>
-    </div>
-  )
-}

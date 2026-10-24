@@ -10,11 +10,11 @@ export const AJUSTES_INICIALES: Ajustes = {
 }
 
 export function datosVacios(): Datos {
-  return { insumos: {}, recetas: {}, movimientos: {}, ajustes: { ...AJUSTES_INICIALES } }
+  return { insumos: {}, recetas: {}, movimientos: {}, encargos: {}, ajustes: { ...AJUSTES_INICIALES } }
 }
 
-type Coleccion = 'insumos' | 'recetas' | 'movimientos'
-export const COLECCIONES: Coleccion[] = ['insumos', 'recetas', 'movimientos']
+export type Coleccion = 'insumos' | 'recetas' | 'movimientos' | 'encargos'
+export const COLECCIONES: Coleccion[] = ['insumos', 'recetas', 'movimientos', 'encargos']
 
 function mezclarColeccion<T extends Registro>(a: Record<string, T> = {}, b: Record<string, T> = {}): Record<string, T> {
   const out: Record<string, T> = { ...a }
@@ -36,6 +36,7 @@ export function mezclar(a: Partial<Datos> | null | undefined, b: Partial<Datos> 
     insumos: mezclarColeccion(x.insumos, y.insumos),
     recetas: mezclarColeccion(x.recetas, y.recetas),
     movimientos: mezclarColeccion(x.movimientos, y.movimientos),
+    encargos: mezclarColeccion(x.encargos, y.encargos),
     ajustes: ajustesB.updatedAt > ajustesA.updatedAt ? ajustesB : ajustesA,
   }
 }

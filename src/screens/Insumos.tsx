@@ -2,7 +2,7 @@ import { Plus, Search } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { aUSD, costoPorBase, FACTOR } from '../../shared/calc'
 import type { Insumo, Moneda, UnidadCompra } from '../../shared/types'
-import { Campo, Confirmar, Numero, Pantalla, Segmentos, Vacio } from '../components/ui'
+import { Campo, Numero, Pantalla, Segmentos, Vacio } from '../components/ui'
 import { enBs, fmtBs, fmtNum, fmtUSD, fmtUSDfino, uid } from '../lib/format'
 import { ir, volver } from '../lib/router'
 import { useApp, useTasa, vivos } from '../lib/store'
@@ -43,6 +43,7 @@ export function Insumos() {
   return (
     <Pantalla
       titulo="Insumos"
+      atras="/mas"
       accion={
         <a className="boton boton-primario boton-chico" href="#/insumos/nuevo">
           <Plus size={18} /> Nuevo
@@ -102,7 +103,7 @@ export function Insumos() {
 }
 
 export function FormInsumo({ id }: { id: string }) {
-  const { datos, guardarInsumo, borrar } = useApp()
+  const { datos, guardarInsumo, borrar, avisar } = useApp()
   const tasaHoy = useTasa()
   const existente = id !== 'nuevo' ? datos.insumos[id] : undefined
   const [f, setF] = useState<Omit<Insumo, 'updatedAt' | 'precioUSD'>>(
@@ -149,6 +150,7 @@ export function FormInsumo({ id }: { id: string }) {
       tasa: f.moneda === 'VES' ? tasa : undefined,
       updatedAt: 0,
     })
+    avisar(existente ? 'Insumo guardado' : `“${f.nombre.trim()}” agregado`)
     volver('/insumos')
   }
 
@@ -258,15 +260,16 @@ export function FormInsumo({ id }: { id: string }) {
             Guardar insumo
           </button>
           {existente && (
-            <Confirmar
-              texto={`¿Borrar “${existente.nombre}”? Las recetas que lo usan dejarán de contarlo.`}
-              onConfirmar={() => {
-                borrar('insumos', existente.id)
+            <button
+              type="button"
+              className="boton boton-peligro-suave"
+              onClick={() => {
+                borrar('insumos', existente.id, `“${existente.nombre}” borrado`)
                 ir('/insumos')
               }}
             >
               Borrar insumo
-            </Confirmar>
+            </button>
           )}
         </div>
       </form>

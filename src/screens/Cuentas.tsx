@@ -1,10 +1,11 @@
 import { ChevronLeft, ChevronRight, Minus, Plus } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
-import { aUSD, desglose, resumenMes } from '../../shared/calc'
-import type { CategoriaGasto, MetodoPago, Moneda, Movimiento } from '../../shared/types'
-import { Campo, Confirmar, Numero, Pantalla, Segmentos, Vacio } from '../components/ui'
+import { aUSD, precioDe, resumenMes, tienePorciones } from '../../shared/calc'
+import type { CategoriaGasto, Formato, MetodoPago, Moneda, Movimiento } from '../../shared/types'
+import { Campo, Numero, Pantalla, Segmentos, Vacio } from '../components/ui'
 import { enBs, fechaCorta, fmtBs, fmtNum, fmtUSD, hoy, mesDe, moverMes, nombreMes, uid } from '../lib/format'
 import { ir, parametro, volver } from '../lib/router'
+import { ListaClientes } from './Encargos'
 import { useApp, useTasa, vivos } from '../lib/store'
 
 export const METODOS: { valor: MetodoPago; texto: string }[] = [
@@ -46,11 +47,17 @@ export function SelectorMes({ mes, onCambio }: { mes: string; onCambio: (m: stri
   )
 }
 
+export function cantidadTexto(cantidad: number | undefined, formato: Formato | undefined): string | null {
+  const n = cantidad ?? 1
+  if (formato === 'porcion') return `${fmtNum(n)} ${n === 1 ? 'porción' : 'porciones'}`
+  return n !== 1 ? `${fmtNum(n)} enteros` : null
+}
+
 export function FilaMovimiento({ m, nombreReceta }: { m: Movimiento; nombreReceta?: string }) {
   const venta = m.tipo === 'venta'
   const titulo = m.descripcion || nombreReceta || (venta ? 'Venta' : 'Gasto')
   const detalle = venta
-    ? [m.cantidad && m.cantidad !== 1 ? `${fmtNum(m.cantidad)} und` : null, METODOS.find((x) => x.valor === m.metodo)?.texto, m.cliente]
+    ? [cantidadTexto(m.cantidad, m.formato), METODOS.find((x) => x.valor === m.metodo)?.texto, m.encargoId ? null : m.cliente]
     : [CATEGORIAS.find((x) => x.valor === m.categoria)?.texto]
   return (
     <a href={`#/cuentas/${m.id}`} className="fila">
@@ -77,7 +84,7 @@ export function Cuentas() {
   const [mes, setMes] = useState(() => mesDe(hoy()))
   const [filtro, setFiltro] = useState<'todo' | 'venta' | 'gasto'>('todo')
   const movs = useMemo(() => vivos(datos.movimientos), [datos.movimientos])
-  const resumen = resumenMes(movs, mes)
+  const resumen = resumenMes(movs, mes, vivos(datos.encargos))
   const delMes = movs
     .filter((m) => m.fecha.startsWith(mes) && (filtro === 'todo' || m.tipo === filtro))
     .sort((a, b) => (a.fecha === b.fecha ? b.updatedAt - a.updatedAt : b.fecha.localeCompare(a.fecha)))
@@ -151,14 +158,12 @@ export function Cuentas() {
 }
 
 export function FormMovimiento({ id }: { id: string }) {
-  const { datos, guardarMovimiento, borrar } = useApp()
+  const { datos, guardarMovimiento, borrar, avisar } = useApp()
   const tasaHoy = useTasa()
   const existente = id !== 'nuevo' ? datos.movimientos[id] : undefined
   const recetas = vivos(datos.recetas).sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'))
-  const precioDe = (recetaId?: string) => {
-    const r = recetaId ? datos.recetas[recetaId] : undefined
-    return r ? desglose(r, datos.insumos, datos.ajustes).precio : NaN
-  }
+  const precio = (recetaId: string | undefined, formato: Formato = 'entero') =>
+    precioDe(recetaId ? datos.recetas[recetaId] : undefined, formato, datos.insumos, datos.ajustes)
   const [m, setM] = useState<Movimiento>(() => {
     if (existente) return existente
     const tipo = parametro('tipo') === 'gasto' ? 'gasto' : 'venta'
@@ -169,8 +174,9 @@ export function FormMovimiento({ id }: { id: string }) {
       fecha: hoy(),
       descripcion: '',
       recetaId,
+      formato: 'entero',
       cantidad: tipo === 'venta' ? 1 : undefined,
-      monto: tipo === 'venta' ? precioDe(recetaId) : NaN,
+      monto: tipo === 'venta' ? precio(recetaId) : NaN,
       moneda: 'USD',
       tasa: tasaHoy,
       montoUSD: 0,
@@ -206,7 +212,7 @@ export function FormMovimiento({ id }: { id: string }) {
   /** Re-price a sale from its recipe and quantity, in the chosen currency. */
   const conPrecio = (n: Partial<Movimiento>): Movimiento => {
     const x = { ...m, ...n }
-    const p = precioDe(x.recetaId)
+    const p = precio(x.recetaId, x.formato)
     if (!venta || !Number.isFinite(p)) return x
     const usd = p * (x.cantidad || 1)
     return { ...x, monto: x.moneda === 'VES' ? Math.round(usd * x.tasa * 100) / 100 : usd }
@@ -216,7 +222,8 @@ export function FormMovimiento({ id }: { id: string }) {
     setIntento(true)
     if (Object.values(errores).some(Boolean)) return
     guardarMovimiento({ ...m, descripcion: m.descripcion.trim(), cliente: m.cliente?.trim() || undefined, montoUSD })
-    volver('/cuentas')
+    avisar(venta ? `Venta guardada · +${fmtUSD(montoUSD)}` : `Gasto guardado · −${fmtUSD(montoUSD)}`)
+    volver(m.encargoId ? `/encargos/${m.encargoId}` : '/cuentas')
   }
 
   return (
@@ -238,8 +245,9 @@ export function FormMovimiento({ id }: { id: string }) {
                 ...m,
                 tipo,
                 recetaId: tipo === 'venta' ? recetas[0]?.id : undefined,
+                formato: 'entero',
                 cantidad: tipo === 'venta' ? 1 : undefined,
-                monto: tipo === 'venta' ? precioDe(recetas[0]?.id) : NaN,
+                monto: tipo === 'venta' ? precio(recetas[0]?.id) : NaN,
                 metodo: tipo === 'venta' ? 'pago-movil' : undefined,
                 categoria: tipo === 'gasto' ? 'insumos' : undefined,
               })
@@ -251,7 +259,12 @@ export function FormMovimiento({ id }: { id: string }) {
           />
         )}
 
-        {venta ? (
+        {m.encargoId && (
+          <p className="nota">
+            Este pago es de un encargo. <a href={`#/encargos/${m.encargoId}`}>Ver el encargo</a>
+          </p>
+        )}
+        {venta && !m.encargoId ? (
           <>
             {recetas.length > 0 ? (
               <div className="dos-columnas dos-columnas-ancha">
@@ -273,8 +286,19 @@ export function FormMovimiento({ id }: { id: string }) {
               </div>
             ) : (
               <p className="tenue">
-                Consejo: si creas tus <a href="#/recetas">recetas</a>, el precio se llena solo.
+                Consejo: si creas tus <a href="#/productos">productos</a>, el precio se llena solo.
               </p>
+            )}
+            {m.recetaId && datos.recetas[m.recetaId] && tienePorciones(datos.recetas[m.recetaId]) && (
+              <Segmentos<Formato>
+                etiqueta="Vendiste"
+                valor={m.formato ?? 'entero'}
+                onCambio={(formato) => setM(conPrecio({ formato }))}
+                opciones={[
+                  { valor: 'entero', texto: 'Entero' },
+                  { valor: 'porcion', texto: 'Por porción' },
+                ]}
+              />
             )}
             {!m.recetaId && (
               <Campo etiqueta="Descripción">
@@ -284,7 +308,7 @@ export function FormMovimiento({ id }: { id: string }) {
               </Campo>
             )}
           </>
-        ) : (
+        ) : venta ? null : (
           <>
             <Campo etiqueta="¿En qué gastaste?" error={err('descripcion')}>
               {(i, d) => (
@@ -369,9 +393,16 @@ export function FormMovimiento({ id }: { id: string }) {
                 </select>
               )}
             </Campo>
-            <Campo etiqueta="Cliente (opcional)">
-              {(i) => <input id={i} value={m.cliente ?? ''} placeholder="Sra. Carmen" onChange={(e) => setM({ ...m, cliente: e.target.value })} />}
-            </Campo>
+            {!m.encargoId && (
+              <Campo etiqueta="Cliente (opcional)">
+                {(i) => (
+                  <>
+                    <input id={i} list="clientes" value={m.cliente ?? ''} placeholder="Sra. Carmen" onChange={(e) => setM({ ...m, cliente: e.target.value })} />
+                    <ListaClientes />
+                  </>
+                )}
+              </Campo>
+            )}
           </>
         )}
 
@@ -393,15 +424,16 @@ export function FormMovimiento({ id }: { id: string }) {
             {venta ? 'Guardar venta' : 'Guardar gasto'}
           </button>
           {existente && (
-            <Confirmar
-              texto="¿Borrar este registro? Se quita de tus cuentas."
-              onConfirmar={() => {
-                borrar('movimientos', existente.id)
-                ir('/cuentas')
+            <button
+              type="button"
+              className="boton boton-peligro-suave"
+              onClick={() => {
+                borrar('movimientos', existente.id, venta ? 'Venta borrada' : 'Gasto borrado')
+                ir(existente.encargoId ? `/encargos/${existente.encargoId}` : '/cuentas')
               }}
             >
               Borrar registro
-            </Confirmar>
+            </button>
           )}
         </div>
       </form>

@@ -27,6 +27,9 @@ export interface Insumo extends Registro {
   precioUSD: number
 }
 
+/** A product is sold whole or by the portion. */
+export type Formato = 'entero' | 'porcion'
+
 export interface ItemReceta {
   insumoId: string
   cantidad: number
@@ -44,7 +47,11 @@ export interface Receta extends Registro {
   merma: number
   /** Desired margin on the sale price, 0–0.95. */
   margen: number
-  /** The price the baker actually charges per portion, in USD. Optional. */
+  /** Her own whole-product price in USD; the suggested one is used when absent. */
+  precioEntero?: number
+  /** Her own per-portion price in USD (only when it yields more than one portion). */
+  precioPorcion?: number
+  /** Legacy single price: per portion when rinde > 1, else for the whole. Read through `preciosPropios`. */
   precioVenta?: number
   nota?: string
 }
@@ -68,6 +75,33 @@ export interface Movimiento extends Registro {
   metodo?: MetodoPago
   categoria?: CategoriaGasto
   cliente?: string
+  formato?: Formato
+  /** Set when this payment belongs to an order (a deposit or the balance). */
+  encargoId?: string
+}
+
+export interface ItemEncargo {
+  recetaId?: string
+  descripcion: string
+  formato: Formato
+  cantidad: number
+  /** Unit price in USD. */
+  precioUSD: number
+}
+
+export type EstadoEncargo = 'pendiente' | 'listo' | 'entregado' | 'cancelado'
+
+/** An order to deliver on a date. Its payments are `Movimiento`s carrying its id. */
+export interface Encargo extends Registro {
+  cliente: string
+  telefono?: string
+  items: ItemEncargo[]
+  /** Delivery date, YYYY-MM-DD. */
+  entrega: string
+  /** Delivery time, HH:MM. */
+  hora?: string
+  estado: EstadoEncargo
+  nota?: string
 }
 
 export interface Ajustes {
@@ -77,12 +111,27 @@ export interface Ajustes {
   costoTrabajoHora: number
   margenPorDefecto: number
   mermaPorDefecto: number
+  /** Monthly sales goal in USD; 0 or absent means none. */
+  metaMensual?: number
+  /** Where clients pay. Lives only in her private store, never in the code. */
+  pago?: DatosPago
+}
+
+export interface DatosPago {
+  titular?: string
+  /** e.g. "0102 - Banco de Venezuela". */
+  banco?: string
+  telefono?: string
+  cedula?: string
+  /** QR image as a data URL, resized on the device before saving. */
+  qr?: string
 }
 
 export interface Datos {
   insumos: Record<string, Insumo>
   recetas: Record<string, Receta>
   movimientos: Record<string, Movimiento>
+  encargos: Record<string, Encargo>
   ajustes: Ajustes
 }
 

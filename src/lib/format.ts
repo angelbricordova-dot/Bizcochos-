@@ -71,3 +71,52 @@ export function fechaCorta(fecha: string): string {
 export function uid(): string {
   return crypto.randomUUID?.() ?? `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`
 }
+
+function aFecha(fecha: string): Date {
+  const [y, m, d] = fecha.split('-').map(Number)
+  return new Date(y, m - 1, d)
+}
+
+export function sumarDias(fecha: string, dias: number): string {
+  const d = aFecha(fecha)
+  d.setDate(d.getDate() + dias)
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+}
+
+/** "Hoy", "Mañana", "Ayer" or "sáb, 26 oct". */
+export function fechaRelativa(fecha: string): string {
+  const h = hoy()
+  if (fecha === h) return 'Hoy'
+  if (fecha === sumarDias(h, 1)) return 'Mañana'
+  if (fecha === sumarDias(h, -1)) return 'Ayer'
+  return fechaCorta(fecha)
+}
+
+/** "sábado 26 de octubre". */
+export function fechaLarga(fecha: string): string {
+  return aFecha(fecha).toLocaleDateString('es-VE', { weekday: 'long', day: 'numeric', month: 'long' })
+}
+
+/** "15:30" → "3:30 p. m." */
+export function hora12(hora: string): string {
+  const [h, m] = hora.split(':').map(Number)
+  if (!Number.isFinite(h)) return hora
+  const d = new Date(2000, 0, 1, h, m || 0)
+  return d.toLocaleTimeString('es-VE', { hour: 'numeric', minute: '2-digit' })
+}
+
+/** Greeting for the time of day. */
+export function saludo(): string {
+  const h = new Date().getHours()
+  return h < 12 ? 'Buenos días' : h < 19 ? 'Buenas tardes' : 'Buenas noches'
+}
+
+/** "1 entero · 3 porciones" */
+export function unidadesTexto(enteros: number, porciones: number): string {
+  return [
+    enteros ? `${fmtNum(enteros)} ${enteros === 1 ? 'entero' : 'enteros'}` : '',
+    porciones ? `${fmtNum(porciones)} ${porciones === 1 ? 'porción' : 'porciones'}` : '',
+  ]
+    .filter(Boolean)
+    .join(' · ')
+}

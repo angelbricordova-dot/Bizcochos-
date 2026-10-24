@@ -1,11 +1,20 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
-import { cambiosDesde, datosVacios, esDatosValidos, mezclar } from '../../shared/merge'
-import type { Ajustes, Datos, Insumo, Movimiento, Receta, Tasa } from '../../shared/types'
+import { cambiosDesde, COLECCIONES, datosVacios, esDatosValidos, mezclar, type Coleccion } from '../../shared/merge'
+import type { Ajustes, Datos, Encargo, Insumo, Movimiento, Receta, Registro, Tasa } from '../../shared/types'
 
 const LLAVE_DATOS = 'bizcochos:datos:v1'
 const LLAVE_ENVIADO = 'bizcochos:enviado:v1'
 const LLAVE_TASA = 'bizcochos:tasa:v1'
 const LLAVE_TASA_MANUAL = 'bizcochos:tasa-manual:v1'
+const LLAVE_TEMA = 'bizcochos:tema:v1'
+
+export type Tema = 'auto' | 'claro' | 'oscuro'
+
+export interface Aviso {
+  id: number
+  texto: string
+  deshacer?: () => void
+}
 
 export type EstadoSync = 'guardado' | 'guardando' | 'pendiente' | 'error'
 export type EstadoSesion = 'cargando' | 'fuera' | 'dentro' | 'sin-configurar'
@@ -57,7 +66,14 @@ interface Contexto {
   guardarInsumo: (i: Insumo) => void
   guardarReceta: (r: Receta) => void
   guardarMovimiento: (m: Movimiento) => void
-  borrar: (coleccion: 'insumos' | 'recetas' | 'movimientos', id: string) => void
+  guardarEncargo: (e: Encargo) => void
+  /** Soft-deletes a record and offers to undo it. */
+  borrar: (coleccion: Coleccion, id: string, texto?: string) => void
+  aviso: Aviso | null
+  avisar: (texto: string, deshacer?: () => void) => void
+  cerrarAviso: () => void
+  tema: Tema
+  cambiarTema: (t: Tema) => void
   guardarAjustes: (a: Partial<Ajustes>) => void
   importar: (d: unknown) => boolean
   actualizarTasa: () => Promise<void>
@@ -81,6 +97,23 @@ export function Proveedor({ children }: { children: ReactNode }) {
   const [tasaManual, setTasaManual] = useState<Tasa | null>(() => leerLocal(LLAVE_TASA_MANUAL, null))
   const [tasaCargando, setTasaCargando] = useState(false)
   const [tasaError, setTasaError] = useState('')
+  const [aviso, setAviso] = useState<Aviso | null>(null)
+  const [tema, setTema] = useState<Tema>(() => leerLocal<Tema>(LLAVE_TEMA, 'auto'))
+
+  useEffect(() => {
+    const raiz = document.documentElement
+    if (tema === 'auto') delete raiz.dataset.tema
+    else raiz.dataset.tema = tema
+    const oscuro = tema === 'oscuro' || (tema === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', oscuro ? '#170d14' : '#fff7fa')
+  }, [tema])
+
+  const avisoTimer = useRef<number | undefined>(undefined)
+  const avisar = useCallback((texto: string, deshacer?: () => void) => {
+    window.clearTimeout(avisoTimer.current)
+    setAviso({ id: Date.now(), texto, deshacer })
+    avisoTimer.current = window.setTimeout(() => setAviso(null), deshacer ? 6000 : 3200)
+  }, [])
 
   const datosRef = useRef(datos)
   const enviadoHasta = useRef<number>(leerLocal(LLAVE_ENVIADO, 0))
@@ -102,9 +135,7 @@ export function Proveedor({ children }: { children: ReactNode }) {
     if (enviando.current) return
     const marca = Math.max(
       enviadoHasta.current,
-      ...['insumos', 'recetas', 'movimientos'].flatMap((c) =>
-        Object.values(datosRef.current[c as 'insumos']).map((r) => r.updatedAt),
-      ),
+      ...COLECCIONES.flatMap((c) => Object.values(datosRef.current[c] as Record<string, Registro>).map((r) => r.updatedAt)),
       datosRef.current.ajustes.updatedAt,
     )
     const cambios = cambiosDesde(datosRef.current, enviadoHasta.current)
@@ -279,12 +310,29 @@ export function Proveedor({ children }: { children: ReactNode }) {
       guardarReceta: (r) => cambiar((d) => ({ ...d, recetas: { ...d.recetas, [r.id]: { ...r, updatedAt: ahora() } } })),
       guardarMovimiento: (m) =>
         cambiar((d) => ({ ...d, movimientos: { ...d.movimientos, [m.id]: { ...m, updatedAt: ahora() } } })),
-      borrar: (c, id) =>
-        cambiar((d) => {
-          const rec = d[c][id]
-          if (!rec) return d
-          return { ...d, [c]: { ...d[c], [id]: { ...rec, deleted: true, updatedAt: ahora() } } }
-        }),
+      guardarEncargo: (e) => cambiar((d) => ({ ...d, encargos: { ...d.encargos, [e.id]: { ...e, updatedAt: ahora() } } })),
+      borrar(c, id, texto) {
+        const rec = datosRef.current[c][id] as Registro | undefined
+        if (!rec) return
+        const marcar = (deleted: boolean) =>
+          cambiar((d) => {
+            const actual = d[c][id] as Registro | undefined
+            return actual ? { ...d, [c]: { ...d[c], [id]: { ...actual, deleted, updatedAt: ahora() } } } : d
+          })
+        marcar(true)
+        avisar(texto ?? 'Borrado', () => {
+          marcar(false)
+          setAviso(null)
+        })
+      },
+      aviso,
+      avisar,
+      cerrarAviso: () => setAviso(null),
+      tema,
+      cambiarTema(t) {
+        guardarLocal(LLAVE_TEMA, t)
+        setTema(t)
+      },
       guardarAjustes: (a) => cambiar((d) => ({ ...d, ajustes: { ...d.ajustes, ...a, updatedAt: ahora() } })),
       importar(v) {
         if (!esDatosValidos(v)) return false
@@ -297,6 +345,7 @@ export function Proveedor({ children }: { children: ReactNode }) {
             insumos: sellar(v.insumos),
             recetas: sellar(v.recetas),
             movimientos: sellar(v.movimientos),
+            encargos: sellar(v.encargos),
             ...(v.ajustes ? { ajustes: { ...d.ajustes, ...v.ajustes, updatedAt: t } } : {}),
           }),
         )
@@ -310,7 +359,7 @@ export function Proveedor({ children }: { children: ReactNode }) {
       },
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [datos, sesion, mensajeSesion, sync, tasaAuto, tasaManual, tasaCargando, tasaError, cambiar, traer, enviar, actualizarTasa])
+  }, [datos, sesion, mensajeSesion, sync, tasaAuto, tasaManual, tasaCargando, tasaError, aviso, tema, cambiar, traer, enviar, actualizarTasa, avisar])
 
   return <Ctx.Provider value={valor}>{children}</Ctx.Provider>
 }

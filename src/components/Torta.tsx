@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { Desglose } from '../../shared/calc'
+import type { Formato } from '../../shared/types'
 import { enBs, fmtPct, fmtUSD } from '../lib/format'
 
 // Validated categorical order (dataviz validate_palette, light, surface #FFFAFC): fixed, never cycled.
@@ -21,34 +22,37 @@ const HUECO = 2.2 // surface gap between slices, in px along the ring
 
 /**
  * A bizcocho seen from above on its gold cake board: each slice is where part of the
- * price goes, per portion. Hovering a slice or a legend row names it in the centre.
+ * price goes, whole or per portion. Hovering a slice or a legend row names it in the centre.
  */
 export function Torta({
   d,
-  rinde,
+  formato = 'entero',
   tasa,
   compacta,
   alVer,
 }: {
   d: Desglose
-  rinde: number
+  formato?: Formato
   tasa: number
   /** Small cake beside the price, for the top of the phone editor. */
   compacta?: boolean
   alVer?: () => void
 }) {
   const [activa, setActiva] = useState<Clave | null>(null)
-  const n = rinde > 0 ? rinde : 1
+  const porPorcion = formato === 'porcion' && d.rinde > 1
+  const n = porPorcion ? d.rinde : 1
+  const p = porPorcion ? d.porcion : d.entero
+  const etiqueta = porPorcion ? 'Precio por porción' : 'Precio entero'
   const valores: Record<Clave, number> = {
     ingredientes: d.ingredientes / n,
     empaque: d.empaque / n,
     horno: d.horno / n,
     trabajo: d.trabajo / n,
     merma: d.merma / n,
-    ganancia: Math.max(d.gananciaPorcion, 0),
+    ganancia: Math.max(p.ganancia, 0),
   }
   const total = Object.values(valores).reduce((a, b) => a + b, 0)
-  const pierde = d.gananciaPorcion < 0
+  const pierde = p.ganancia < 0
 
   let acumulado = 0
   const arcos = PORCIONES.map((p) => {
@@ -98,15 +102,15 @@ export function Torta({
       <div className="torta-mini">
         {dibujo}
         <div className="torta-mini-texto">
-          <span className="torta-centro-etiqueta">{n > 1 ? 'Precio por porción' : 'Precio'}</span>
-          <strong className="torta-mini-valor num">{fmtUSD(d.precio)}</strong>
-          <span className="bs num">{enBs(d.precio, tasa)}</span>
+          <span className="torta-centro-etiqueta">{etiqueta}</span>
+          <strong className="torta-mini-valor num">{fmtUSD(p.precio)}</strong>
+          <span className="bs num">{enBs(p.precio, tasa)}</span>
           <span className="tenue pequeno num">
             {pierde ? (
-              <span className="texto-peligro">Pierdes {fmtUSD(-d.gananciaPorcion)}</span>
+              <span className="texto-peligro">Pierdes {fmtUSD(-p.ganancia)}</span>
             ) : (
               <>
-                Costo {fmtUSD(d.costoPorcion)} · ganas {fmtPct(d.margenReal)}
+                Costo {fmtUSD(p.costo)} · ganas {fmtPct(p.margen)}
               </>
             )}
           </span>
@@ -121,7 +125,7 @@ export function Torta({
   }
 
   return (
-    <figure className="torta" id="reparto" aria-label="Cómo se reparte el precio de una porción">
+    <figure className="torta" id="reparto" aria-label={`Cómo se reparte el ${porPorcion ? 'precio de una porción' : 'precio entero'}`}>
       {dibujo}
       <div className="torta-centro" aria-live="polite">
         {sel ? (
@@ -132,15 +136,15 @@ export function Torta({
           </>
         ) : (
           <>
-            <span className="torta-centro-etiqueta">{n > 1 ? 'Precio por porción' : 'Precio'}</span>
-            <strong className="torta-centro-valor">{fmtUSD(d.precio)}</strong>
-            <span className="torta-centro-sub bs">{enBs(d.precio, tasa)}</span>
+            <span className="torta-centro-etiqueta">{etiqueta}</span>
+            <strong className="torta-centro-valor">{fmtUSD(p.precio)}</strong>
+            <span className="torta-centro-sub bs">{enBs(p.precio, tasa)}</span>
           </>
         )}
       </div>
       <figcaption className="torta-leyenda">
         <table>
-          <caption className="solo-lector">Reparto del precio por porción</caption>
+          <caption className="solo-lector">Reparto del {porPorcion ? 'precio por porción' : 'precio entero'}</caption>
           <tbody>
             {arcos.map((a) => (
               <tr
@@ -158,7 +162,7 @@ export function Torta({
                 </th>
                 <td className="num">
                   {a.clave === 'ganancia' && pierde ? (
-                    <span className="texto-peligro">−{fmtUSD(-d.gananciaPorcion)}</span>
+                    <span className="texto-peligro">−{fmtUSD(-p.ganancia)}</span>
                   ) : (
                     fmtUSD(a.v)
                   )}

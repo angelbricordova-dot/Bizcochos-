@@ -23,7 +23,7 @@ export function Tasa() {
   const resultado = dolares ? monto * valor : valor > 0 ? monto / valor : NaN
 
   return (
-    <Pantalla titulo="Tasa BCV">
+    <Pantalla titulo="Tasa BCV" atras="/mas">
       <div className="tasa-hoy">
         <span className="tasa-etiqueta">1 dólar =</span>
         <span className="tasa-cifra num">{valor > 0 ? `Bs. ${fmtTasa(valor)}` : 'Sin tasa'}</span>

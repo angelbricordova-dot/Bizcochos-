@@ -1,59 +1,70 @@
 import { AlertTriangle, Plus, Trash2 } from 'lucide-react'
 import { useMemo, useState } from 'react'
-import { costoItem, desglose, unidadesCompatibles } from '../../shared/calc'
-import type { Insumo, ItemReceta, Receta, UnidadCompra } from '../../shared/types'
+import { costoItem, desglose, tienePorciones, unidadesCompatibles, type Precio } from '../../shared/calc'
+import type { Formato, Insumo, ItemReceta, Receta, UnidadCompra } from '../../shared/types'
 import { Torta } from '../components/Torta'
-import { Campo, Confirmar, Numero, Pantalla, Vacio } from '../components/ui'
+import { Campo, Numero, Pantalla, Segmentos, Vacio } from '../components/ui'
 import { enBs, fmtPct, fmtUSD, fmtUSDfino, uid } from '../lib/format'
 import { ir, volver } from '../lib/router'
 import { useApp, useTasa, vivos } from '../lib/store'
 
-export function Recetas() {
+export function Productos() {
   const { datos } = useApp()
   const tasa = useTasa()
   const lista = vivos(datos.recetas).sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'))
   return (
     <Pantalla
-      titulo="Recetas"
+      titulo="Productos"
       accion={
-        <a className="boton boton-primario boton-chico" href="#/recetas/nueva">
-          <Plus size={18} /> Nueva
+        <a className="boton boton-primario boton-chico" href="#/productos/nuevo">
+          <Plus size={18} /> Nuevo
         </a>
       }
     >
       {lista.length === 0 ? (
         <Vacio
-          titulo="Calcula tu primer bizcocho"
+          titulo="Calcula tu primer producto"
           accion={
             <div className="fila-botones fila-botones-columna">
-              <a className="boton boton-primario" href="#/recetas/nueva">
-                <Plus size={18} /> Crear receta
+              <a className="boton boton-primario" href="#/productos/nuevo">
+                <Plus size={18} /> Crear producto
               </a>
               <EjemploBoton />
             </div>
           }
         >
-          Pon los ingredientes con sus cantidades, el tiempo de horno y tu trabajo. Te decimos cuánto cuesta y en cuánto
-          venderlo para ganar lo que quieres.
+          Un bizcocho, un pie de limón, un cheesecake… Pon sus ingredientes, el horno y tu trabajo, y te decimos cuánto
+          cuesta y en cuánto venderlo entero o por porción.
         </Vacio>
       ) : (
         <ul className="lista">
           {lista.map((r) => {
             const d = desglose(r, datos.insumos, datos.ajustes)
+            const porciones = tienePorciones(r)
+            const bajo = d.entero.ganancia < 0 || (porciones && d.porcion.ganancia < 0)
             return (
               <li key={r.id}>
-                <a href={`#/recetas/${r.id}`} className="fila">
+                <a href={`#/productos/${r.id}`} className="fila">
                   <span className="fila-principal">
                     <span className="fila-titulo">{r.nombre}</span>
                     <span className="fila-sub num">
-                      Cuesta {fmtUSD(d.costoPorcion)}
-                      {r.rinde > 1 ? ' la porción' : ''} · gana {fmtPct(d.margenReal)}
-                      {d.faltantes > 0 && ' · falta un insumo'}
+                      {bajo ? (
+                        <span className="texto-peligro">Estás perdiendo con este precio</span>
+                      ) : (
+                        <>
+                          Cuesta {fmtUSD(d.costo)} · ganas {fmtPct(d.entero.margen)}
+                          {d.faltantes > 0 && ' · falta un insumo'}
+                        </>
+                      )}
                     </span>
                   </span>
                   <span className="fila-cifra">
-                    <span className="precio-dorado num">{fmtUSD(d.precio)}</span>
-                    <span className="fila-sub num bs">{enBs(d.precio, tasa)}</span>
+                    <span className="precio-dorado num">{fmtUSD(d.entero.precio)}</span>
+                    {porciones ? (
+                      <span className="fila-sub num">porción {fmtUSD(d.porcion.precio)}</span>
+                    ) : (
+                      <span className="fila-sub num bs">{enBs(d.entero.precio, tasa)}</span>
+                    )}
                   </span>
                 </a>
               </li>
@@ -74,12 +85,12 @@ function EjemploBoton() {
       className="boton boton-secundario"
       onClick={() => {
         const ins: [string, Insumo['tipo'], number, UnidadCompra, number][] = [
-          ['Harina de trigo (ejemplo)', 'ingrediente', 1, 'kg', 1.6],
-          ['Azúcar (ejemplo)', 'ingrediente', 1, 'kg', 1.5],
-          ['Huevos (ejemplo)', 'ingrediente', 30, 'und', 6],
+          ['Galletas María (ejemplo)', 'ingrediente', 200, 'g', 1.2],
           ['Mantequilla (ejemplo)', 'ingrediente', 500, 'g', 4.5],
-          ['Leche (ejemplo)', 'ingrediente', 1, 'L', 2],
-          ['Caja para bizcocho (ejemplo)', 'empaque', 1, 'und', 0.8],
+          ['Leche condensada (ejemplo)', 'ingrediente', 397, 'g', 2.3],
+          ['Limones (ejemplo)', 'ingrediente', 1, 'kg', 1.5],
+          ['Huevos (ejemplo)', 'ingrediente', 30, 'und', 6],
+          ['Caja para torta (ejemplo)', 'empaque', 1, 'und', 0.8],
         ]
         const ids = ins.map(([nombre, tipo, cantidad, unidad, precio]) => {
           const id = uid()
@@ -89,24 +100,24 @@ function EjemploBoton() {
         const id = uid()
         guardarReceta({
           id,
-          nombre: 'Bizcocho de vainilla (ejemplo)',
-          rinde: 1,
+          nombre: 'Pie de limón (ejemplo)',
+          rinde: 8,
           items: [
-            { insumoId: ids[0], cantidad: 250, unidad: 'g' },
-            { insumoId: ids[1], cantidad: 200, unidad: 'g' },
-            { insumoId: ids[2], cantidad: 4, unidad: 'und' },
-            { insumoId: ids[3], cantidad: 125, unidad: 'g' },
-            { insumoId: ids[4], cantidad: 120, unidad: 'ml' },
+            { insumoId: ids[0], cantidad: 200, unidad: 'g' },
+            { insumoId: ids[1], cantidad: 90, unidad: 'g' },
+            { insumoId: ids[2], cantidad: 794, unidad: 'g' },
+            { insumoId: ids[3], cantidad: 300, unidad: 'g' },
+            { insumoId: ids[4], cantidad: 3, unidad: 'und' },
             { insumoId: ids[5], cantidad: 1, unidad: 'und' },
           ],
-          minutosHorno: 45,
-          minutosTrabajo: 30,
+          minutosHorno: 20,
+          minutosTrabajo: 40,
           merma: datos.ajustes.mermaPorDefecto,
           margen: datos.ajustes.margenPorDefecto,
-          nota: 'Precios de ejemplo: cámbialos por los tuyos o borra esta receta.',
+          nota: 'Precios de ejemplo: cámbialos por los tuyos o borra este producto.',
           updatedAt: 0,
         })
-        ir(`/recetas/${id}`)
+        ir(`/productos/${id}`)
       }}
     >
       Ver un ejemplo
@@ -114,13 +125,69 @@ function EjemploBoton() {
   )
 }
 
-export function EditorReceta({ id }: { id: string }) {
-  const { datos, guardarReceta, borrar } = useApp()
+function unidadReceta(u: UnidadCompra): UnidadCompra {
+  return u === 'kg' ? 'g' : u === 'L' ? 'ml' : u
+}
+
+function TarjetaPrecio({
+  titulo,
+  p,
+  tasa,
+  valor,
+  onCambio,
+}: {
+  titulo: string
+  p: Precio
+  tasa: number
+  valor: number | undefined
+  onCambio: (v: number | undefined) => void
+}) {
+  return (
+    <div className="tarjeta-precio" data-pierde={p.ganancia < 0 ? '' : undefined}>
+      <div className="tarjeta-precio-cabeza">
+        <span className="tarjeta-precio-titulo">{titulo}</span>
+        <span className="tenue pequeno num">cuesta {fmtUSD(p.costo)}</span>
+      </div>
+      <div className="sugerido">
+        <span className="sugerido-etiqueta">Sugerido</span>
+        <span className="sugerido-cifra num">{fmtUSD(p.sugerido)}</span>
+        <span className="pequeno num">
+          <span className="bs">{enBs(p.sugerido, tasa)}</span>
+        </span>
+      </div>
+      <Campo
+        etiqueta="Tu precio"
+        ayuda={
+          p.ganancia < 0
+            ? undefined
+            : valor
+              ? `Ganas ${fmtUSD(p.ganancia)} (${fmtPct(p.margen)}).`
+              : 'Vacío = usa el sugerido.'
+        }
+        error={p.ganancia < 0 ? `A ese precio pierdes ${fmtUSD(-p.ganancia)}.` : undefined}
+      >
+        {(i, d) => (
+          <div className="fila-botones fila-botones-apretada">
+            <Numero id={i} describedBy={d} prefijo="$" valor={valor} onCambio={(v) => onCambio(Number.isNaN(v) ? undefined : v)} />
+            {valor !== p.sugerido && p.sugerido > 0 && (
+              <button type="button" className="boton boton-secundario boton-chico" onClick={() => onCambio(p.sugerido)}>
+                Usar sugerido
+              </button>
+            )}
+          </div>
+        )}
+      </Campo>
+    </div>
+  )
+}
+
+export function EditorProducto({ id }: { id: string }) {
+  const { datos, guardarReceta, borrar, avisar } = useApp()
   const tasa = useTasa()
-  const existente = id !== 'nueva' ? datos.recetas[id] : undefined
-  const [r, setR] = useState<Receta>(
-    () =>
-      existente ?? {
+  const existente = id !== 'nuevo' ? datos.recetas[id] : undefined
+  const [r, setR] = useState<Receta>(() => {
+    if (!existente)
+      return {
         id: uid(),
         nombre: '',
         rinde: 1,
@@ -130,19 +197,28 @@ export function EditorReceta({ id }: { id: string }) {
         merma: datos.ajustes.mermaPorDefecto,
         margen: datos.ajustes.margenPorDefecto,
         updatedAt: 0,
-      },
-  )
+      }
+    // Move the legacy single price into the field it meant.
+    const { precioVenta, ...resto } = existente
+    if (!precioVenta) return existente
+    return existente.rinde > 1
+      ? { ...resto, precioPorcion: existente.precioPorcion ?? precioVenta }
+      : { ...resto, precioEntero: existente.precioEntero ?? precioVenta }
+  })
+  const [formato, setFormato] = useState<Formato>('entero')
   const [intento, setIntento] = useState(false)
   const insumos = useMemo(
     () => vivos(datos.insumos).sort((a, b) => a.nombre.localeCompare(b.nombre, 'es')),
     [datos.insumos],
   )
   const d = desglose(r, datos.insumos, datos.ajustes)
+  const porciones = tienePorciones(r)
+  const vista: Formato = porciones ? formato : 'entero'
 
-  if (id !== 'nueva' && !existente) {
+  if (id !== 'nuevo' && !existente) {
     return (
-      <Pantalla titulo="Receta" atras="/recetas">
-        <Vacio titulo="Esta receta ya no existe">Puede que la hayas borrado desde otro dispositivo.</Vacio>
+      <Pantalla titulo="Producto" atras="/productos">
+        <Vacio titulo="Este producto ya no existe">Puede que lo hayas borrado desde otro dispositivo.</Vacio>
       </Pantalla>
     )
   }
@@ -154,32 +230,54 @@ export function EditorReceta({ id }: { id: string }) {
     const usados = new Set(r.items.map((i) => i.insumoId))
     const libre = insumos.find((i) => !usados.has(i.id)) ?? insumos[0]
     if (!libre) return
-    const unidad: UnidadCompra = libre.unidad === 'kg' ? 'g' : libre.unidad === 'L' ? 'ml' : libre.unidad
-    setR({ ...r, items: [...r.items, { insumoId: libre.id, cantidad: NaN, unidad }] })
+    setR({ ...r, items: [...r.items, { insumoId: libre.id, cantidad: NaN, unidad: unidadReceta(libre.unidad) }] })
   }
 
-  const errorNombre = intento && !r.nombre.trim() ? 'Ponle nombre a la receta.' : ''
+  const errorNombre = intento && !r.nombre.trim() ? 'Ponle nombre al producto.' : ''
   const guardar = () => {
     setIntento(true)
     if (!r.nombre.trim()) return
+    const rinde = r.rinde > 0 ? r.rinde : 1
     guardarReceta({
       ...r,
       nombre: r.nombre.trim(),
-      rinde: r.rinde > 0 ? r.rinde : 1,
+      rinde,
       items: r.items.filter((i) => i.cantidad > 0),
       minutosHorno: r.minutosHorno || 0,
       minutosTrabajo: r.minutosTrabajo || 0,
       merma: r.merma || 0,
       margen: Math.min(Math.max(r.margen || 0, 0), 0.95),
-      precioVenta: r.precioVenta && r.precioVenta > 0 ? r.precioVenta : undefined,
+      precioEntero: r.precioEntero && r.precioEntero > 0 ? r.precioEntero : undefined,
+      precioPorcion: rinde > 1 && r.precioPorcion && r.precioPorcion > 0 ? r.precioPorcion : undefined,
     })
-    volver('/recetas')
+    avisar(existente ? 'Producto guardado' : `“${r.nombre.trim()}” agregado`)
+    volver('/productos')
   }
 
-  const margenBajo = r.precioVenta && r.precioVenta > 0 && d.margenReal < r.margen - 0.005
+  const selectorVista = porciones && (
+    <Segmentos
+      etiqueta="Ver el precio"
+      valor={formato}
+      onCambio={setFormato}
+      opciones={[
+        { valor: 'entero', texto: 'Entero' },
+        { valor: 'porcion', texto: 'Porción' },
+      ]}
+    />
+  )
 
   return (
-    <Pantalla titulo={existente ? r.nombre || 'Receta' : 'Nueva receta'} atras="/recetas">
+    <Pantalla
+      titulo={existente ? r.nombre || 'Producto' : 'Nuevo producto'}
+      atras="/productos"
+      accion={
+        existente && (
+          <a className="boton boton-secundario boton-chico" href={`#/cuentas/nuevo?tipo=venta&receta=${existente.id}`}>
+            Vender
+          </a>
+        )
+      }
+    >
       <form
         className="formulario editor-receta"
         noValidate
@@ -195,7 +293,7 @@ export function EditorReceta({ id }: { id: string }) {
                 id={i}
                 aria-describedby={dsc}
                 value={r.nombre}
-                placeholder="Bizcocho de naranja"
+                placeholder="Cheesecake de fresa"
                 autoFocus={!existente}
                 onChange={(e) => setR({ ...r, nombre: e.target.value })}
               />
@@ -204,16 +302,22 @@ export function EditorReceta({ id }: { id: string }) {
           <div className="solo-movil">
             <Torta
               d={d}
-              rinde={r.rinde}
+              formato={vista}
               tasa={tasa}
               compacta
               alVer={() => document.getElementById('reparto')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
             />
           </div>
           {r.nota && <p className="nota">{r.nota}</p>}
-          <Campo etiqueta="¿Cuántas porciones salen?" ayuda="Pon 1 si lo vendes entero.">
+          <Campo etiqueta="¿Cuántas porciones salen?" ayuda="Pon 1 si solo lo vendes entero.">
             {(i, dsc) => (
-              <Numero id={i} describedBy={dsc} valor={r.rinde} sufijo={r.rinde === 1 ? 'entero' : 'porciones'} onCambio={(rinde) => setR({ ...r, rinde })} />
+              <Numero
+                id={i}
+                describedBy={dsc}
+                valor={r.rinde}
+                sufijo={r.rinde === 1 ? 'solo entero' : 'porciones'}
+                onCambio={(rinde) => setR({ ...r, rinde })}
+              />
             )}
           </Campo>
 
@@ -221,15 +325,16 @@ export function EditorReceta({ id }: { id: string }) {
             <legend>Ingredientes y empaque</legend>
             {insumos.length === 0 ? (
               <p className="tenue">
-                Primero agrega tus insumos. <a href="#/insumos/nuevo">Agregar insumo</a>
+                Primero agrega lo que compras. <a href="#/insumos/nuevo">Agregar insumo</a>
               </p>
             ) : (
               <>
-                {r.items.length === 0 && <p className="tenue">Todavía no hay ingredientes en esta receta.</p>}
+                {r.items.length === 0 && <p className="tenue">Todavía no hay ingredientes.</p>}
                 <ul className="items">
                   {r.items.map((it, idx) => {
                     const ins = datos.insumos[it.insumoId]
-                    const compatibles = ins && !ins.deleted ? unidadesCompatibles(ins.unidad) : (['g'] as UnidadCompra[])
+                    const vivo = ins && !ins.deleted
+                    const compatibles = vivo ? unidadesCompatibles(ins.unidad) : (['g'] as UnidadCompra[])
                     const costo = costoItem(ins, it.cantidad || 0, it.unidad)
                     return (
                       <li key={idx} className="item">
@@ -239,17 +344,14 @@ export function EditorReceta({ id }: { id: string }) {
                         <select
                           id={`ins-${idx}`}
                           className="item-insumo"
-                          value={ins && !ins.deleted ? it.insumoId : ''}
+                          value={vivo ? it.insumoId : ''}
                           onChange={(e) => {
                             const nuevo = datos.insumos[e.target.value]
                             const comp = unidadesCompatibles(nuevo.unidad)
-                            cambiarItem(idx, {
-                              insumoId: nuevo.id,
-                              unidad: comp.includes(it.unidad) ? it.unidad : nuevo.unidad === 'kg' ? 'g' : nuevo.unidad === 'L' ? 'ml' : nuevo.unidad,
-                            })
+                            cambiarItem(idx, { insumoId: nuevo.id, unidad: comp.includes(it.unidad) ? it.unidad : unidadReceta(nuevo.unidad) })
                           }}
                         >
-                          {(!ins || ins.deleted) && <option value="">Insumo borrado</option>}
+                          {!vivo && <option value="">Insumo borrado</option>}
                           {insumos.map((x) => (
                             <option key={x.id} value={x.id}>
                               {x.nombre}
@@ -260,15 +362,15 @@ export function EditorReceta({ id }: { id: string }) {
                           <label className="solo-lector" htmlFor={`cant-${idx}`}>
                             Cantidad
                           </label>
-                          <Numero id={`cant-${idx}`} valor={Number.isNaN(it.cantidad) ? undefined : it.cantidad} onCambio={(cantidad) => cambiarItem(idx, { cantidad })} />
+                          <Numero
+                            id={`cant-${idx}`}
+                            valor={Number.isNaN(it.cantidad) ? undefined : it.cantidad}
+                            onCambio={(cantidad) => cambiarItem(idx, { cantidad })}
+                          />
                           <label className="solo-lector" htmlFor={`uni-${idx}`}>
                             Unidad
                           </label>
-                          <select
-                            id={`uni-${idx}`}
-                            value={it.unidad}
-                            onChange={(e) => cambiarItem(idx, { unidad: e.target.value as UnidadCompra })}
-                          >
+                          <select id={`uni-${idx}`} value={it.unidad} onChange={(e) => cambiarItem(idx, { unidad: e.target.value as UnidadCompra })}>
                             {compatibles.map((u) => (
                               <option key={u} value={u}>
                                 {u}
@@ -322,28 +424,16 @@ export function EditorReceta({ id }: { id: string }) {
         </div>
 
         <div className="editor-columna editor-precio">
-          <Torta d={d} rinde={r.rinde} tasa={tasa} />
+          {selectorVista && <div className="centro-flex">{selectorVista}</div>}
+          <Torta d={d} formato={vista} tasa={tasa} />
 
           {d.faltantes > 0 && (
             <p className="aviso">
-              <AlertTriangle size={18} aria-hidden="true" /> Un insumo de esta receta fue borrado; su costo no se cuenta.
+              <AlertTriangle size={18} aria-hidden="true" /> Un insumo de este producto fue borrado; su costo no se cuenta.
             </p>
           )}
 
-          <dl className="cuentas">
-            <div>
-              <dt>Costo de la receta</dt>
-              <dd className="num">{fmtUSD(d.costo)}</dd>
-            </div>
-            {r.rinde > 1 && (
-              <div>
-                <dt>Costo por porción</dt>
-                <dd className="num">{fmtUSD(d.costoPorcion)}</dd>
-              </div>
-            )}
-          </dl>
-
-          <Campo etiqueta="Ganancia que quieres" ayuda="Parte del precio que te queda limpia. 40% es un buen punto de partida.">
+          <Campo etiqueta="Ganancia que quieres" ayuda="La parte del precio que te queda limpia. 40% es un buen punto de partida.">
             {(i, dsc) => (
               <div className="margen">
                 <input
@@ -355,69 +445,60 @@ export function EditorReceta({ id }: { id: string }) {
                   aria-label="Ganancia que quieres, en porcentaje"
                   onChange={(e) => setR({ ...r, margen: Number(e.target.value) / 100 })}
                 />
-                <Numero id={i} describedBy={dsc} valor={Math.round(r.margen * 1000) / 10} sufijo="%" onCambio={(v) => setR({ ...r, margen: Math.min(Math.max((v || 0) / 100, 0), 0.95) })} />
+                <Numero
+                  id={i}
+                  describedBy={dsc}
+                  valor={Math.round(r.margen * 1000) / 10}
+                  sufijo="%"
+                  onCambio={(v) => setR({ ...r, margen: Math.min(Math.max((v || 0) / 100, 0), 0.95) })}
+                />
               </div>
             )}
           </Campo>
 
-          <div className="sugerido">
-            <span className="sugerido-etiqueta">Precio sugerido{r.rinde > 1 ? ' por porción' : ''}</span>
-            <span className="sugerido-cifra num">{fmtUSD(d.precioSugerido)}</span>
-            <span className="tenue num">
-              <span className="bs">{enBs(d.precioSugerido, tasa)}</span> · exacto {fmtUSD(d.precioExacto)}
-            </span>
-            {r.precioVenta !== d.precioSugerido && d.precioSugerido > 0 && (
-              <button type="button" className="boton boton-secundario boton-chico" onClick={() => setR({ ...r, precioVenta: d.precioSugerido })}>
-                Usar este precio
-              </button>
+          <div className={porciones ? 'precios-dobles' : undefined}>
+            <TarjetaPrecio
+              titulo={porciones ? 'Entero' : 'Precio de venta'}
+              p={d.entero}
+              tasa={tasa}
+              valor={r.precioEntero}
+              onCambio={(precioEntero) => setR({ ...r, precioEntero })}
+            />
+            {porciones && (
+              <TarjetaPrecio
+                titulo="Porción"
+                p={d.porcion}
+                tasa={tasa}
+                valor={r.precioPorcion}
+                onCambio={(precioPorcion) => setR({ ...r, precioPorcion })}
+              />
             )}
           </div>
-
-          <Campo
-            etiqueta="Tu precio de venta"
-            ayuda={r.precioVenta ? `Con este precio ganas ${fmtUSD(d.gananciaPorcion)} (${fmtPct(d.margenReal)}).` : 'Déjalo vacío para usar el sugerido.'}
-          >
-            {(i, dsc) => (
-              <Numero id={i} describedBy={dsc} prefijo="$" valor={r.precioVenta} onCambio={(v) => setR({ ...r, precioVenta: Number.isNaN(v) ? undefined : v })} />
-            )}
-          </Campo>
-          {d.gananciaPorcion < 0 ? (
-            <p className="aviso aviso-peligro">
-              <AlertTriangle size={18} aria-hidden="true" /> A ese precio pierdes {fmtUSD(-d.gananciaPorcion)} por {r.rinde > 1 ? 'porción' : 'bizcocho'}.
-            </p>
-          ) : (
-            margenBajo && (
-              <p className="aviso">
-                <AlertTriangle size={18} aria-hidden="true" /> Ganas menos del {fmtPct(r.margen)} que querías.
-              </p>
-            )
-          )}
         </div>
 
         <div className="pie-formulario pie-fijo">
           <p className="pie-precio num" aria-hidden="true">
             <span>
-              Precio <strong>{fmtUSD(d.precio)}</strong>
+              {porciones ? 'Entero' : 'Precio'} <strong>{fmtUSD(d.entero.precio)}</strong>
             </span>
-            <span>
-              Costo {fmtUSD(d.costoPorcion)} · gana {fmtPct(d.margenReal)}
-            </span>
+            <span>{porciones ? `Porción ${fmtUSD(d.porcion.precio)}` : `Ganas ${fmtPct(d.entero.margen)}`}</span>
           </p>
           <button type="submit" className="boton boton-primario boton-ancho">
-            Guardar receta
+            Guardar producto
           </button>
         </div>
         {existente && (
           <div className="pie-borrar">
-            <Confirmar
-              texto={`¿Borrar “${existente.nombre}”? Las ventas ya registradas no se borran.`}
-              onConfirmar={() => {
-                borrar('recetas', existente.id)
-                ir('/recetas')
+            <button
+              type="button"
+              className="boton boton-peligro-suave"
+              onClick={() => {
+                borrar('recetas', existente.id, `“${existente.nombre}” borrado`)
+                ir('/productos')
               }}
             >
-              Borrar receta
-            </Confirmar>
+              Borrar producto
+            </button>
           </div>
         )}
       </form>

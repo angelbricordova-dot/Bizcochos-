@@ -1,4 +1,15 @@
-import type { Ajustes, Insumo, Moneda, Movimiento, Receta, UnidadBase, UnidadCompra } from './types'
+import type {
+  Ajustes,
+  Encargo,
+  Formato,
+  Insumo,
+  MetodoPago,
+  Moneda,
+  Movimiento,
+  Receta,
+  UnidadBase,
+  UnidadCompra,
+} from './types'
 
 export const FACTOR: Record<UnidadCompra, { base: UnidadBase; factor: number }> = {
   kg: { base: 'g', factor: 1000 },
@@ -31,30 +42,70 @@ export function costoItem(insumo: Insumo | undefined, cantidad: number, unidad: 
   return costoPorBase(insumo) * cantidad * FACTOR[unidad].factor
 }
 
+export function redondearArriba(v: number, paso = 0.5): number {
+  if (v <= 0) return 0
+  return Math.ceil(v / paso - 1e-9) * paso
+}
+
+/** A friendly price step: quarters under $10, halves under $30, whole dollars above. */
+export function precioAmable(v: number): number {
+  return redondearArriba(v, v < 10 ? 0.25 : v < 30 ? 0.5 : 1)
+}
+
+export function rindeDe(r: Pick<Receta, 'rinde'>): number {
+  return r.rinde > 0 ? r.rinde : 1
+}
+
+/** Whether the product can be sold by the portion. */
+export function tienePorciones(r: Pick<Receta, 'rinde'>): boolean {
+  return rindeDe(r) > 1
+}
+
+/** Her own prices, reading the legacy single `precioVenta` too. */
+export function preciosPropios(r: Receta): { entero?: number; porcion?: number } {
+  const pos = (v?: number) => (v && v > 0 ? v : undefined)
+  const legado = pos(r.precioVenta)
+  return {
+    entero: pos(r.precioEntero) ?? (tienePorciones(r) ? undefined : legado),
+    porcion: tienePorciones(r) ? (pos(r.precioPorcion) ?? legado) : undefined,
+  }
+}
+
+export interface Precio {
+  costo: number
+  /** Exact price that achieves the desired margin. */
+  exacto: number
+  /** `exacto` rounded up to a friendly step. */
+  sugerido: number
+  /** Her own price when set, else the suggested one. */
+  precio: number
+  propio: boolean
+  ganancia: number
+  /** Real margin on `precio`, 0–1 (negative when selling at a loss). */
+  margen: number
+}
+
 export interface Desglose {
   ingredientes: number
   empaque: number
   horno: number
   trabajo: number
   merma: number
-  /** Cost of the whole recipe. */
+  /** Cost of the whole product. */
   costo: number
-  costoPorcion: number
-  /** Exact price per portion that achieves the margin. */
-  precioExacto: number
-  /** `precioExacto` rounded up to a friendly step. */
-  precioSugerido: number
-  /** Price the baker charges per portion: their own when set, else the suggested one. */
-  precio: number
-  gananciaPorcion: number
-  /** Real margin on `precio`, 0–1 (can be negative). */
-  margenReal: number
+  rinde: number
+  entero: Precio
+  /** Same as `entero` when the product has no portions. */
+  porcion: Precio
   faltantes: number
 }
 
-export function redondearArriba(v: number, paso = 0.5): number {
-  if (v <= 0) return 0
-  return Math.ceil(v / paso - 1e-9) * paso
+function precioPara(costo: number, margen: number, propio?: number): Precio {
+  const exacto = costo / (1 - margen)
+  const sugerido = precioAmable(exacto)
+  const precio = propio ?? sugerido
+  const ganancia = precio - costo
+  return { costo, exacto, sugerido, precio, propio: propio !== undefined, ganancia, margen: precio > 0 ? ganancia / precio : 0 }
 }
 
 export function desglose(receta: Receta, insumos: Record<string, Insumo>, ajustes: Ajustes): Desglose {
@@ -76,70 +127,212 @@ export function desglose(receta: Receta, insumos: Record<string, Insumo>, ajuste
   const subtotal = ingredientes + empaque + horno + trabajo
   const merma = subtotal * receta.merma
   const costo = subtotal + merma
-  const rinde = receta.rinde > 0 ? receta.rinde : 1
-  const costoPorcion = costo / rinde
+  const rinde = rindeDe(receta)
   const margen = Math.min(Math.max(receta.margen, 0), 0.95)
-  const precioExacto = costoPorcion / (1 - margen)
-  const precioSugerido = redondearArriba(precioExacto, precioExacto >= 10 ? 0.5 : 0.25)
-  const precio = receta.precioVenta && receta.precioVenta > 0 ? receta.precioVenta : precioSugerido
-  const gananciaPorcion = precio - costoPorcion
-  const margenReal = precio > 0 ? gananciaPorcion / precio : 0
-  return {
-    ingredientes,
-    empaque,
-    horno,
-    trabajo,
-    merma,
-    costo,
-    costoPorcion,
-    precioExacto,
-    precioSugerido,
-    precio,
-    gananciaPorcion,
-    margenReal,
-    faltantes,
+  const propios = preciosPropios(receta)
+  const entero = precioPara(costo, margen, propios.entero)
+  const porcion = rinde > 1 ? precioPara(costo / rinde, margen, propios.porcion) : entero
+  return { ingredientes, empaque, horno, trabajo, merma, costo, rinde, entero, porcion, faltantes }
+}
+
+/** The unit price of a product sold in `formato`. */
+export function precioDe(
+  receta: Receta | undefined,
+  formato: Formato,
+  insumos: Record<string, Insumo>,
+  ajustes: Ajustes,
+): number {
+  if (!receta || receta.deleted) return NaN
+  const d = desglose(receta, insumos, ajustes)
+  return formato === 'porcion' && tienePorciones(receta) ? d.porcion.precio : d.entero.precio
+}
+
+// ───────── Orders ─────────
+
+export function totalEncargo(e: Pick<Encargo, 'items'>): number {
+  return e.items.reduce((s, it) => s + (it.cantidad > 0 ? it.cantidad : 0) * (it.precioUSD > 0 ? it.precioUSD : 0), 0)
+}
+
+/** Payments received for each order, from the sales log. */
+export function pagosPorEncargo(movs: Movimiento[]): Map<string, number> {
+  const m = new Map<string, number>()
+  for (const mov of movs) {
+    if (mov.deleted || mov.tipo !== 'venta' || !mov.encargoId) continue
+    m.set(mov.encargoId, (m.get(mov.encargoId) ?? 0) + mov.montoUSD)
   }
+  return m
+}
+
+export interface CuentaEncargo {
+  total: number
+  pagado: number
+  /** What is still owed; never negative. */
+  resta: number
+}
+
+export function cuentaEncargo(e: Encargo, pagos: Map<string, number>): CuentaEncargo {
+  const total = totalEncargo(e)
+  const pagado = pagos.get(e.id) ?? 0
+  return { total, pagado, resta: Math.max(total - pagado, 0) }
+}
+
+/** Money still owed on orders that are not cancelled. */
+export function porCobrar(encargos: Encargo[], movs: Movimiento[]): number {
+  const pagos = pagosPorEncargo(movs)
+  return encargos
+    .filter((e) => !e.deleted && e.estado !== 'cancelado')
+    .reduce((s, e) => s + cuentaEncargo(e, pagos).resta, 0)
+}
+
+export function encargoAbierto(e: Encargo): boolean {
+  return !e.deleted && (e.estado === 'pendiente' || e.estado === 'listo')
+}
+
+// ───────── Shopping list ─────────
+
+export interface LineaCompra {
+  insumo: Insumo
+  /** Amount needed, in the ingredient's base unit (g, ml or und). */
+  necesario: number
+  /** Whole packages to buy. */
+  paquetes: number
+  /** Cost of exactly what is needed. */
+  costo: number
+  /** Cost of the whole packages. */
+  costoPaquetes: number
+}
+
+/** What to buy to make the open orders delivered between `desde` and `hasta` (inclusive). */
+export function listaCompras(
+  encargos: Encargo[],
+  recetas: Record<string, Receta>,
+  insumos: Record<string, Insumo>,
+  desde: string,
+  hasta: string,
+): { lineas: LineaCompra[]; encargos: number; sinReceta: number } {
+  const total = new Map<string, number>()
+  let usados = 0
+  let sinReceta = 0
+  for (const e of encargos) {
+    if (!encargoAbierto(e) || e.entrega < desde || e.entrega > hasta) continue
+    usados++
+    for (const it of e.items) {
+      const r = it.recetaId ? recetas[it.recetaId] : undefined
+      if (!r || r.deleted) {
+        sinReceta++
+        continue
+      }
+      const veces = it.formato === 'porcion' ? it.cantidad / rindeDe(r) : it.cantidad
+      for (const ri of r.items) {
+        const ins = insumos[ri.insumoId]
+        if (!ins || ins.deleted || !(ri.cantidad > 0)) continue
+        if (FACTOR[ri.unidad].base !== FACTOR[ins.unidad].base) continue
+        total.set(ins.id, (total.get(ins.id) ?? 0) + ri.cantidad * FACTOR[ri.unidad].factor * veces)
+      }
+    }
+  }
+  const lineas = [...total.entries()]
+    .map(([id, necesario]) => {
+      const insumo = insumos[id]
+      const porPaquete = insumo.cantidad * FACTOR[insumo.unidad].factor
+      const paquetes = porPaquete > 0 ? Math.ceil(necesario / porPaquete - 1e-9) : 0
+      return {
+        insumo,
+        necesario,
+        paquetes,
+        costo: necesario * costoPorBase(insumo),
+        costoPaquetes: paquetes * insumo.precioUSD,
+      }
+    })
+    .sort((a, b) => (a.insumo.tipo === b.insumo.tipo ? a.insumo.nombre.localeCompare(b.insumo.nombre, 'es') : a.insumo.tipo === 'ingrediente' ? -1 : 1))
+  return { lineas, encargos: usados, sinReceta }
+}
+
+// ───────── Summaries ─────────
+
+export interface VentaProducto {
+  recetaId: string
+  enteros: number
+  porciones: number
+  monto: number
 }
 
 export interface Resumen {
   ingresos: number
   gastos: number
   ganancia: number
+  /** Direct sales plus orders delivered this month. */
   ventas: number
-  unidades: number
-  porReceta: { recetaId: string; unidades: number; monto: number }[]
+  porReceta: VentaProducto[]
+  porMetodo: { metodo: MetodoPago | 'sin-metodo'; monto: number }[]
 }
 
-export function resumenMes(movs: Movimiento[], mes: string): Resumen {
+export function resumenMes(movs: Movimiento[], mes: string, encargos: Encargo[] = []): Resumen {
   let ingresos = 0
   let gastos = 0
   let ventas = 0
-  let unidades = 0
-  const porReceta = new Map<string, { recetaId: string; unidades: number; monto: number }>()
+  const porReceta = new Map<string, VentaProducto>()
+  const porMetodo = new Map<MetodoPago | 'sin-metodo', number>()
+  const sumar = (recetaId: string, formato: Formato | undefined, cantidad: number, monto: number) => {
+    const r = porReceta.get(recetaId) ?? { recetaId, enteros: 0, porciones: 0, monto: 0 }
+    if (formato === 'porcion') r.porciones += cantidad
+    else r.enteros += cantidad
+    r.monto += monto
+    porReceta.set(recetaId, r)
+  }
   for (const m of movs) {
     if (m.deleted || !m.fecha.startsWith(mes)) continue
     if (m.tipo === 'venta') {
       ingresos += m.montoUSD
+      const k = m.metodo ?? 'sin-metodo'
+      porMetodo.set(k, (porMetodo.get(k) ?? 0) + m.montoUSD)
+      if (m.encargoId) continue
       ventas++
-      unidades += m.cantidad ?? 0
-      if (m.recetaId) {
-        const r = porReceta.get(m.recetaId) ?? { recetaId: m.recetaId, unidades: 0, monto: 0 }
-        r.unidades += m.cantidad ?? 0
-        r.monto += m.montoUSD
-        porReceta.set(m.recetaId, r)
-      }
+      if (m.recetaId) sumar(m.recetaId, m.formato, m.cantidad ?? 1, m.montoUSD)
     } else {
       gastos += m.montoUSD
     }
+  }
+  for (const e of encargos) {
+    if (e.deleted || e.estado !== 'entregado' || !e.entrega.startsWith(mes)) continue
+    ventas++
+    for (const it of e.items) if (it.recetaId) sumar(it.recetaId, it.formato, it.cantidad, it.cantidad * it.precioUSD)
   }
   return {
     ingresos,
     gastos,
     ganancia: ingresos - gastos,
     ventas,
-    unidades,
     porReceta: [...porReceta.values()].sort((a, b) => b.monto - a.monto),
+    porMetodo: [...porMetodo.entries()].map(([metodo, monto]) => ({ metodo, monto })).sort((a, b) => b.monto - a.monto),
   }
+}
+
+export interface Mes {
+  mes: string
+  ingresos: number
+  gastos: number
+  ganancia: number
+}
+
+/** The `n` months ending at `hasta` (YYYY-MM), oldest first. */
+export function serieMeses(movs: Movimiento[], hasta: string, n: number): Mes[] {
+  const [y, m] = hasta.split('-').map(Number)
+  const meses: Mes[] = []
+  for (let i = n - 1; i >= 0; i--) {
+    const d = new Date(y, m - 1 - i, 1)
+    meses.push({ mes: `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`, ingresos: 0, gastos: 0, ganancia: 0 })
+  }
+  const idx = new Map(meses.map((x, i) => [x.mes, i]))
+  for (const mov of movs) {
+    if (mov.deleted) continue
+    const i = idx.get(mov.fecha.slice(0, 7))
+    if (i === undefined) continue
+    if (mov.tipo === 'venta') meses[i].ingresos += mov.montoUSD
+    else meses[i].gastos += mov.montoUSD
+  }
+  for (const x of meses) x.ganancia = x.ingresos - x.gastos
+  return meses
 }
 
 /**
